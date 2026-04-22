@@ -186,8 +186,9 @@ func _bfs_distances(grid: Dictionary, source: Vector2i) -> Dictionary:
 				queue.append(n)
 	return dist
 
-# START at origin. BOSS at farthest dead-end from start. TREASURE at the next-
-# farthest dead-end (if any), giving the classic Isaac side-path feel.
+# START at origin. BOSS at farthest dead-end from start. TREASURE prefers the
+# next-farthest dead-end (classic Isaac feel), but falls back to any remaining
+# cell so at least one treasure always spawns when a treasure prototype exists.
 func _assign_special_rooms(grid: Dictionary) -> Dictionary:
 	var special := {Vector2i.ZERO: Room.RoomType.START}
 	if grid.size() <= 1:
@@ -205,9 +206,69 @@ func _assign_special_rooms(grid: Dictionary) -> Dictionary:
 
 	if dead_ends.size() >= 1 and dead_ends[0].dist > 0:
 		special[dead_ends[0].cell] = Room.RoomType.BOSS
-	if dead_ends.size() >= 2 and dead_ends[1].dist > 0:
-		special[dead_ends[1].cell] = Room.RoomType.TREASURE
+
+	if _has_prototype_of_type(Room.RoomType.TREASURE):
+		var treasure_cell = _pick_treasure_cell(grid, dist, special)
+		if treasure_cell != null:
+			special[treasure_cell] = Room.RoomType.TREASURE
+		else:
+			push_warning("DungeonGenerator: no available cell for a TREASURE room in this layout.")
 	return special
+
+func _has_prototype_of_type(room_type: int) -> bool:
+	for p in _prototypes:
+		if p.type == room_type:
+			return true
+	return false
+
+# Pick the best cell for a TREASURE room, preferring (in order):
+#   1. A cell whose door signature exactly/superset-matches a treasure prototype
+#      (so e.g. a TREASURE_NSEW scene can only land on an NSEW cell).
+#   2. Dead-ends over junction cells (keeps the side-path feel when possible).
+#   3. Farthest from the START cell.
+func _pick_treasure_cell(grid: Dictionary, dist: Dictionary, special: Dictionary):
+	var treasure_protos: Array[Dictionary] = []
+	for p in _prototypes:
+		if p.type == Room.RoomType.TREASURE:
+			treasure_protos.append(p)
+
+	var candidates: Array = []
+	for cell in grid.keys():
+		if special.has(cell):
+			continue
+		var signature := _signature_of(grid, cell)
+		candidates.append({
+			"cell": cell,
+			"dist": int(dist.get(cell, 0)),
+			"is_dead_end": _neighbor_count(grid, cell) == 1,
+			"fits": _treasure_pool_fits(treasure_protos, signature),
+		})
+	if candidates.is_empty():
+		return null
+
+	candidates.sort_custom(func(a, b):
+		if a.fits != b.fits:
+			return a.fits
+		if a.is_dead_end != b.is_dead_end:
+			return a.is_dead_end
+		return a.dist > b.dist
+	)
+	return candidates[0].cell
+
+func _treasure_pool_fits(treasure_protos: Array[Dictionary], signature: String) -> bool:
+	var required: Array[String] = []
+	for d in DIR_NAMES:
+		if d in signature:
+			required.append(d)
+	for p in treasure_protos:
+		var ok := true
+		for d in required:
+			if d not in p.doors:
+				ok = false
+				break
+		if ok:
+			return true
+	return false
 
 func _instantiate_rooms(grid: Dictionary, special: Dictionary) -> void:
 	for cell in grid.keys():
