@@ -6,6 +6,9 @@ enum RoomType { START, NORMAL, BOSS, TREASURE }
 const ROOM_SIZE: int = 1024
 const CHEST_SCENE: PackedScene = preload("res://chest.tscn")
 const DEFAULT_MOB_SCENE: PackedScene = preload("res://mob1.tscn")
+const DOOR_SCENE: PackedScene = preload("res://door.tscn")
+
+signal cleared(room: Room)
 
 @export var available_doors: Array[String] = ["N", "S", "E", "W"]
 @export var room_type: RoomType = RoomType.NORMAL
@@ -20,14 +23,76 @@ const DEFAULT_MOB_SCENE: PackedScene = preload("res://mob1.tscn")
 @export var spawn_margin: float = 160.0
 @export var spawn_enemies_on_ready: bool = true
 
+@export_group("Clearing")
+## If true, doors lock behind the player until every spawned mob is dead.
+@export var locks_doors_when_entered: bool = true
+
+var is_cleared: bool = false
 var _chest: Chest
 var _spawned_mobs: Array[Node2D] = []
+var _doors_locked: bool = false
+var _active_doors: Array[Door] = []
+var _player_was_inside: bool = false
 
 func _ready() -> void:
 	if room_type == RoomType.TREASURE:
 		_spawn_treasure_chest()
 	if spawn_enemies_on_ready and _should_spawn_enemies():
 		_spawn_enemies()
+	if not _has_live_mobs():
+		is_cleared = true
+
+func _physics_process(_delta: float) -> void:
+	_update_entry_lock()
+	if _doors_locked and not _has_live_mobs():
+		_clear_room()
+
+# Watches for the player to walk into the room. On the entry frame, locks doors
+# if there are still live mobs. Once the room is cleared, further entries are
+# no-ops.
+func _update_entry_lock() -> void:
+	if is_cleared or _doors_locked or not locks_doors_when_entered:
+		_player_was_inside = _player_currently_inside()
+		return
+	var inside := _player_currently_inside()
+	if inside and not _player_was_inside and _has_live_mobs():
+		_lock_doors()
+	_player_was_inside = inside
+
+func _player_currently_inside() -> bool:
+	var player := get_tree().get_first_node_in_group("player") as Node2D
+	if player == null:
+		return false
+	var rect := Rect2(global_position, Vector2(ROOM_SIZE, ROOM_SIZE))
+	return rect.has_point(player.global_position)
+
+func _has_live_mobs() -> bool:
+	for m in _spawned_mobs:
+		if is_instance_valid(m):
+			return true
+	return false
+
+func _lock_doors() -> void:
+	if _doors_locked:
+		return
+	_doors_locked = true
+	for direction in available_doors:
+		var door := DOOR_SCENE.instantiate() as Door
+		if door == null:
+			continue
+		add_child(door)
+		door.position = get_door_local_position(direction)
+		door.set_direction(direction)
+		_active_doors.append(door)
+
+func _clear_room() -> void:
+	is_cleared = true
+	_doors_locked = false
+	for d in _active_doors:
+		if is_instance_valid(d):
+			d.queue_free()
+	_active_doors.clear()
+	cleared.emit(self)
 
 # Places a chest at the room's center, unless the scene has a "ChestSpawn"
 # Marker2D child to override the position.
