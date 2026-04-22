@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 signal health_depleted
+signal health_changed(current: float, max_health: float)
 
 @export var max_health: float = 100.0
 @export var move_speed: float = 450.0
@@ -28,9 +29,13 @@ var _hit_targets: Array[Node] = []
 @onready var _hitbox: Area2D = $HitBox
 
 func _ready() -> void:
-	health = max_health
+	_set_health(max_health)
 	_hitbox.monitoring = false
 	_play_current_animation()
+
+func _set_health(new_health: float) -> void:
+	health = clampf(new_health, 0.0, max_health)
+	health_changed.emit(health, max_health)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
@@ -67,7 +72,7 @@ func _physics_process(delta: float) -> void:
 func take_damage(amount: float, _source_position: Vector2 = Vector2.ZERO) -> void:
 	if _invincible or _state == State.DEAD:
 		return
-	health -= amount
+	_set_health(health - amount)
 	if health <= 0.0:
 		_die()
 		return

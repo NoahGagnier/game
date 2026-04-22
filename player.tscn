@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://yh2ao5or56lq" path="res://player.gd" id="1_player"]
 [ext_resource type="Texture2D" uid="uid://bcnuswfoynm15" path="res://characters/Character_Placeholder_Art/FREE_Adventurer 2D Pixel Art/Sprites/IDLE/idle_down.png" id="2_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://hj3e18hsj07" path="res://icon.png" id="2_icon"]
 [ext_resource type="Texture2D" uid="uid://bkwyod7qmyw6i" path="res://characters/Character_Placeholder_Art/FREE_Adventurer 2D Pixel Art/Sprites/ATTACK 1/attack1_down.png" id="2_n7ghd"]
 [ext_resource type="Texture2D" uid="uid://bkop6xm0np2p2" path="res://characters/Character_Placeholder_Art/FREE_Adventurer 2D Pixel Art/Sprites/RUN/run_down.png" id="2_sweqy"]
 [ext_resource type="Texture2D" uid="uid://cbwgr3s6x447x" path="res://characters/Character_Placeholder_Art/FREE_Adventurer 2D Pixel Art/Sprites/RUN/run_left.png" id="3_2hs0m"]
@@ -419,6 +420,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_icon")
+}],
+"loop": true,
+"name": &"hurt_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_icon")
+}],
+"loop": true,
+"name": &"hurt_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_icon")
+}],
+"loop": true,
+"name": &"hurt_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_icon")
+}],
+"loop": true,
+"name": &"hurt_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1jxqw")
 }, {
 "duration": 1.0,
@@ -666,7 +699,7 @@ script = ExtResource("1_player")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1464739290]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_default")
-animation = &"attack_up"
+animation = &"hurt_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=376936190]
 shape = SubResource("CapsuleShape2D_body")
