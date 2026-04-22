@@ -3,8 +3,9 @@ extends StaticBody2D
 
 signal opened(chest: Chest)
 
-@export var contents: Array[PackedScene] = []
-@export var content_spawn_spread: float = 16.0
+@export var loot_pool: Array[LootEntry] = []
+@export var drops_on_open: int = 1
+@export var drop_spread: float = 28.0
 
 var is_open: bool = false
 var _player_in_range: bool = false
@@ -29,26 +30,46 @@ func open() -> void:
 	_player_in_range = false
 	_prompt.visible = false
 	_play_animation("open")
-	_spawn_contents()
+	_drop_loot()
 	opened.emit(self)
 
-func _spawn_contents() -> void:
+# Rolls the weighted loot_pool `drops_on_open` times (with replacement) and
+# spawns each chosen item as a sibling of the chest, popped out in a small
+# ring so drops don't stack on top of each other.
+func _drop_loot() -> void:
 	var parent := get_parent()
-	if parent == null:
+	if parent == null or drops_on_open <= 0:
 		return
-	var count := contents.size()
-	for i in range(count):
-		var scene := contents[i]
-		if scene == null:
+
+	var base_angle := randf() * TAU
+	for i in range(drops_on_open):
+		var entry := _pick_weighted_entry()
+		if entry == null or entry.scene == null:
 			continue
-		var item := scene.instantiate() as Node2D
+		var item := entry.scene.instantiate() as Node2D
 		if item == null:
 			continue
 		parent.add_child(item)
-		# Fan the items out so they don't stack on top of each other.
-		var angle := TAU * float(i) / float(max(count, 1))
-		var offset := Vector2.RIGHT.rotated(angle) * content_spawn_spread
+		var angle := base_angle + TAU * float(i) / float(drops_on_open)
+		var offset := Vector2.RIGHT.rotated(angle) * drop_spread
 		item.global_position = global_position + offset
+
+func _pick_weighted_entry() -> LootEntry:
+	var total := 0.0
+	for e in loot_pool:
+		if e != null and e.weight > 0.0:
+			total += e.weight
+	if total <= 0.0:
+		return null
+	var roll := randf() * total
+	var acc := 0.0
+	for e in loot_pool:
+		if e == null or e.weight <= 0.0:
+			continue
+		acc += e.weight
+		if roll <= acc:
+			return e
+	return null
 
 func _play_animation(anim: String) -> void:
 	if _sprite.sprite_frames == null:

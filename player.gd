@@ -86,6 +86,11 @@ func attack(aim_direction: Vector2 = Vector2.ZERO) -> void:
 		_update_facing(aim_direction)
 	_enter_state(State.ATTACK)
 
+func heal(amount: float) -> void:
+	if _state == State.DEAD or amount <= 0.0:
+		return
+	_set_health(health + amount)
+
 # --- Internals ---------------------------------------------------------------
 
 func _die() -> void:

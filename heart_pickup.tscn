@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dfjgd8ob4ae8c"]
+
+[ext_resource type="Script" path="res://heart_pickup.gd" id="1_heart"]
+[ext_resource type="Texture2D" path="res://icon.png" id="2_icon"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_heart"]
+animations = [{
+"frames": [{"duration": 1.0, "texture": ExtResource("2_icon")}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_heart"]
+radius = 16.0
+
+[node name="HeartPickup" type="Area2D"]
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("1_heart")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_heart")
+animation = &"default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_heart")
