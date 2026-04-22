@@ -29,6 +29,7 @@ var _hit_targets: Array[Node] = []
 @onready var _hitbox: Area2D = $HitBox
 
 func _ready() -> void:
+	add_to_group("player")
 	_set_health(max_health)
 	_hitbox.monitoring = false
 	_play_current_animation()
