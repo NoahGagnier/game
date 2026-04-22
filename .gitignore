@@ -1,0 +1,14 @@
+# Godot 4+ auto-generated cache / import data
+.godot/
+.import/
+
+# Godot export presets (often contain absolute paths & secrets)
+export.cfg
+export_presets.cfg
+
+# Build output
+*.translation
+
+# OS cruft
+Thumbs.db
+.DS_Store
