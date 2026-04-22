@@ -50,9 +50,13 @@ func _drop_loot() -> void:
 		if item == null:
 			continue
 		parent.add_child(item)
+		item.global_position = global_position
 		var angle := base_angle + TAU * float(i) / float(drops_on_open)
-		var offset := Vector2.RIGHT.rotated(angle) * drop_spread
-		item.global_position = global_position + offset
+		var target := global_position + Vector2.RIGHT.rotated(angle) * drop_spread
+		if item.has_method("pop_to"):
+			item.pop_to(target)
+		else:
+			item.global_position = target
 
 func _pick_weighted_entry() -> LootEntry:
 	var total := 0.0
