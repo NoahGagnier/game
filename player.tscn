@@ -684,14 +684,15 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
-radius = 15.0
-height = 40.0
+radius = 12.0
+height = 34.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hurt"]
-radius = 20.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nvl01"]
+radius = 11.0
+height = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hit"]
-radius = 22.0
+radius = 43.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1040112119]
 script = ExtResource("1_player")
@@ -699,9 +700,10 @@ script = ExtResource("1_player")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1464739290]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_default")
-animation = &"hurt_left"
+animation = &"attack_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=376936190]
+position = Vector2(0, 18)
 shape = SubResource("CapsuleShape2D_body")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=2120863703]
@@ -709,7 +711,8 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=81089793]
-shape = SubResource("CircleShape2D_hurt")
+position = Vector2(0, 17)
+shape = SubResource("CapsuleShape2D_nvl01")
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1474436467]
 collision_layer = 0
