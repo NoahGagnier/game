@@ -2,9 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://c1sx7bic4uhdj" path="res://player.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://dususlr2yr63q" path="res://game.gd" id="1_fc0e3"]
-[ext_resource type="PackedScene" uid="uid://d1hudplayer2d2" path="res://hud.tscn" id="2_hud"]
+[ext_resource type="PackedScene" path="res://hud.tscn" id="2_hud"]
 [ext_resource type="PackedScene" uid="uid://cltw5r5big1qy" path="res://mob1.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://b6y8u63ynub3m" path="res://rooms/dungeon.tscn" id="6_dungeon"]
+[ext_resource type="PackedScene" uid="uid://dxw1nmwp0wx4e" path="res://chest.tscn" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://dx8rmgbo1e7cw" path="res://rooms/room_camera.gd" id="7_roomcam"]
 
 [node name="Game" type="Node2D" unique_id=1616662402]
@@ -62,6 +63,9 @@ text = "Game Over"
 [node name="Mob" parent="." unique_id=1240957426 instance=ExtResource("5_7jktm")]
 position = Vector2(766, 201)
 
-[node name="HUD" parent="." instance=ExtResource("2_hud")]
+[node name="HUD" parent="." unique_id=557941797 instance=ExtResource("2_hud")]
+
+[node name="Chest" parent="." unique_id=2058236937 instance=ExtResource("7_eow3j")]
+position = Vector2(731, 508)
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
