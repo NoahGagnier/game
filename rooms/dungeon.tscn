@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://pidqxjsgod5y" path="res://rooms/Boss Rooms/room_boss_W_01.tscn" id="21_boss_w"]
 [ext_resource type="PackedScene" uid="uid://daioyt6q4l2yk" path="res://rooms/Boss Rooms/room_boss_E_01.tscn" id="22_boss_e"]
 [ext_resource type="PackedScene" uid="uid://cfwwj7dqhkuep" path="res://rooms/Treasure Rooms/room_Treasure_NSEW_01.tscn" id="23_xd4vn"]
-[ext_resource type="PackedScene" uid="uid://dsa4awnx4usot" path="res://rooms/Treasure Rooms/room_treasure_E_01.tscn" id="24_ncfqf"]
+[ext_resource type="PackedScene" uid="uid://dsa4awnx4usot" path="res://characters/room_treasure_E_01.tscn" id="24_ncfqf"]
 [ext_resource type="PackedScene" uid="uid://blmgxu70lynco" path="res://rooms/Treasure Rooms/room_treasure_N_01.tscn" id="25_gkamx"]
 [ext_resource type="PackedScene" uid="uid://j2rxnak1u3vc" path="res://rooms/Treasure Rooms/room_treasure_S_01.tscn" id="26_aekm8"]
 [ext_resource type="PackedScene" uid="uid://bx7a1y3cof1av" path="res://rooms/Treasure Rooms/room_treasure_W_01.tscn" id="27_v027l"]
