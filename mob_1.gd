@@ -1,18 +1,20 @@
 extends CharacterBody2D
 
-const MOVE_SPEED = 300.0
-const KNOCKBACK_DECAY = 1800.0
-
+@export var move_speed: float = 170.0
+## Higher = knockback bleeds off fast (short hits). Lower = they ragdoll farther.
+@export var knockback_decay: float = 900.0
+@export var max_health: float = 100.0
 ## Used only when the mob isn't a child of a Room. Keeps free-placed test mobs
 ## reasonable. <= 0 means "always aggro".
 @export var aggro_radius: float = 0.0
 
-var health = 100
+var health: float
 var knockback_velocity = Vector2.ZERO
 var player: Node2D
 var _room: Room
 
 func _ready():
+	health = max_health
 	%Slime.play_walk()
 	_refresh_player()
 	_room = _find_owning_room()
@@ -24,10 +26,10 @@ func _physics_process(delta):
 	var chase_velocity := Vector2.ZERO
 	if is_instance_valid(player) and _player_in_aggro():
 		var direction := global_position.direction_to(player.global_position)
-		chase_velocity = direction * MOVE_SPEED
+		chase_velocity = direction * move_speed
 
 	velocity = chase_velocity + knockback_velocity
-	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, KNOCKBACK_DECAY * delta)
+	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 	move_and_slide()
 
 func take_damage(hit_direction: Vector2 = Vector2.ZERO, force: float = 500.0):
