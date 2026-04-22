@@ -7,11 +7,12 @@ signal health_depleted
 @export var move_speed: float = 450.0
 @export var invincibility_time: float = 0.5
 @export var hurt_time: float = 0.25
-@export var shoot_time: float = 0.2
+@export var attack_time: float = 0.25
+@export var attack_offset: float = 40.0
+@export var attack_damage_knockback: float = 500.0
 @export var contact_damage_taken: float = 20.0
-@export var melee_knockback: float = 400.0
 
-enum State { IDLE, WALK, SHOOT, HURT, DEAD }
+enum State { IDLE, WALK, ATTACK, HURT, DEAD }
 enum Facing { DOWN, UP, LEFT, RIGHT }
 
 var health: float
@@ -20,6 +21,7 @@ var _facing: Facing = Facing.DOWN
 var _state_timer: float = 0.0
 var _invincible: bool = false
 var _last_anim: String = ""
+var _hit_targets: Array[Node] = []
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _hurtbox: Area2D = $HurtBox
@@ -27,7 +29,12 @@ var _last_anim: String = ""
 
 func _ready() -> void:
 	health = max_health
+	_hitbox.monitoring = false
 	_play_current_animation()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("attack"):
+		attack()
 
 func _physics_process(delta: float) -> void:
 	if _state == State.DEAD:
@@ -43,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	if input_dir != Vector2.ZERO:
 		_update_facing(input_dir)
 
-	if _state == State.HURT or _state == State.SHOOT:
+	if _state == State.HURT or _state == State.ATTACK:
 		_state_timer -= delta
 		if _state_timer <= 0.0:
 			_enter_state(State.WALK if input_dir != Vector2.ZERO else State.IDLE)
@@ -67,12 +74,12 @@ func take_damage(amount: float, _source_position: Vector2 = Vector2.ZERO) -> voi
 	_enter_state(State.HURT)
 	_start_invincibility()
 
-func shoot(aim_direction: Vector2 = Vector2.ZERO) -> void:
-	if _state == State.DEAD or _state == State.HURT:
+func attack(aim_direction: Vector2 = Vector2.ZERO) -> void:
+	if _state == State.DEAD or _state == State.HURT or _state == State.ATTACK:
 		return
 	if aim_direction != Vector2.ZERO:
 		_update_facing(aim_direction)
-	_enter_state(State.SHOOT)
+	_enter_state(State.ATTACK)
 
 # --- Internals ---------------------------------------------------------------
 
@@ -89,17 +96,38 @@ func _update_facing(dir: Vector2) -> void:
 	if _facing != old:
 		_play_current_animation()
 
+func _facing_vector() -> Vector2:
+	match _facing:
+		Facing.UP: return Vector2.UP
+		Facing.LEFT: return Vector2.LEFT
+		Facing.RIGHT: return Vector2.RIGHT
+		_: return Vector2.DOWN
+
 func _enter_state(new_state: State) -> void:
 	if new_state == _state:
 		return
+
+	# Leaving ATTACK: stop swinging.
+	if _state == State.ATTACK:
+		_hitbox.monitoring = false
+		_hit_targets.clear()
+
 	_state = new_state
+
 	match new_state:
-		State.HURT: _state_timer = hurt_time
-		State.SHOOT: _state_timer = shoot_time
-		_: _state_timer = 0.0
+		State.HURT:
+			_state_timer = hurt_time
+		State.ATTACK:
+			_state_timer = attack_time
+			_hitbox.position = _facing_vector() * attack_offset
+			_hitbox.monitoring = true
+			_hit_targets.clear()
+		_:
+			_state_timer = 0.0
+
 	_play_current_animation()
 
-# Continuous contact damage: any enemy inside HurtBox hits us, then i-frames.
+# Enemy inside our HurtBox hits us once, then i-frames give us breathing room.
 func _resolve_hurtbox() -> void:
 	if _invincible:
 		return
@@ -108,12 +136,18 @@ func _resolve_hurtbox() -> void:
 		return
 	take_damage(contact_damage_taken, (bodies[0] as Node2D).global_position)
 
-# Continuous melee: any enemy inside HitBox takes damage + knockback.
+# Only hurts enemies while we're actively swinging, and only hits each enemy
+# once per swing so a long overlap doesn't drain their HP instantly.
 func _resolve_hitbox() -> void:
+	if _state != State.ATTACK:
+		return
 	for body in _hitbox.get_overlapping_bodies():
+		if body in _hit_targets:
+			continue
+		_hit_targets.append(body)
 		if body.has_method("take_damage"):
 			var push_dir := (body.global_position - global_position).normalized()
-			body.take_damage(push_dir, melee_knockback)
+			body.take_damage(push_dir, attack_damage_knockback)
 
 func _start_invincibility() -> void:
 	_invincible = true
@@ -139,7 +173,7 @@ func _current_anim_name() -> String:
 	match _state:
 		State.IDLE: base = "idle"
 		State.WALK: base = "walk"
-		State.SHOOT: base = "shoot"
+		State.ATTACK: base = "attack"
 		State.HURT: base = "hurt"
 		State.DEAD: base = "death"
 	var suffix := ""
