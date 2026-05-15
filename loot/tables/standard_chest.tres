@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://cepvd5r753l0u"]
+
+[ext_resource type="Script" uid="uid://8usbhtdlytfd" path="res://loot_table.gd" id="1_table_script"]
+[ext_resource type="Script" uid="uid://ut8eu0kct1sw" path="res://loot_entry.gd" id="2_entry_script"]
+[ext_resource type="Resource" path="res://loot/entries/heart.tres" id="3_heart"]
+[ext_resource type="Resource" path="res://loot/entries/bloody_cruet.tres" id="4_cruet"]
+
+[resource]
+script = ExtResource("1_table_script")
+entries = Array[ExtResource("2_entry_script")]([ExtResource("3_heart"), ExtResource("4_cruet")])

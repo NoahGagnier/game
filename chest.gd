@@ -3,9 +3,13 @@ extends StaticBody2D
 
 signal opened(chest: Chest)
 
-@export var loot_pool: Array[LootEntry] = []
-@export var drops_on_open: int = 1
+# A LootTable resource defines what this chest can drop. Multiple chests can
+# share the same table so drop rates stay in sync. To create a new pool, copy
+# loot/tables/standard_chest.tres and edit it. To add a new item, see the
+# instructions at the top of loot_table.gd.
+@export var loot_table: LootTable
 @export var drop_spread: float = 28.0
+@export var drop_delay: float = 0.7
 
 var is_open: bool = false
 var _player_in_range: bool = false
@@ -30,20 +34,25 @@ func open() -> void:
 	_player_in_range = false
 	_prompt.visible = false
 	_play_animation("open")
+	if drop_delay > 0.0:
+		await get_tree().create_timer(drop_delay).timeout
 	_drop_loot()
 	opened.emit(self)
 
-# Rolls the weighted loot_pool `drops_on_open` times (with replacement) and
-# spawns each chosen item as a sibling of the chest, popped out in a small
-# ring so drops don't stack on top of each other.
+# Asks the loot table for its rolled drops and pops each one out of the chest
+# in a small ring so multiple drops don't stack on top of each other.
 func _drop_loot() -> void:
 	var parent := get_parent()
-	if parent == null or drops_on_open <= 0:
+	if parent == null or loot_table == null:
+		return
+
+	var drops := loot_table.roll()
+	if drops.is_empty():
 		return
 
 	var base_angle := randf() * TAU
-	for i in range(drops_on_open):
-		var entry := _pick_weighted_entry()
+	for i in range(drops.size()):
+		var entry := drops[i]
 		if entry == null or entry.scene == null:
 			continue
 		var item := entry.scene.instantiate() as Node2D
@@ -51,29 +60,12 @@ func _drop_loot() -> void:
 			continue
 		parent.add_child(item)
 		item.global_position = global_position
-		var angle := base_angle + TAU * float(i) / float(drops_on_open)
+		var angle := base_angle + TAU * float(i) / float(drops.size())
 		var target := global_position + Vector2.RIGHT.rotated(angle) * drop_spread
 		if item.has_method("pop_to"):
 			item.pop_to(target)
 		else:
 			item.global_position = target
-
-func _pick_weighted_entry() -> LootEntry:
-	var total := 0.0
-	for e in loot_pool:
-		if e != null and e.weight > 0.0:
-			total += e.weight
-	if total <= 0.0:
-		return null
-	var roll := randf() * total
-	var acc := 0.0
-	for e in loot_pool:
-		if e == null or e.weight <= 0.0:
-			continue
-		acc += e.weight
-		if roll <= acc:
-			return e
-	return null
 
 func _play_animation(anim: String) -> void:
 	if _sprite.sprite_frames == null:

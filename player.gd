@@ -92,6 +92,14 @@ func heal(amount: float) -> void:
 		return
 	_set_health(health + amount)
 
+# Permanently raises max_health by `amount` and tops the player off by the same
+# amount, so the freshly added chunk of the bar starts full.
+func increase_max_health(amount: float) -> void:
+	if _state == State.DEAD or amount <= 0.0:
+		return
+	max_health += amount
+	_set_health(health + amount)
+
 # --- Internals ---------------------------------------------------------------
 
 func _die() -> void:
