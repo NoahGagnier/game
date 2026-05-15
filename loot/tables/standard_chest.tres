@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://cepvd5r753l0u"]
+[gd_resource type="Resource" script_class="LootTable" format=3 uid="uid://vx07glvnhhkq"]
 
-[ext_resource type="Script" uid="uid://8usbhtdlytfd" path="res://loot_table.gd" id="1_table_script"]
-[ext_resource type="Script" uid="uid://ut8eu0kct1sw" path="res://loot_entry.gd" id="2_entry_script"]
+[ext_resource type="Script" uid="uid://8usbhtdlytfd" path="res://loot/loot_table.gd" id="1_table_script"]
+[ext_resource type="Script" uid="uid://ut8eu0kct1sw" path="res://loot/loot_entry.gd" id="2_entry_script"]
 [ext_resource type="Resource" path="res://loot/entries/heart.tres" id="3_heart"]
-[ext_resource type="Resource" path="res://loot/entries/bloody_cruet.tres" id="4_cruet"]
+[ext_resource type="Resource" uid="uid://nsoxjl2u3rny" path="res://loot/entries/bloody_cruet.tres" id="4_cruet"]
 
 [resource]
 script = ExtResource("1_table_script")

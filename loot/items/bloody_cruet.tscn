@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://iyxdxeill4p3"]
+[gd_scene format=3 uid="uid://daeqknv71v0qd"]
 
-[ext_resource type="Script" path="res://bloody_cruet.gd" id="1_cruet"]
+[ext_resource type="Script" uid="uid://dc28btod4ndtm" path="res://loot/items/bloody_cruet.gd" id="1_cruet"]
 [ext_resource type="Texture2D" uid="uid://d1kcnt20lo0bv" path="res://loot/item-assets/bloodycruet.png" id="2_hro7n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cruet"]

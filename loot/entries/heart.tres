@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="LootEntry" load_steps=3 format=3]
 
-[ext_resource type="Script" uid="uid://ut8eu0kct1sw" path="res://loot_entry.gd" id="1_script"]
-[ext_resource type="PackedScene" uid="uid://dfjgd8ob4ae8c" path="res://heart_pickup.tscn" id="2_scene"]
+[ext_resource type="Script" uid="uid://ut8eu0kct1sw" path="res://loot/loot_entry.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://dfjgd8ob4ae8c" path="res://loot/items/heart_pickup.tscn" id="2_scene"]
 
 [resource]
 script = ExtResource("1_script")

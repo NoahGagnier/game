@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://cfysynqwlqovg"]
+[gd_scene format=3 uid="uid://dfjgd8ob4ae8c"]
 
-[ext_resource type="Script" path="res://heart_pickup.gd" id="1_heart"]
+[ext_resource type="Script" uid="uid://dwtlqthwgkgug" path="res://loot/items/heart_pickup.gd" id="1_heart"]
 [ext_resource type="Texture2D" uid="uid://bbn2q740im5v0" path="res://assets/heart/heartanimated.png" id="2_3u1mg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epu4s"]
