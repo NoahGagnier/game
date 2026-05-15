@@ -5,7 +5,7 @@ signal health_depleted
 signal health_changed(current: float, max_health: float)
 
 @export var max_health: float = 100.0
-@export var move_speed: float = 450.0
+@export var move_speed: float = 225.0
 @export var invincibility_time: float = 0.5
 @export var hurt_time: float = 0.25
 @export var attack_time: float = 0.25

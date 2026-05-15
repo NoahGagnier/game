@@ -1,28 +1,126 @@
 [gd_scene format=3 uid="uid://dfjgd8ob4ae8c"]
 
-[ext_resource type="Script" path="res://heart_pickup.gd" id="1_heart"]
-[ext_resource type="Texture2D" path="res://icon.png" id="2_icon"]
+[ext_resource type="Script" uid="uid://dwtlqthwgkgug" path="res://heart_pickup.gd" id="1_heart"]
+[ext_resource type="Texture2D" uid="uid://bbn2q740im5v0" path="res://assets/heart/heartanimated.png" id="2_3u1mg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epu4s"]
+atlas = ExtResource("2_3u1mg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ifjn"]
+atlas = ExtResource("2_3u1mg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twykg"]
+atlas = ExtResource("2_3u1mg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv6ur"]
+atlas = ExtResource("2_3u1mg")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g5lu"]
+atlas = ExtResource("2_3u1mg")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1at7r"]
+atlas = ExtResource("2_3u1mg")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6258g"]
+atlas = ExtResource("2_3u1mg")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de3ft"]
+atlas = ExtResource("2_3u1mg")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g0m6"]
+atlas = ExtResource("2_3u1mg")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_625j6"]
+atlas = ExtResource("2_3u1mg")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp783"]
+atlas = ExtResource("2_3u1mg")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bvop"]
+atlas = ExtResource("2_3u1mg")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g50vs"]
+atlas = ExtResource("2_3u1mg")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnuq1"]
+atlas = ExtResource("2_3u1mg")
+region = Rect2(416, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_heart"]
 animations = [{
-"frames": [{"duration": 1.0, "texture": ExtResource("2_icon")}],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epu4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ifjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twykg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tv6ur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g5lu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1at7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6258g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_de3ft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g0m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_625j6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp783")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bvop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g50vs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnuq1")
+}],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_heart"]
 radius = 16.0
 
-[node name="HeartPickup" type="Area2D"]
+[node name="HeartPickup" type="Area2D" unique_id=1688337911]
 collision_layer = 0
-collision_mask = 1
 script = ExtResource("1_heart")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1617613985]
+position = Vector2(1.4305115e-06, -1.4305115e-06)
+scale = Vector2(1.3125001, 1.3125001)
 sprite_frames = SubResource("SpriteFrames_heart")
-animation = &"default"
+frame_progress = 0.91745627
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=270366682]
 shape = SubResource("CircleShape2D_heart")
