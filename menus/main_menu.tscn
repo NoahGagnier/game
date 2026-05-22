@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://dmainmenusc1"]
+
+[ext_resource type="Script" uid="uid://jpeqxwols4xt" path="res://menus/main_menu.gd" id="1_menu"]
+[ext_resource type="Texture2D" uid="uid://dd8e53cp71s7n" path="res://menus/menuBGt.png" id="2_oblsv"]
+[ext_resource type="Texture2D" uid="uid://bvmrpxm2j1get" path="res://menus/art/logo-nosword.png" id="3_a63lr"]
+[ext_resource type="Texture2D" uid="uid://dm5sqqjhn04ne" path="res://menus/art/newgame.png" id="3_oblsv"]
+[ext_resource type="Texture2D" uid="uid://dp7h1g6xqnmyt" path="res://menus/art/sword-logo.png" id="4_pwbes"]
+[ext_resource type="Texture2D" uid="uid://e6utxbe4lsu" path="res://menus/art/continue.png" id="7_hswy5"]
+[ext_resource type="Texture2D" uid="uid://bi1qajxvfc3vl" path="res://menus/art/settings.png" id="8_vmd75"]
+
+[node name="MainMenu" type="Control" unique_id=2086165286]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Background" type="TextureRect" parent="." unique_id=333011265]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oblsv")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Logo" type="TextureRect" parent="." unique_id=1232100302]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -962.0
+offset_top = -1080.0
+offset_right = 957.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("3_a63lr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LogoAccent" type="TextureRect" parent="." unique_id=2108198573]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -961.0
+offset_top = -1088.0
+offset_right = 958.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("4_pwbes")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NewGameButton" type="TextureButton" parent="." unique_id=1607321924]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -70.0
+offset_right = 120.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Visual" type="TextureRect" parent="NewGameButton" unique_id=1101434567]
+layout_mode = 1
+offset_top = 30.0
+offset_right = 240.0
+offset_bottom = 110.0
+mouse_filter = 2
+texture = ExtResource("3_oblsv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ContinueButton" type="TextureButton" parent="." unique_id=1996491591]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 30.0
+offset_right = 120.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Visual" type="TextureRect" parent="ContinueButton" unique_id=1496768645]
+layout_mode = 1
+offset_top = 30.0
+offset_right = 240.0
+offset_bottom = 110.0
+mouse_filter = 2
+texture = ExtResource("7_hswy5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SettingsButton" type="TextureButton" parent="." unique_id=1028502556]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 130.0
+offset_right = 120.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Visual" type="TextureRect" parent="SettingsButton" unique_id=1973500383]
+layout_mode = 1
+offset_top = 30.0
+offset_right = 240.0
+offset_bottom = 110.0
+mouse_filter = 2
+texture = ExtResource("8_vmd75")
+expand_mode = 1
+stretch_mode = 5
