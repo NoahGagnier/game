@@ -18,6 +18,8 @@ enum Facing { DOWN, UP, LEFT, RIGHT }
 
 var health: float
 var regen_rate: float = 0.0
+var crit_chance: float = 0.0
+var crit_multiplier: float = 3.0
 var _state: State = State.IDLE
 var _facing: Facing = Facing.DOWN
 var _state_timer: float = 0.0
@@ -170,7 +172,10 @@ func _resolve_hitbox() -> void:
 		_hit_targets.append(body)
 		if body.has_method("take_damage"):
 			var push_dir := (body.global_position - global_position).normalized()
-			body.take_damage(push_dir, attack_damage_knockback)
+			var damage := attack_damage_knockback
+			if crit_chance > 0.0 and randf() < crit_chance:
+				damage *= crit_multiplier
+			body.take_damage(push_dir, damage)
 
 func _start_invincibility() -> void:
 	_invincible = true

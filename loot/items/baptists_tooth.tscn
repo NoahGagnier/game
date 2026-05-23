@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://loot/items/baptists_tooth.gd" id="1_tooth"]
+[ext_resource type="Texture2D" path="res://loot/item-assets/baptist-tooth.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frame0"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tooth"]
+radius = 16.0
+
+[node name="BaptistsTooth" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_tooth")
+item_name = "Baptist's Tooth"
+item_description = "A relic of divine wrath.\n10% chance to strike for 300% damage."
+item_icon = SubResource("AtlasTexture_frame0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")
+hframes = 2
+frame = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tooth")

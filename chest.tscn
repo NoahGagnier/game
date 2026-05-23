@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dxw1nmwp0wx4e"]
 
 [ext_resource type="Script" uid="uid://bx3wnjkqkmru3" path="res://chest.gd" id="1_chest"]
-[ext_resource type="Resource" path="res://loot/tables/standard_chest.tres" id="3_loot_table"]
+[ext_resource type="Resource" uid="uid://vx07glvnhhkq" path="res://loot/tables/standard_chest.tres" id="3_loot_table"]
 [ext_resource type="Texture2D" uid="uid://cq0av3wk78pc4" path="res://assets/chest/chest.png" id="4_trlyu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7mpe"]
