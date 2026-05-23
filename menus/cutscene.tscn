@@ -1,8 +1,59 @@
 [gd_scene format=3 uid="uid://dcutscenesc1"]
 
 [ext_resource type="Script" uid="uid://ceuc061s6emo2" path="res://menus/cutscene.gd" id="1_cutscene"]
+[ext_resource type="Script" uid="uid://bt7gfr4qp6cgg" path="res://menus/cutscene_slide.gd" id="2_4f01p"]
+[ext_resource type="Texture2D" uid="uid://6wg5ixwdqoam" path="res://menus/cutscene-art/1-rome1498.png" id="3_exk27"]
+[ext_resource type="Texture2D" uid="uid://gj6ssn7vd4ey" path="res://menus/cutscene-art/2-church.png" id="4_qcasx"]
+[ext_resource type="Texture2D" uid="uid://dcb0cpm1qgdv0" path="res://menus/cutscene-art/3-deeds.png" id="5_feqhv"]
+[ext_resource type="Texture2D" uid="uid://dg4osufm4spm4" path="res://menus/cutscene-art/4-poverty.png" id="6_rqmud"]
+[ext_resource type="Texture2D" uid="uid://bqkdn0mm2xtvt" path="res://menus/cutscene-art/5-poverty.png" id="7_xr2m1"]
+[ext_resource type="Texture2D" uid="uid://6utr5bnk05qb" path="res://menus/cutscene-art/6-golden-eye.png" id="8_8p865"]
 
-[node name="Cutscene" type="Control" unique_id=2053965752]
+[sub_resource type="Resource" id="Resource_542mn"]
+script = ExtResource("2_4f01p")
+texture = ExtResource("3_exk27")
+frame_count = 0
+duration = 5.0
+text = "Rome, 1498"
+
+[sub_resource type="Resource" id="Resource_cs3wf"]
+script = ExtResource("2_4f01p")
+texture = ExtResource("4_qcasx")
+is_animated = true
+frame_count = 10
+fps = 1.0
+duration = 10.0
+text = "The churches corruption and greed continues to flourish. "
+
+[sub_resource type="Resource" id="Resource_3a5e1"]
+script = ExtResource("2_4f01p")
+texture = ExtResource("5_feqhv")
+duration = 5.0
+text = "The church sells deeds to people and tells them,
+the only way to make it to heaven… is to buy their way there."
+
+[sub_resource type="Resource" id="Resource_s4qkm"]
+script = ExtResource("2_4f01p")
+texture = ExtResource("6_rqmud")
+duration = 5.0
+text = "Plunging the poor into poverty.
+My father tried to put an end to it,"
+
+[sub_resource type="Resource" id="Resource_lejqx"]
+script = ExtResource("2_4f01p")
+texture = ExtResource("7_xr2m1")
+duration = 5.0
+text = "but he was hung for ‘heresy.’"
+
+[sub_resource type="Resource" id="Resource_7470r"]
+script = ExtResource("2_4f01p")
+texture = ExtResource("8_8p865")
+frame_count = 41
+fps = 10.0
+duration = 4.1
+text = "Now it’s my turn."
+
+[node name="Cutscene" type="Control" unique_id=693390798]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,8 +61,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cutscene")
+slides = Array[ExtResource("2_4f01p")]([SubResource("Resource_542mn"), SubResource("Resource_cs3wf"), SubResource("Resource_3a5e1"), SubResource("Resource_s4qkm"), SubResource("Resource_lejqx"), SubResource("Resource_7470r")])
 
-[node name="Background" type="ColorRect" parent="." unique_id=853512625]
+[node name="Background" type="ColorRect" parent="." unique_id=657460099]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,27 +72,50 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=204507687]
+[node name="StaticDisplay" type="TextureRect" parent="." unique_id=70279605]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-expand = true
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
 
-[node name="SkipButton" type="Button" parent="." unique_id=1403479632]
+[node name="AnimatedDisplay" type="AnimatedSprite2D" parent="." unique_id=319139369]
+position = Vector2(960, 540)
+
+[node name="TextBox" type="Control" parent="." unique_id=1819717820]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -120.0
-offset_top = -56.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 0
+offset_top = -180.0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 18
-text = "Skip"
+mouse_filter = 2
+
+[node name="Label" type="RichTextLabel" parent="TextBox" unique_id=946127426]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 16.0
+offset_right = -80.0
+offset_bottom = -16.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+visible_characters = 0
+
+[node name="Fade" type="ColorRect" parent="." unique_id=1373973003]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
