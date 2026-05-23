@@ -17,6 +17,7 @@ enum State { IDLE, WALK, ATTACK, HURT, DEAD }
 enum Facing { DOWN, UP, LEFT, RIGHT }
 
 var health: float
+var regen_rate: float = 0.0
 var _state: State = State.IDLE
 var _facing: Facing = Facing.DOWN
 var _state_timer: float = 0.0
@@ -47,6 +48,9 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
+
+	if regen_rate > 0.0 and health < max_health:
+		_set_health(health + regen_rate * delta)
 
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 

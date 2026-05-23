@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dhrare5nfd8b"]
+
+[ext_resource type="Script" uid="uid://dyf3rrs4j2hp5" path="res://loot/items/virgins_veil.gd" id="1_veil"]
+[ext_resource type="Texture2D" uid="uid://0y50jtodkshl" path="res://loot/item-assets/virginsveil.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_veil"]
+radius = 16.0
+
+[node name="VirginsVeil" type="Area2D" unique_id=1178440362]
+collision_layer = 0
+script = ExtResource("1_veil")
+regen_per_second = 0.5
+item_name = "Virgin's Veil"
+item_description = "Slowly regenerates health over time."
+item_icon = ExtResource("2_tex")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1232206860]
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2060154175]
+shape = SubResource("CircleShape2D_veil")

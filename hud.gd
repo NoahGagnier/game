@@ -11,8 +11,11 @@ var _flash_tween: Tween
 
 @onready var _bar: TextureProgressBar = $ProgressBar
 @onready var _label: Label = $Label
+@onready var _item_popup: ItemPopup = $ItemPopup
 
 func _ready() -> void:
+	ItemEvents.item_collected.connect(_item_popup.show_item)
+
 	var player := get_node_or_null(player_path) as Player
 	if player == null:
 		push_warning("HUD: could not find Player at %s" % player_path)

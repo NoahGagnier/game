@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwtlqthwgkgug" path="res://loot/items/heart_pickup.gd" id="1_heart"]
 [ext_resource type="Texture2D" uid="uid://bbn2q740im5v0" path="res://assets/heart/heartanimated.png" id="2_3u1mg"]
+[ext_resource type="Texture2D" uid="uid://cjvap7hx3snfp" path="res://assets/heart/heart.png" id="3_icon"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epu4s"]
 atlas = ExtResource("2_3u1mg")
@@ -115,6 +116,9 @@ radius = 16.0
 [node name="HeartPickup" type="Area2D" unique_id=1688337911]
 collision_layer = 0
 script = ExtResource("1_heart")
+item_name = "Heart"
+item_description = "Restores 50 health."
+item_icon = ExtResource("3_icon")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1617613985]
 position = Vector2(1.4305115e-06, -1.4305115e-06)
@@ -123,4 +127,5 @@ sprite_frames = SubResource("SpriteFrames_heart")
 frame_progress = 0.91745627
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=270366682]
+position = Vector2(-1, 1)
 shape = SubResource("CircleShape2D_heart")

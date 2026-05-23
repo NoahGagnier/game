@@ -5,17 +5,35 @@ signal picked_up(pickup: Pickup)
 
 @export var pop_height: float = 40.0
 @export var pop_duration: float = 0.45
+@export var bob_amplitude: float = 3.0
+@export var bob_speed: float = 0.7
+
+# Item card shown when this pickup is collected.
+@export var item_name: String = ""
+@export_multiline var item_description: String = ""
+@export var item_icon: Texture2D
 
 var _popping: bool = false
+var _bob_time: float = 0.0
+var _bob_origin: float = 0.0
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
+	_bob_origin = position.y
+
+func _process(delta: float) -> void:
+	if _popping:
+		return
+	_bob_time += delta
+	position.y = _bob_origin + sin(_bob_time * TAU * bob_speed) * bob_amplitude
 
 func _on_body_entered(body: Node2D) -> void:
 	if _popping:
 		return
 	if body is Player:
 		apply(body)
+		if item_name != "" or item_description != "":
+			ItemEvents.notify(item_name, item_description, item_icon)
 		picked_up.emit(self)
 		queue_free()
 
@@ -39,4 +57,6 @@ func pop_to(target: Vector2) -> void:
 	)
 	tween.tween_callback(func() -> void:
 		_popping = false
+		_bob_origin = position.y
+		_bob_time = 0.0
 	)

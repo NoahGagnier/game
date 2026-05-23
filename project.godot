@@ -79,6 +79,10 @@ run/main_scene="uid://b3u84076due2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.png"
 
+[autoload]
+
+ItemEvents="*res://loot/item_events.gd"
+
 [display]
 
 window/size/viewport_width=1920
