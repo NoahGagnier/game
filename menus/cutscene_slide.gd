@@ -20,5 +20,8 @@ extends Resource
 # (frame_count / fps) to play exactly once.
 @export var duration: float = 3.0
 
+# If true, fades to black before the next slide. If false, cuts instantly.
+@export var fade_out: bool = true
+
 # Text that types out while this slide is shown. Leave empty for no text.
 @export_multiline var text: String = ""

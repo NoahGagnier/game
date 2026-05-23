@@ -3,55 +3,81 @@
 [ext_resource type="Script" uid="uid://ceuc061s6emo2" path="res://menus/cutscene.gd" id="1_cutscene"]
 [ext_resource type="Script" uid="uid://bt7gfr4qp6cgg" path="res://menus/cutscene_slide.gd" id="2_4f01p"]
 [ext_resource type="Texture2D" uid="uid://6wg5ixwdqoam" path="res://menus/cutscene-art/1-rome1498.png" id="3_exk27"]
-[ext_resource type="Texture2D" uid="uid://gj6ssn7vd4ey" path="res://menus/cutscene-art/2-church.png" id="4_qcasx"]
-[ext_resource type="Texture2D" uid="uid://dcb0cpm1qgdv0" path="res://menus/cutscene-art/3-deeds.png" id="5_feqhv"]
-[ext_resource type="Texture2D" uid="uid://dg4osufm4spm4" path="res://menus/cutscene-art/4-poverty.png" id="6_rqmud"]
-[ext_resource type="Texture2D" uid="uid://bqkdn0mm2xtvt" path="res://menus/cutscene-art/5-poverty.png" id="7_xr2m1"]
-[ext_resource type="Texture2D" uid="uid://6utr5bnk05qb" path="res://menus/cutscene-art/6-golden-eye.png" id="8_8p865"]
+[ext_resource type="Texture2D" uid="uid://de64t0u4lt4sf" path="res://menus/cutscene-art/2-church-fix.png" id="4_exk27"]
+[ext_resource type="Texture2D" uid="uid://dxv31owakljhs" path="res://menus/cutscene-art/3-deeds-fix.png" id="5_qcasx"]
+[ext_resource type="Texture2D" uid="uid://bn4qoxqoxdcbj" path="res://menus/cutscene-art/4-poverty-fix.png" id="6_feqhv"]
+[ext_resource type="Texture2D" uid="uid://b3n2vq70t6b4o" path="res://menus/cutscene-art/5-poverty-fix.png" id="7_rqmud"]
+[ext_resource type="Texture2D" uid="uid://dijiq72pmy1m4" path="res://menus/cutscene-art/golden-eye.png" id="8_4f01p"]
+[ext_resource type="Texture2D" uid="uid://ckeaas1ai3i7f" path="res://menus/cutscene-art/black.png" id="9_exk27"]
+[ext_resource type="FontFile" uid="uid://d3cwspmxi2stk" path="res://menus/cutscene-art/PressStart2P-Regular.ttf" id="10_qcasx"]
 
 [sub_resource type="Resource" id="Resource_542mn"]
 script = ExtResource("2_4f01p")
 texture = ExtResource("3_exk27")
 frame_count = 0
-duration = 5.0
+fade_out = false
 text = "Rome, 1498"
 
 [sub_resource type="Resource" id="Resource_cs3wf"]
 script = ExtResource("2_4f01p")
-texture = ExtResource("4_qcasx")
+texture = ExtResource("4_exk27")
 is_animated = true
-frame_count = 10
-fps = 1.0
-duration = 10.0
+frame_count = 15
+fps = 1.5
+duration = 7.0
 text = "The churches corruption and greed continues to flourish. "
 
 [sub_resource type="Resource" id="Resource_3a5e1"]
 script = ExtResource("2_4f01p")
-texture = ExtResource("5_feqhv")
+texture = ExtResource("5_qcasx")
+duration = 4.0
+fade_out = false
+text = "The church sells deeds to people and tells them,"
+
+[sub_resource type="Resource" id="Resource_feqhv"]
+script = ExtResource("2_4f01p")
+texture = ExtResource("5_qcasx")
 duration = 5.0
-text = "The church sells deeds to people and tells them,
-the only way to make it to heaven… is to buy their way there."
+text = "the only way to make it to heaven… is to buy their way there."
 
 [sub_resource type="Resource" id="Resource_s4qkm"]
 script = ExtResource("2_4f01p")
-texture = ExtResource("6_rqmud")
+texture = ExtResource("6_feqhv")
 duration = 5.0
-text = "Plunging the poor into poverty.
-My father tried to put an end to it,"
+fade_out = false
+text = "Plunging the poor into poverty."
+
+[sub_resource type="Resource" id="Resource_rqmud"]
+script = ExtResource("2_4f01p")
+texture = ExtResource("6_feqhv")
+text = "My father tried to put an end to it, "
+metadata/_custom_type_script = "uid://bt7gfr4qp6cgg"
 
 [sub_resource type="Resource" id="Resource_lejqx"]
 script = ExtResource("2_4f01p")
-texture = ExtResource("7_xr2m1")
-duration = 5.0
-text = "but he was hung for ‘heresy.’"
+texture = ExtResource("7_rqmud")
+duration = 6.0
+text = "but he was hung for ‘heresy.’ "
+
+[sub_resource type="Resource" id="Resource_xr2m1"]
+script = ExtResource("2_4f01p")
+texture = ExtResource("9_exk27")
+duration = 1.5
+text = "Now it's my turn."
+metadata/_custom_type_script = "uid://bt7gfr4qp6cgg"
 
 [sub_resource type="Resource" id="Resource_7470r"]
 script = ExtResource("2_4f01p")
-texture = ExtResource("8_8p865")
+texture = ExtResource("8_4f01p")
+is_animated = true
 frame_count = 41
 fps = 10.0
 duration = 4.1
-text = "Now it’s my turn."
+
+[sub_resource type="Resource" id="Resource_qcasx"]
+script = ExtResource("2_4f01p")
+texture = ExtResource("9_exk27")
+duration = 1.5
 
 [node name="Cutscene" type="Control" unique_id=693390798]
 layout_mode = 3
@@ -61,7 +87,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cutscene")
-slides = Array[ExtResource("2_4f01p")]([SubResource("Resource_542mn"), SubResource("Resource_cs3wf"), SubResource("Resource_3a5e1"), SubResource("Resource_s4qkm"), SubResource("Resource_lejqx"), SubResource("Resource_7470r")])
+slides = Array[ExtResource("2_4f01p")]([SubResource("Resource_542mn"), SubResource("Resource_cs3wf"), SubResource("Resource_3a5e1"), SubResource("Resource_feqhv"), SubResource("Resource_s4qkm"), SubResource("Resource_rqmud"), SubResource("Resource_lejqx"), SubResource("Resource_xr2m1"), SubResource("Resource_7470r"), SubResource("Resource_qcasx")])
 
 [node name="Background" type="ColorRect" parent="." unique_id=657460099]
 layout_mode = 1
@@ -83,7 +109,8 @@ mouse_filter = 2
 expand_mode = 1
 stretch_mode = 6
 
-[node name="AnimatedDisplay" type="AnimatedSprite2D" parent="." unique_id=319139369]
+[node name="AnimatedDisplay" type="Sprite2D" parent="." unique_id=319139369]
+visible = false
 position = Vector2(960, 540)
 
 [node name="TextBox" type="Control" parent="." unique_id=1819717820]
@@ -93,6 +120,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -180.0
+grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
@@ -101,13 +129,18 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 80.0
-offset_top = 16.0
-offset_right = -80.0
+offset_left = 402.0
+offset_top = -190.0
+offset_right = -399.0
 offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 26
+theme_override_constants/line_separation = 20
+theme_override_fonts/normal_font = ExtResource("10_qcasx")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
+horizontal_alignment = 1
 visible_characters = 0
 
 [node name="Fade" type="ColorRect" parent="." unique_id=1373973003]
