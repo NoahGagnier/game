@@ -16,4 +16,4 @@ func _on_body_entered(body: Node2D) -> void:
 	queue_free() # destroy bullet after 1 frame
 	if body.has_method("take_damage"):
 		var knockback_direction = Vector2.RIGHT.rotated(rotation)
-		body.take_damage(knockback_direction, 500.0)
+		body.take_damage(knockback_direction, 30.0, 500.0, DamageKind.Type.PHYSICAL)

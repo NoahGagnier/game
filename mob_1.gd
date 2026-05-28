@@ -32,13 +32,18 @@ func _physics_process(delta):
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 	move_and_slide()
 
-func take_damage(hit_direction: Vector2 = Vector2.ZERO, force: float = 500.0):
-	health = health - 30
+func take_damage(
+	hit_direction: Vector2 = Vector2.ZERO,
+	amount: float = 30.0,
+	knockback: float = 500.0,
+	_kind: DamageKind.Type = DamageKind.Type.PHYSICAL,
+) -> void:
+	health -= amount
 	%Slime.play_hurt()
 	if hit_direction != Vector2.ZERO:
-		knockback_velocity += hit_direction.normalized() * force
+		knockback_velocity += hit_direction.normalized() * knockback
 
-	if health < 0:
+	if health <= 0.0:
 		queue_free()
 
 		const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")

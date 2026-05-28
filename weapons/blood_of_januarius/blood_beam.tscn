@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ngn66vobbk3g"]
+
+[ext_resource type="Script" uid="uid://dp2r05ytpeyh2" path="res://weapons/blood_of_januarius/blood_beam.gd" id="1_beam"]
+[ext_resource type="Texture2D" uid="uid://cnymptrs155x1" path="res://loot/item-assets/blood-shot.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_niy1k"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 0, 10, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6p1i"]
+atlas = ExtResource("2_tex")
+region = Rect2(10, 0, 10, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d0ro"]
+atlas = ExtResource("2_tex")
+region = Rect2(20, 0, 10, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dcjwf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_niy1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6p1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0d0ro")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_beam"]
+size = Vector2(256, 20)
+
+[node name="BloodBeam" type="Area2D" unique_id=144174792]
+z_index = -1
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_beam")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1428867120]
+position = Vector2(128, 0)
+rotation = 1.5707413
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_dcjwf")
+frame_progress = 0.3803327
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1731704516]
+position = Vector2(128, 0)
+shape = SubResource("RectangleShape2D_beam")

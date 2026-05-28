@@ -41,6 +41,11 @@ extends CharacterBody2D
 @export var hurt_anim_duration: float = 0.3
 @export var death_linger_duration: float = 15.0
 
+@export_group("Drops")
+@export var drop_scene: PackedScene
+@export_range(0.0, 1.0) var drop_chance: float = 0.08
+@export var drop_spread: float = 24.0
+
 enum State { WANDER, PAUSE, DASH, BITE, RETREAT, DEAD }
 enum Facing { DOWN, UP, LEFT, RIGHT }
 
@@ -116,12 +121,17 @@ func _physics_process(delta: float) -> void:
 	_update_facing(move)
 	_update_animation(move)
 
-func take_damage(hit_direction: Vector2 = Vector2.ZERO, force: float = 500.0) -> void:
+func take_damage(
+	hit_direction: Vector2 = Vector2.ZERO,
+	amount: float = 30.0,
+	knockback: float = 500.0,
+	_kind: DamageKind.Type = DamageKind.Type.PHYSICAL,
+) -> void:
 	if _state == State.DEAD:
 		return
-	health -= 30
+	health -= amount
 	if hit_direction != Vector2.ZERO:
-		_knockback += hit_direction.normalized() * force
+		_knockback += hit_direction.normalized() * knockback
 	_hurt_timer = hurt_anim_duration
 	if health <= 0.0:
 		_enter_dead()
@@ -135,6 +145,8 @@ func _enter_dead() -> void:
 	for child in get_children():
 		if child is CollisionShape2D:
 			(child as CollisionShape2D).set_deferred("disabled", true)
+
+	_try_drop_loot()
 
 	if _sprite.sprite_frames != null and _sprite.sprite_frames.has_animation(anim_death):
 		_sprite.flip_h = (_last_horizontal_facing == Facing.LEFT)
@@ -214,6 +226,24 @@ func _confine_to_room() -> void:
 	var min_pos := _room.global_position + Vector2(room_margin, room_margin)
 	var max_pos := _room.global_position + Vector2(Room.ROOM_SIZE - room_margin, Room.ROOM_SIZE - room_margin)
 	global_position = global_position.clamp(min_pos, max_pos)
+
+func _try_drop_loot() -> void:
+	if drop_scene == null or randf() >= drop_chance:
+		return
+	var parent := get_parent()
+	if parent == null:
+		return
+	var item := drop_scene.instantiate() as Node2D
+	if item == null:
+		return
+	parent.add_child(item)
+	item.global_position = global_position
+	var angle := randf() * TAU
+	var target := global_position + Vector2.RIGHT.rotated(angle) * drop_spread
+	if item.has_method("pop_to"):
+		item.pop_to(target)
+	else:
+		item.global_position = target
 
 func _distance_to_player() -> float:
 	if not is_instance_valid(_player):

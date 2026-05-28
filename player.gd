@@ -10,6 +10,7 @@ signal health_changed(current: float, max_health: float)
 @export var hurt_time: float = 0.25
 @export var attack_time: float = 0.25
 @export var attack_offset: float = 40.0
+@export var physical_damage: float = 30.0
 @export var attack_damage_knockback: float = 500.0
 @export var contact_damage_taken: float = 20.0
 
@@ -23,6 +24,8 @@ var crit_multiplier: float = 3.0
 var dodge_chance: float = 0.0
 var thorn_knockback: float = 0.0
 var heal_on_hit: float = 0.0
+var holy_damage: float = 20.0
+var _weapon: Weapon
 var _state: State = State.IDLE
 var _facing: Facing = Facing.DOWN
 var _state_timer: float = 0.0
@@ -45,6 +48,8 @@ func _set_health(new_health: float) -> void:
 	health_changed.emit(health, max_health)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("weapon_fire"):
+		try_fire_weapon()
 	if event.is_action_pressed("attack"):
 		attack()
 
@@ -116,6 +121,20 @@ func increase_max_health(amount: float) -> void:
 	max_health += amount
 	_set_health(health + amount)
 
+func equip_weapon(weapon: Weapon) -> void:
+	if _weapon != null:
+		_weapon.queue_free()
+	_weapon = weapon
+	add_child(_weapon)
+	_weapon.bind_player(self)
+
+func try_fire_weapon() -> void:
+	if _weapon != null:
+		_weapon.try_fire()
+
+func get_facing_vector() -> Vector2:
+	return _facing_vector()
+
 # --- Internals ---------------------------------------------------------------
 
 func _die() -> void:
@@ -173,7 +192,7 @@ func _resolve_hurtbox() -> void:
 	var hit_landed := take_damage(contact_damage_taken, attacker.global_position)
 	if hit_landed and thorn_knockback > 0.0 and attacker.has_method("take_damage"):
 		var push_dir := (attacker.global_position - global_position).normalized()
-		attacker.take_damage(push_dir, thorn_knockback)
+		attacker.take_damage(push_dir, 15.0, thorn_knockback, DamageKind.Type.PHYSICAL)
 
 # Only hurts enemies while we're actively swinging, and only hits each enemy
 # once per swing so a long overlap doesn't drain their HP instantly.
@@ -186,10 +205,12 @@ func _resolve_hitbox() -> void:
 		_hit_targets.append(body)
 		if body.has_method("take_damage"):
 			var push_dir := (body.global_position - global_position).normalized()
-			var damage := attack_damage_knockback
+			var amount := physical_damage
+			var knockback := attack_damage_knockback
 			if crit_chance > 0.0 and randf() < crit_chance:
-				damage *= crit_multiplier
-			body.take_damage(push_dir, damage)
+				amount *= crit_multiplier
+				knockback *= crit_multiplier
+			body.take_damage(push_dir, amount, knockback, DamageKind.Type.PHYSICAL)
 			if heal_on_hit > 0.0:
 				heal(heal_on_hit)
 

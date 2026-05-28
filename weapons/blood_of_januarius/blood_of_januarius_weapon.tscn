@@ -1,0 +1,105 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://weapons/blood_of_januarius/blood_of_januarius_weapon.gd" id="1_weapon"]
+[ext_resource type="Texture2D" path="res://loot/item-assets/back-bloodcircle.png" id="2_back"]
+[ext_resource type="Texture2D" path="res://loot/item-assets/front-bloodcircle.png" id="3_front"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_back0"]
+atlas = ExtResource("2_back")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_back1"]
+atlas = ExtResource("2_back")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_back2"]
+atlas = ExtResource("2_back")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_back3"]
+atlas = ExtResource("2_back")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_back4"]
+atlas = ExtResource("2_back")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_back"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_back0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_back1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_back2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_back3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_back4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_front0"]
+atlas = ExtResource("3_front")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_front1"]
+atlas = ExtResource("3_front")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_front2"]
+atlas = ExtResource("3_front")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_front3"]
+atlas = ExtResource("3_front")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_front4"]
+atlas = ExtResource("3_front")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_front"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_front0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_front1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_front2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_front3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_front4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="BloodOfJanuariusWeapon" type="Node2D"]
+scale = Vector2(1.3, 1.3)
+script = ExtResource("1_weapon")
+
+[node name="CircleBack" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_back")
+autoplay = "default"
+
+[node name="CircleFront" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_front")
+autoplay = "default"
