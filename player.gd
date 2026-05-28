@@ -135,6 +135,25 @@ func try_fire_weapon() -> void:
 func get_facing_vector() -> Vector2:
 	return _facing_vector()
 
+# Rolls crit, applies damage, and triggers on-hit heal for any player attack.
+func deal_damage_to(
+	target: Node2D,
+	hit_direction: Vector2,
+	base_amount: float,
+	base_knockback: float,
+	kind: DamageKind.Type,
+) -> void:
+	if not target.has_method("take_damage"):
+		return
+	var amount := base_amount
+	var knockback := base_knockback
+	if crit_chance > 0.0 and randf() < crit_chance:
+		amount *= crit_multiplier
+		knockback *= crit_multiplier
+	target.take_damage(hit_direction, amount, knockback, kind)
+	if heal_on_hit > 0.0:
+		heal(heal_on_hit)
+
 # --- Internals ---------------------------------------------------------------
 
 func _die() -> void:
@@ -203,16 +222,9 @@ func _resolve_hitbox() -> void:
 		if body in _hit_targets:
 			continue
 		_hit_targets.append(body)
-		if body.has_method("take_damage"):
+		if body is Node2D:
 			var push_dir := (body.global_position - global_position).normalized()
-			var amount := physical_damage
-			var knockback := attack_damage_knockback
-			if crit_chance > 0.0 and randf() < crit_chance:
-				amount *= crit_multiplier
-				knockback *= crit_multiplier
-			body.take_damage(push_dir, amount, knockback, DamageKind.Type.PHYSICAL)
-			if heal_on_hit > 0.0:
-				heal(heal_on_hit)
+			deal_damage_to(body, push_dir, physical_damage, attack_damage_knockback, DamageKind.Type.PHYSICAL)
 
 func _start_invincibility() -> void:
 	_invincible = true

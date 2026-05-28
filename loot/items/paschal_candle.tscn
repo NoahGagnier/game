@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://loot/items/paschal_candle.gd" id="1_pickup"]
+[ext_resource type="Texture2D" path="res://loot/item-assets/paschal-candle.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
+radius = 16.0
+
+[node name="PaschalCandle" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_pickup")
+item_name = "Paschal Candle"
+item_description = "Sacred flame that orbits its bearer.\n3 fireballs burn enemies on contact. Each extra candle adds 1."
+item_icon = ExtResource("2_tex")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pickup")

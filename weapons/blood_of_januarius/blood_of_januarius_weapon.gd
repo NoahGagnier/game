@@ -31,4 +31,4 @@ func _spawn_beam() -> void:
 		return
 	parent.add_child(beam)
 	var direction := player.get_facing_vector()
-	beam.setup(player.global_position, direction, player.holy_damage, beam_knockback)
+	beam.setup(player.global_position, direction, player, beam_knockback)
