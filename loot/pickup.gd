@@ -13,6 +13,11 @@ signal picked_up(pickup: Pickup)
 @export_multiline var item_description: String = ""
 @export var item_icon: Texture2D
 
+@export_group("Drop Shadow")
+@export var shadow_enabled: bool = true
+@export var shadow_color: Color = Color(0.0, 0.0, 0.0, 0.45)
+@export var shadow_offset: Vector2 = Vector2(1.0, 2.0)
+
 var _popping: bool = false
 var _pickup_locked: bool = false
 var _bob_time: float = 0.0
@@ -24,6 +29,26 @@ func sync_bob_origin() -> void:
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	sync_bob_origin()
+	if shadow_enabled:
+		_create_drop_shadows()
+
+func _create_drop_shadows() -> void:
+	var visuals: Array[Node] = []
+	for child in get_children():
+		if child is Sprite2D or child is AnimatedSprite2D:
+			visuals.append(child)
+	for visual in visuals:
+		var shadow := visual.duplicate(DUPLICATE_USE_INSTANTIATION) as CanvasItem
+		if shadow == null:
+			continue
+		shadow.name = String(visual.name) + "Shadow"
+		shadow.modulate = shadow_color
+		shadow.self_modulate = Color(1, 1, 1, 1)
+		(shadow as Node2D).position = (visual as Node2D).position + shadow_offset
+		shadow.z_as_relative = (visual as CanvasItem).z_as_relative
+		shadow.z_index = (visual as CanvasItem).z_index - 1
+		add_child(shadow)
+		move_child(shadow, visual.get_index())
 
 func _process(delta: float) -> void:
 	if _popping:

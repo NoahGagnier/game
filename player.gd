@@ -124,6 +124,10 @@ func increase_max_health(amount: float) -> void:
 
 func equip_weapon(weapon: Weapon) -> void:
 	if _weapon != null and _weapon != weapon:
+		if _weapon.weapon_id != "" and _weapon.weapon_id == weapon.weapon_id:
+			_weapon.stack()
+			weapon.queue_free()
+			return
 		if _weapon.is_incompatible_with(weapon):
 			_drop_weapon_as_pickup(_weapon)
 		else:

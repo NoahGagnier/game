@@ -81,4 +81,12 @@ position = Vector2(416, 431)
 [node name="HolyCruet" parent="." unique_id=2062872273 instance=ExtResource("10_hve3p")]
 position = Vector2(548, 354)
 
+[node name="HolyCruet2" parent="." unique_id=1134087416 instance=ExtResource("10_hve3p")]
+position = Vector2(501, 276)
+
+[node name="BloodOfJanuarius2" parent="." unique_id=1754947973 instance=ExtResource("8_j5wjh")]
+position = Vector2(555, 429)
+item_description = "Sacred blood that orbits its bearer.
+Circle to fire."
+
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]

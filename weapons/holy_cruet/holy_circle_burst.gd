@@ -9,6 +9,8 @@ extends Area2D
 @export var knockback: float = 180.0
 @export var animation_name: String = "default"
 
+var damage: float = -1.0
+
 enum Phase { OUT, DISSIPATE }
 
 var _player: Player
@@ -80,4 +82,5 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	_hit_targets.append(body)
 	var push_dir := (body.global_position - global_position).normalized()
-	_player.deal_damage_to(body, push_dir, _player.holy_damage, knockback, DamageKind.Type.HOLY)
+	var dmg := damage if damage >= 0.0 else _player.holy_damage
+	_player.deal_damage_to(body, push_dir, dmg, knockback, DamageKind.Type.HOLY)

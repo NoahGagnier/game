@@ -6,6 +6,7 @@ const PICKUP_SCENE_PATH := "res://loot/items/blood_of_januarius.tscn"
 @export var beam_scene: PackedScene = preload("res://weapons/blood_of_januarius/blood_beam.tscn")
 @export var fire_cooldown: float = 0.45
 @export var beam_knockback: float = 220.0
+@export var base_damage: float = 30.0
 
 var _cooldown_timer: float = 0.0
 
@@ -46,4 +47,5 @@ func _spawn_beam() -> void:
 		return
 	parent.add_child(beam)
 	var direction := player.get_facing_vector()
-	beam.setup(player.global_position, direction, player, beam_knockback)
+	var damage := base_damage * get_damage_multiplier()
+	beam.setup(player.global_position, direction, player, beam_knockback, damage)

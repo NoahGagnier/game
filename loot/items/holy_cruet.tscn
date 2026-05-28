@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://krm2qy6dpwvm"]
 
-[ext_resource type="Script" path="res://loot/items/holy_cruet.gd" id="1_pickup"]
-[ext_resource type="Texture2D" path="res://loot/item-assets/holycruet.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://cgajlhuh2lkp0" path="res://loot/items/holy_cruet.gd" id="1_pickup"]
+[ext_resource type="Texture2D" uid="uid://dso5yj4mvvysm" path="res://loot/item-assets/holycruet.png" id="2_tex"]
 [ext_resource type="PackedScene" path="res://weapons/holy_cruet/holy_cruet_weapon.tscn" id="3_weapon"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_icon"]
@@ -76,23 +76,25 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 9.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
 radius = 16.0
 
-[node name="HolyCruet" type="Area2D"]
+[node name="HolyCruet" type="Area2D" unique_id=250665310]
 collision_layer = 0
 script = ExtResource("1_pickup")
 weapon_scene = ExtResource("3_weapon")
 item_name = "Holy Cruet"
-item_description = "A blessed ring that orbits its bearer.\nPress E / Circle to send the ring outward, then back."
+item_description = "A blessed ring that orbits its bearer.
+Circle to Fire.
+(+50% dmg per stack)"
 item_icon = SubResource("AtlasTexture_icon")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1342413213]
 sprite_frames = SubResource("SpriteFrames_cruet")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1404782954]
 shape = SubResource("CircleShape2D_pickup")

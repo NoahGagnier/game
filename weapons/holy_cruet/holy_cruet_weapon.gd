@@ -6,6 +6,7 @@ const PICKUP_SCENE_PATH := "res://loot/items/holy_cruet.tscn"
 @export var burst_scene: PackedScene = preload("res://weapons/holy_cruet/holy_circle_burst.tscn")
 @export var fire_cooldown: float = 0.55
 @export var burst_knockback: float = 180.0
+@export var base_damage: float = 30.0
 
 var _cooldown_timer: float = 0.0
 
@@ -46,4 +47,5 @@ func _spawn_burst() -> void:
 		return
 	parent.add_child(burst)
 	burst.knockback = burst_knockback
+	burst.damage = base_damage * get_damage_multiplier()
 	burst.setup(player)

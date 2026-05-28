@@ -1,20 +1,21 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://ce0aykhl1bg1i"]
 
-[ext_resource type="Script" path="res://loot/items/paschal_candle.gd" id="1_pickup"]
-[ext_resource type="Texture2D" path="res://loot/item-assets/paschal-candle.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://b6hdoluj00u8s" path="res://loot/items/paschal_candle.gd" id="1_pickup"]
+[ext_resource type="Texture2D" uid="uid://ds8jff7vji86a" path="res://loot/item-assets/paschal-candle.png" id="2_tex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
 radius = 16.0
 
-[node name="PaschalCandle" type="Area2D"]
+[node name="PaschalCandle" type="Area2D" unique_id=508303593]
 collision_layer = 0
 script = ExtResource("1_pickup")
 item_name = "Paschal Candle"
-item_description = "Sacred flame that orbits its bearer.\n3 fireballs burn enemies on contact. Each extra candle adds 1."
+item_description = "Sacred flame that orbits its bearer.
+(+1 per stack)"
 item_icon = ExtResource("2_tex")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=251109748]
 texture = ExtResource("2_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1881777219]
 shape = SubResource("CircleShape2D_pickup")
