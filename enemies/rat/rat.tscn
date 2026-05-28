@@ -2,6 +2,27 @@
 
 [ext_resource type="Script" uid="uid://bstge52cm6up4" path="res://enemies/rat/rat.gd" id="1_rat"]
 [ext_resource type="Texture2D" uid="uid://b30n7jpiu1v70" path="res://enemies/rat/assets/rat-run.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://c47seawr70nqa" path="res://enemies/rat/assets/rat-idleright.png" id="3_fcpyj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xve8u"]
+atlas = ExtResource("3_fcpyj")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkyf3"]
+atlas = ExtResource("3_fcpyj")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j5d3"]
+atlas = ExtResource("3_fcpyj")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc07d"]
+atlas = ExtResource("3_fcpyj")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dt77"]
+atlas = ExtResource("3_fcpyj")
+region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_60367"]
 atlas = ExtResource("2_tex")
@@ -14,6 +35,38 @@ region = Rect2(96, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3m13"]
 atlas = ExtResource("2_tex")
 region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyplk"]
+atlas = ExtResource("2_tex")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8lvm"]
+atlas = ExtResource("3_fcpyj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mu7v"]
+atlas = ExtResource("3_fcpyj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qv1lb"]
+atlas = ExtResource("3_fcpyj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30x73"]
+atlas = ExtResource("3_fcpyj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmww6"]
+atlas = ExtResource("3_fcpyj")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cweg3"]
+atlas = ExtResource("3_fcpyj")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3y11"]
+atlas = ExtResource("3_fcpyj")
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bptt2"]
 atlas = ExtResource("2_tex")
@@ -55,6 +108,26 @@ region = Rect2(320, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_xve8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkyf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j5d3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc07d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dt77")
+}],
+"loop": false,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_60367")
 }],
 "loop": true,
@@ -76,6 +149,40 @@ animations = [{
 "loop": true,
 "name": &"hurt_up",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyplk")
+}],
+"loop": true,
+"name": &"idle_hurt",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8lvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mu7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qv1lb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30x73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmww6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cweg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3y11")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -131,7 +238,9 @@ script = ExtResource("1_rat")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=567998531]
 sprite_frames = SubResource("SpriteFrames_eyplk")
-animation = &"hurt_up"
+animation = &"death"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=472339428]
 shape = SubResource("CircleShape2D_rat")

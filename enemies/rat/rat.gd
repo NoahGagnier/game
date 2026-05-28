@@ -16,7 +16,7 @@ extends CharacterBody2D
 @export_group("Behavior")
 @export var aggro_radius: float = 220.0
 @export var room_margin: float = 24.0
-@export var attack_range: float = 34.0
+@export var attack_range: float = 24.0
 @export var dash_duration: float = 0.35
 @export var pause_duration_min: float = 1.0
 @export var pause_duration_max: float = 1.7
@@ -34,9 +34,14 @@ extends CharacterBody2D
 @export var anim_hurt_up: String = "hurt_up"
 @export var anim_hurt_left: String = "hurt_left"
 @export var anim_hurt_right: String = "hurt_right"
+@export var anim_idle_left: String = "idle_left"
+@export var anim_idle_right: String = "idle_right"
+@export var anim_idle_hurt: String = "idle_hurt"
+@export var anim_death: String = "death"
 @export var hurt_anim_duration: float = 0.3
+@export var death_linger_duration: float = 15.0
 
-enum State { WANDER, PAUSE, DASH, BITE, RETREAT }
+enum State { WANDER, PAUSE, DASH, BITE, RETREAT, DEAD }
 enum Facing { DOWN, UP, LEFT, RIGHT }
 
 var health: float
@@ -46,6 +51,7 @@ var _wander_dir: Vector2 = Vector2.ZERO
 var _dash_dir: Vector2 = Vector2.ZERO
 var _knockback: Vector2 = Vector2.ZERO
 var _facing: Facing = Facing.DOWN
+var _last_horizontal_facing: Facing = Facing.RIGHT
 var _hurt_timer: float = 0.0
 var _player: Node2D
 var _room: Room
@@ -60,6 +66,9 @@ func _ready() -> void:
 	_enter_wander()
 
 func _physics_process(delta: float) -> void:
+	if _state == State.DEAD:
+		return
+
 	if not is_instance_valid(_player):
 		_refresh_player()
 
@@ -86,11 +95,12 @@ func _physics_process(delta: float) -> void:
 					_enter_wander()
 		State.DASH:
 			move = _dash_dir * dash_speed
-			if _state_timer <= 0.0:
-				if _distance_to_player() <= attack_range:
-					_enter_bite()
-				else:
-					_enter_pause()
+			# Bite the instant we get within range, so we don't overshoot
+			# through the player (who has no collision layer).
+			if _distance_to_player() <= attack_range:
+				_enter_bite()
+			elif _state_timer <= 0.0:
+				_enter_pause()
 		State.BITE:
 			if _state_timer <= 0.0:
 				_enter_retreat()
@@ -107,12 +117,39 @@ func _physics_process(delta: float) -> void:
 	_update_animation(move)
 
 func take_damage(hit_direction: Vector2 = Vector2.ZERO, force: float = 500.0) -> void:
+	if _state == State.DEAD:
+		return
 	health -= 30
 	if hit_direction != Vector2.ZERO:
 		_knockback += hit_direction.normalized() * force
 	_hurt_timer = hurt_anim_duration
 	if health <= 0.0:
+		_enter_dead()
+
+func _enter_dead() -> void:
+	_state = State.DEAD
+	velocity = Vector2.ZERO
+	_knockback = Vector2.ZERO
+	remove_from_group("enemies")
+	# Disable collision so we stop bumping into / damaging the player.
+	for child in get_children():
+		if child is CollisionShape2D:
+			(child as CollisionShape2D).set_deferred("disabled", true)
+
+	if _sprite.sprite_frames != null and _sprite.sprite_frames.has_animation(anim_death):
+		_sprite.flip_h = (_last_horizontal_facing == Facing.LEFT)
+		_sprite.play(anim_death)
+		if not _sprite.animation_finished.is_connected(_on_death_anim_finished):
+			_sprite.animation_finished.connect(_on_death_anim_finished, CONNECT_ONE_SHOT)
+	else:
+		# No death anim defined; just linger then disappear.
+		await get_tree().create_timer(death_linger_duration).timeout
 		queue_free()
+
+func _on_death_anim_finished() -> void:
+	_sprite.pause()
+	await get_tree().create_timer(death_linger_duration).timeout
+	queue_free()
 
 # --- State transitions -------------------------------------------------------
 
@@ -148,6 +185,10 @@ func _enter_retreat() -> void:
 
 func _refresh_player() -> void:
 	_player = get_tree().get_first_node_in_group("player") as Node2D
+	# Physically ignore the player so the rat can't ride on top of them.
+	# The player's HurtBox still detects us by collision layer.
+	if _player is PhysicsBody2D:
+		add_collision_exception_with(_player)
 
 func _player_in_aggro() -> bool:
 	if not is_instance_valid(_player):
@@ -184,6 +225,7 @@ func _update_facing(move: Vector2) -> void:
 		return
 	if absf(move.x) > absf(move.y):
 		_facing = Facing.LEFT if move.x < 0.0 else Facing.RIGHT
+		_last_horizontal_facing = _facing
 	else:
 		_facing = Facing.UP if move.y < 0.0 else Facing.DOWN
 
@@ -191,25 +233,37 @@ func _update_animation(move: Vector2) -> void:
 	if _sprite.sprite_frames == null:
 		return
 
+	var stationary := move.length() < 1.0
+
+	# Hurt + stationary -> idle_hurt animation, flipped to match last facing.
+	if _hurt_timer > 0.0 and stationary and _sprite.sprite_frames.has_animation(anim_idle_hurt):
+		_sprite.flip_h = (_last_horizontal_facing == Facing.LEFT)
+		_play(anim_idle_hurt)
+		return
+
+	# Hurt + moving -> directional hurt run animation.
 	if _hurt_timer > 0.0:
 		_play_directional(_hurt_anim_for_facing(), anim_hurt_left, anim_hurt_right)
 		return
 
-	# Stationary states freeze the current animation so the rat looks tense.
-	# Always make sure we're on a run anim (not a stale hurt frame) before
-	# pausing, otherwise the rat can stay red after the hurt anim ends.
-	if move.length() < 1.0:
-		if _is_hurt_animation_active():
-			_play_directional(_run_anim_for_facing(), anim_run_left, anim_run_right)
-			_sprite.frame = 0
-		_sprite.pause()
+	# Stationary + not hurt -> idle (left/right, flipped if needed).
+	if stationary:
+		_play_idle()
 		return
 
+	# Moving -> directional run.
 	_play_directional(_run_anim_for_facing(), anim_run_left, anim_run_right)
 
-func _is_hurt_animation_active() -> bool:
-	var a := _sprite.animation
-	return a == anim_hurt_down or a == anim_hurt_up or a == anim_hurt_left or a == anim_hurt_right
+func _play_idle() -> void:
+	var anim := anim_idle_right
+	var flip := false
+	if _last_horizontal_facing == Facing.LEFT:
+		if _sprite.sprite_frames.has_animation(anim_idle_left):
+			anim = anim_idle_left
+		else:
+			flip = true
+	_sprite.flip_h = flip
+	_play(anim)
 
 # Plays the directional animation, falling back to a horizontally flipped
 # version of the right-facing anim when the left-facing one is missing.
