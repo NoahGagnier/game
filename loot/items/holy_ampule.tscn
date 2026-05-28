@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c0dnwcnbmgwxf"]
+
+[ext_resource type="Script" uid="uid://dx5sd0x7tdbxj" path="res://loot/items/holy_ampule.gd" id="1_ampule"]
+[ext_resource type="Texture2D" uid="uid://b86va6vmod7ep" path="res://loot/item-assets/holyampule.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ampule"]
+radius = 16.0
+
+[node name="HolyAmpule" type="Area2D" unique_id=1736843290]
+collision_layer = 0
+script = ExtResource("1_ampule")
+item_name = "Holy Ampule"
+item_description = "A vial blessed by saintly hands.
+15% chance to ignore damage when struck."
+item_icon = ExtResource("2_tex")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1717353206]
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=162630859]
+shape = SubResource("CircleShape2D_ampule")

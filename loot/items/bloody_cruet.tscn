@@ -10,7 +10,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_cruet")
 item_name = "Bloody Cruet"
-item_description = "Increases maximum health by 50."
+item_description = "The blood of some priest.
+
+Increases maximum health by 50."
 item_icon = ExtResource("2_hro7n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1786019865]

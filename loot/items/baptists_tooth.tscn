@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bomixa1a20h1i"]
 
-[ext_resource type="Script" path="res://loot/items/baptists_tooth.gd" id="1_tooth"]
-[ext_resource type="Texture2D" path="res://loot/item-assets/baptist-tooth.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://dtvqrplyn4fci" path="res://loot/items/baptists_tooth.gd" id="1_tooth"]
+[ext_resource type="Texture2D" uid="uid://by8a2eakjmxkc" path="res://loot/item-assets/baptist-tooth.png" id="2_tex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_frame0"]
 atlas = ExtResource("2_tex")
@@ -10,17 +10,18 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_tooth"]
 radius = 16.0
 
-[node name="BaptistsTooth" type="Area2D"]
+[node name="BaptistsTooth" type="Area2D" unique_id=1423508107]
 collision_layer = 0
 script = ExtResource("1_tooth")
 item_name = "Baptist's Tooth"
-item_description = "A relic of divine wrath.\n10% chance to strike for 300% damage."
+item_description = "From the mouth of John himself.
+
+10% chance to strike for 300% damage."
 item_icon = SubResource("AtlasTexture_frame0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=35701300]
 texture = ExtResource("2_tex")
 hframes = 2
-frame = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1258540367]
 shape = SubResource("CircleShape2D_tooth")

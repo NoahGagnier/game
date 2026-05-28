@@ -11,7 +11,9 @@ collision_layer = 0
 script = ExtResource("1_veil")
 regen_per_second = 0.5
 item_name = "Virgin's Veil"
-item_description = "Slowly regenerates health over time."
+item_description = "An incredibly delicate piece of cloth.
+
+Slowly regenerates health over time."
 item_icon = ExtResource("2_tex")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1232206860]

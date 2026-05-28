@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be07pjhhwb56q"
-path="res://.godot/imported/room-EW.png-e9747d40cfa72fcc551d8fe92f1aa37c.ctex"
+uid="uid://b86va6vmod7ep"
+path="res://.godot/imported/holyampule.png-a8c67478746ce2835831e12eed8fc2c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://rooms/room art/room-EW.png"
-dest_files=["res://.godot/imported/room-EW.png-e9747d40cfa72fcc551d8fe92f1aa37c.ctex"]
+source_file="res://loot/item-assets/holyampule.png"
+dest_files=["res://.godot/imported/holyampule.png-a8c67478746ce2835831e12eed8fc2c4.ctex"]
 
 [params]
 

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dku4g5evhhfsv"]
+
+[ext_resource type="Script" uid="uid://b558b083pbtxq" path="res://loot/items/thorny_crown.gd" id="1_crown"]
+[ext_resource type="Texture2D" uid="uid://dbdrm0fseqkjg" path="res://loot/item-assets/thornycrown.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_crown"]
+radius = 16.0
+
+[node name="ThornyCrown" type="Area2D" unique_id=879976163]
+collision_layer = 0
+script = ExtResource("1_crown")
+item_name = "Thorny Crown"
+item_description = "A crown made of brambles.
+
+Enemies that strike you are repelled and wounded."
+item_icon = ExtResource("2_tex")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=921371472]
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=364140125]
+shape = SubResource("CircleShape2D_crown")

@@ -20,6 +20,8 @@ var health: float
 var regen_rate: float = 0.0
 var crit_chance: float = 0.0
 var crit_multiplier: float = 3.0
+var dodge_chance: float = 0.0
+var thorn_knockback: float = 0.0
 var _state: State = State.IDLE
 var _facing: Facing = Facing.DOWN
 var _state_timer: float = 0.0
@@ -76,15 +78,22 @@ func _physics_process(delta: float) -> void:
 
 # --- Public API --------------------------------------------------------------
 
-func take_damage(amount: float, _source_position: Vector2 = Vector2.ZERO) -> void:
+func take_damage(amount: float, _source_position: Vector2 = Vector2.ZERO) -> bool:
 	if _invincible or _state == State.DEAD:
-		return
+		return false
+	if dodge_chance > 0.0 and randf() < dodge_chance:
+		_start_invincibility()
+		var shield := get_node_or_null("HolyAmpuleShield")
+		if shield != null and shield.has_method("flash"):
+			shield.flash()
+		return false
 	_set_health(health - amount)
 	if health <= 0.0:
 		_die()
-		return
+		return true
 	_enter_state(State.HURT)
 	_start_invincibility()
+	return true
 
 func attack(aim_direction: Vector2 = Vector2.ZERO) -> void:
 	if _state == State.DEAD or _state == State.HURT or _state == State.ATTACK:
@@ -159,7 +168,11 @@ func _resolve_hurtbox() -> void:
 	var bodies := _hurtbox.get_overlapping_bodies()
 	if bodies.is_empty():
 		return
-	take_damage(contact_damage_taken, (bodies[0] as Node2D).global_position)
+	var attacker := bodies[0] as Node2D
+	var hit_landed := take_damage(contact_damage_taken, attacker.global_position)
+	if hit_landed and thorn_knockback > 0.0 and attacker.has_method("take_damage"):
+		var push_dir := (attacker.global_position - global_position).normalized()
+		attacker.take_damage(push_dir, thorn_knockback)
 
 # Only hurts enemies while we're actively swinging, and only hits each enemy
 # once per swing so a long overlap doesn't drain their HP instantly.
