@@ -1,6 +1,8 @@
 class_name BloodOfJanuariusWeapon
 extends Weapon
 
+const PICKUP_SCENE_PATH := "res://loot/items/blood_of_januarius.tscn"
+
 @export var beam_scene: PackedScene = preload("res://weapons/blood_of_januarius/blood_beam.tscn")
 @export var fire_cooldown: float = 0.45
 @export var beam_knockback: float = 220.0
@@ -10,10 +12,18 @@ var _cooldown_timer: float = 0.0
 @onready var _circle_back: AnimatedSprite2D = $CircleBack
 @onready var _circle_front: AnimatedSprite2D = $CircleFront
 
+func _init() -> void:
+	_configure_weapon()
+
 func _ready() -> void:
+	_configure_weapon()
+
+func _configure_weapon() -> void:
 	weapon_id = "blood_of_januarius"
-	incompatible_weapon_ids = ["holy_cruet"]
-	pickup_scene = preload("res://loot/items/blood_of_januarius.tscn")
+	incompatible_weapon_ids.assign(["holy_cruet"])
+
+func get_pickup_scene() -> PackedScene:
+	return load(PICKUP_SCENE_PATH) as PackedScene
 
 func _process(delta: float) -> void:
 	_cooldown_timer = maxf(0.0, _cooldown_timer - delta)

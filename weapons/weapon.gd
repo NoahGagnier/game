@@ -1,9 +1,8 @@
 class_name Weapon
 extends Node2D
 
-@export var weapon_id: String = ""
-@export var pickup_scene: PackedScene
-@export var incompatible_weapon_ids: Array[String] = []
+var weapon_id: String = ""
+var incompatible_weapon_ids: Array[String] = []
 
 var player: Player
 
@@ -12,6 +11,9 @@ func bind_player(p: Player) -> void:
 
 func try_fire() -> bool:
 	return false
+
+func get_pickup_scene() -> PackedScene:
+	return null
 
 func is_incompatible_with(other: Weapon) -> bool:
 	if other == null:

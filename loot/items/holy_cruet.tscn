@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://loot/items/holy_cruet.gd" id="1_pickup"]
 [ext_resource type="Texture2D" path="res://loot/item-assets/holycruet.png" id="2_tex"]
+[ext_resource type="PackedScene" path="res://weapons/holy_cruet/holy_cruet_weapon.tscn" id="3_weapon"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_icon"]
 atlas = ExtResource("2_tex")
@@ -84,6 +85,7 @@ radius = 16.0
 [node name="HolyCruet" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_pickup")
+weapon_scene = ExtResource("3_weapon")
 item_name = "Holy Cruet"
 item_description = "A blessed ring that orbits its bearer.\nPress E / Circle to send the ring outward, then back."
 item_icon = SubResource("AtlasTexture_icon")

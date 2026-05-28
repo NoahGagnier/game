@@ -123,34 +123,46 @@ func increase_max_health(amount: float) -> void:
 	_set_health(health + amount)
 
 func equip_weapon(weapon: Weapon) -> void:
-	if _weapon != null:
+	if _weapon != null and _weapon != weapon:
 		if _weapon.is_incompatible_with(weapon):
 			_drop_weapon_as_pickup(_weapon)
 		else:
 			_weapon.queue_free()
+
+	if weapon.get_parent() != self:
+		add_child(weapon)
 	_weapon = weapon
-	add_child(_weapon)
 	_weapon.bind_player(self)
 
 func _drop_weapon_as_pickup(weapon: Weapon) -> void:
-	if weapon.pickup_scene == null:
-		if _weapon == weapon:
-			_weapon = null
+	var pickup_scene := weapon.get_pickup_scene()
+	if _weapon == weapon:
+		_weapon = null
+	if pickup_scene == null:
 		weapon.queue_free()
 		return
 	var parent := get_parent()
 	if parent == null:
-		if _weapon == weapon:
-			_weapon = null
 		weapon.queue_free()
 		return
-	var pickup := weapon.pickup_scene.instantiate() as Pickup
-	parent.add_child(pickup)
-	pickup.global_position = global_position + Vector2(randf_range(-10.0, 10.0), randf_range(-6.0, 6.0))
-	pickup.start_pickup_lock(dropped_weapon_lock_duration)
-	if _weapon == weapon:
-		_weapon = null
+	var drop_pos := global_position + Vector2(randf_range(-10.0, 10.0), randf_range(-6.0, 6.0))
 	weapon.queue_free()
+	call_deferred("_spawn_weapon_pickup", pickup_scene, parent, drop_pos)
+
+func _spawn_weapon_pickup(pickup_scene: PackedScene, parent: Node, drop_pos: Vector2) -> void:
+	if not is_instance_valid(parent):
+		return
+	var pickup := pickup_scene.instantiate() as Pickup
+	if pickup == null:
+		return
+	pickup.lock_pickup()
+	if parent is Node2D:
+		pickup.position = (parent as Node2D).to_local(drop_pos)
+	parent.add_child(pickup)
+	if not parent is Node2D:
+		pickup.global_position = drop_pos
+	pickup.sync_bob_origin()
+	pickup.start_pickup_lock(dropped_weapon_lock_duration)
 
 func try_fire_weapon() -> void:
 	if _weapon != null:

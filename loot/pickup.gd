@@ -18,9 +18,12 @@ var _pickup_locked: bool = false
 var _bob_time: float = 0.0
 var _bob_origin: float = 0.0
 
+func sync_bob_origin() -> void:
+	_bob_origin = position.y
+
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
-	_bob_origin = position.y
+	sync_bob_origin()
 
 func _process(delta: float) -> void:
 	if _popping:
@@ -41,6 +44,9 @@ func _on_body_entered(body: Node2D) -> void:
 # Override in subclasses to define the pickup's effect.
 func apply(_player: Player) -> void:
 	pass
+
+func lock_pickup() -> void:
+	_pickup_locked = true
 
 func start_pickup_lock(seconds: float) -> void:
 	_pickup_locked = true
@@ -64,6 +70,6 @@ func pop_to(target: Vector2) -> void:
 	)
 	tween.tween_callback(func() -> void:
 		_popping = false
-		_bob_origin = position.y
+		sync_bob_origin()
 		_bob_time = 0.0
 	)
