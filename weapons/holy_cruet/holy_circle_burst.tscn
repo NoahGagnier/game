@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bjiymkw5rlygd"]
+
+[ext_resource type="Script" uid="uid://b0sa4ncw6g8x4" path="res://weapons/holy_cruet/holy_circle_burst.gd" id="1_burst"]
+[ext_resource type="Texture2D" uid="uid://ygo5kbjxfkfy" path="res://loot/item-assets/holycircle.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvio8"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arvm0"]
+atlas = ExtResource("2_tex")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhpht"]
+atlas = ExtResource("2_tex")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yawbv"]
+atlas = ExtResource("2_tex")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_my8tk"]
+atlas = ExtResource("2_tex")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_burst"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvio8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arvm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhpht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yawbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my8tk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_burst"]
+radius = 28.0
+
+[node name="HolyCircleBurst" type="Area2D" unique_id=137478525]
+z_index = -1
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_burst")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2110006834]
+sprite_frames = SubResource("SpriteFrames_burst")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1837139755]
+shape = SubResource("CircleShape2D_burst")

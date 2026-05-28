@@ -10,6 +10,11 @@ var _cooldown_timer: float = 0.0
 @onready var _circle_back: AnimatedSprite2D = $CircleBack
 @onready var _circle_front: AnimatedSprite2D = $CircleFront
 
+func _ready() -> void:
+	weapon_id = "blood_of_januarius"
+	incompatible_weapon_ids = ["holy_cruet"]
+	pickup_scene = preload("res://loot/items/blood_of_januarius.tscn")
+
 func _process(delta: float) -> void:
 	_cooldown_timer = maxf(0.0, _cooldown_timer - delta)
 	if _circle_front.frame != _circle_back.frame:

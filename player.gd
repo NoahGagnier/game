@@ -13,6 +13,7 @@ signal health_changed(current: float, max_health: float)
 @export var physical_damage: float = 30.0
 @export var attack_damage_knockback: float = 500.0
 @export var contact_damage_taken: float = 20.0
+@export var dropped_weapon_lock_duration: float = 2.0
 
 enum State { IDLE, WALK, ATTACK, HURT, DEAD }
 enum Facing { DOWN, UP, LEFT, RIGHT }
@@ -123,10 +124,33 @@ func increase_max_health(amount: float) -> void:
 
 func equip_weapon(weapon: Weapon) -> void:
 	if _weapon != null:
-		_weapon.queue_free()
+		if _weapon.is_incompatible_with(weapon):
+			_drop_weapon_as_pickup(_weapon)
+		else:
+			_weapon.queue_free()
 	_weapon = weapon
 	add_child(_weapon)
 	_weapon.bind_player(self)
+
+func _drop_weapon_as_pickup(weapon: Weapon) -> void:
+	if weapon.pickup_scene == null:
+		if _weapon == weapon:
+			_weapon = null
+		weapon.queue_free()
+		return
+	var parent := get_parent()
+	if parent == null:
+		if _weapon == weapon:
+			_weapon = null
+		weapon.queue_free()
+		return
+	var pickup := weapon.pickup_scene.instantiate() as Pickup
+	parent.add_child(pickup)
+	pickup.global_position = global_position + Vector2(randf_range(-10.0, 10.0), randf_range(-6.0, 6.0))
+	pickup.start_pickup_lock(dropped_weapon_lock_duration)
+	if _weapon == weapon:
+		_weapon = null
+	weapon.queue_free()
 
 func try_fire_weapon() -> void:
 	if _weapon != null:

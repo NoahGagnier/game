@@ -12,7 +12,8 @@
 [ext_resource type="Resource" path="res://loot/entries/fleam.tres" id="10_fleam"]
 [ext_resource type="Resource" path="res://loot/entries/blood_of_januarius.tres" id="11_januarius"]
 [ext_resource type="Resource" path="res://loot/entries/paschal_candle.tres" id="12_candle"]
+[ext_resource type="Resource" path="res://loot/entries/holy_cruet.tres" id="13_cruet"]
 
 [resource]
 script = ExtResource("1_table_script")
-entries = Array[ExtResource("2_entry_script")]([ExtResource("3_heart"), ExtResource("4_cruet"), ExtResource("5_veil"), ExtResource("6_tooth"), ExtResource("7_ampule"), ExtResource("8_crown"), ExtResource("9_foot"), ExtResource("10_fleam"), ExtResource("11_januarius"), ExtResource("12_candle")])
+entries = Array[ExtResource("2_entry_script")]([ExtResource("3_heart"), ExtResource("4_cruet"), ExtResource("5_veil"), ExtResource("6_tooth"), ExtResource("7_ampule"), ExtResource("8_crown"), ExtResource("9_foot"), ExtResource("10_fleam"), ExtResource("11_januarius"), ExtResource("12_candle"), ExtResource("13_cruet")])

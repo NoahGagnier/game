@@ -14,6 +14,7 @@ signal picked_up(pickup: Pickup)
 @export var item_icon: Texture2D
 
 var _popping: bool = false
+var _pickup_locked: bool = false
 var _bob_time: float = 0.0
 var _bob_origin: float = 0.0
 
@@ -28,7 +29,7 @@ func _process(delta: float) -> void:
 	position.y = _bob_origin + sin(_bob_time * TAU * bob_speed) * bob_amplitude
 
 func _on_body_entered(body: Node2D) -> void:
-	if _popping:
+	if _popping or _pickup_locked:
 		return
 	if body is Player:
 		apply(body)
@@ -40,6 +41,12 @@ func _on_body_entered(body: Node2D) -> void:
 # Override in subclasses to define the pickup's effect.
 func apply(_player: Player) -> void:
 	pass
+
+func start_pickup_lock(seconds: float) -> void:
+	_pickup_locked = true
+	get_tree().create_timer(seconds).timeout.connect(func() -> void:
+		_pickup_locked = false
+	)
 
 # Arcs from current position to `target` over `pop_duration` seconds. The
 # pickup cannot be collected while it's still in the air.
