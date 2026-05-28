@@ -8,7 +8,9 @@
 [ext_resource type="Resource" path="res://loot/entries/baptists_tooth.tres" id="6_tooth"]
 [ext_resource type="Resource" path="res://loot/entries/holy_ampule.tres" id="7_ampule"]
 [ext_resource type="Resource" path="res://loot/entries/thorny_crown.tres" id="8_crown"]
+[ext_resource type="Resource" path="res://loot/entries/foot_of_magdalane.tres" id="9_foot"]
+[ext_resource type="Resource" path="res://loot/entries/fleam.tres" id="10_fleam"]
 
 [resource]
 script = ExtResource("1_table_script")
-entries = Array[ExtResource("2_entry_script")]([ExtResource("3_heart"), ExtResource("4_cruet"), ExtResource("5_veil"), ExtResource("6_tooth"), ExtResource("7_ampule"), ExtResource("8_crown")])
+entries = Array[ExtResource("2_entry_script")]([ExtResource("3_heart"), ExtResource("4_cruet"), ExtResource("5_veil"), ExtResource("6_tooth"), ExtResource("7_ampule"), ExtResource("8_crown"), ExtResource("9_foot"), ExtResource("10_fleam")])

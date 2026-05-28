@@ -22,6 +22,7 @@ var crit_chance: float = 0.0
 var crit_multiplier: float = 3.0
 var dodge_chance: float = 0.0
 var thorn_knockback: float = 0.0
+var heal_on_hit: float = 0.0
 var _state: State = State.IDLE
 var _facing: Facing = Facing.DOWN
 var _state_timer: float = 0.0
@@ -189,6 +190,8 @@ func _resolve_hitbox() -> void:
 			if crit_chance > 0.0 and randf() < crit_chance:
 				damage *= crit_multiplier
 			body.take_damage(push_dir, damage)
+			if heal_on_hit > 0.0:
+				heal(heal_on_hit)
 
 func _start_invincibility() -> void:
 	_invincible = true

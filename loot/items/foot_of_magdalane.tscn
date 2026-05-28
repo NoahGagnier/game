@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://unkrk5www287"]
+
+[ext_resource type="Script" uid="uid://cwapldrgmnhpb" path="res://loot/items/foot_of_magdalane.gd" id="1_foot"]
+[ext_resource type="Texture2D" uid="uid://d1uwlp5nhyeyl" path="res://loot/item-assets/foot-of-magdalane.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_foot"]
+radius = 16.0
+
+[node name="FootOfMagdalane" type="Area2D" unique_id=964019540]
+collision_layer = 0
+script = ExtResource("1_foot")
+item_name = "Foot of Magdalane"
+item_description = "What's better than 2?
+
+Increases movement speed by 15%."
+item_icon = ExtResource("2_tex")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1580138056]
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1952702396]
+shape = SubResource("CircleShape2D_foot")
