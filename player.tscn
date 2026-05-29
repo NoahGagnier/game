@@ -842,7 +842,7 @@ radius = 25.8
 script = ExtResource("1_player")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1464739290]
-scale = Vector2(0.84, 0.84)
+scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_default")
 animation = &"idle_up"
 frame_progress = 0.6222575

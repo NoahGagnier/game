@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://krm2qy6dpwvm" path="res://loot/items/holy_cruet.tscn" id="10_hve3p"]
 [ext_resource type="Texture2D" uid="uid://ygo5kbjxfkfy" path="res://loot/item-assets/holycircle.png" id="11_iotsf"]
 [ext_resource type="PackedScene" path="res://loot/items/tunic_of_saint_louis.tscn" id="12_lc2xo"]
+[ext_resource type="PackedScene" path="res://menus/pause_menu.tscn" id="13_pause"]
 
 [node name="Game" type="Node2D" unique_id=1616662402]
 script = ExtResource("1_fc0e3")
@@ -68,6 +69,8 @@ text = "Game Over"
 [node name="HUD" parent="." unique_id=557941797 instance=ExtResource("2_hud")]
 player_path = null
 
+[node name="PauseMenu" parent="." unique_id=829173650 instance=ExtResource("13_pause")]
+
 [node name="Chest" parent="." unique_id=2058236937 instance=ExtResource("7_eow3j")]
 position = Vector2(731, 508)
 
@@ -84,22 +87,7 @@ position = Vector2(416, 431)
 position = Vector2(548, 354)
 item_icon = ExtResource("11_iotsf")
 
-[node name="HolyCruet2" parent="." unique_id=1134087416 instance=ExtResource("10_hve3p")]
-position = Vector2(501, 276)
-item_icon = ExtResource("11_iotsf")
-
-[node name="BloodOfJanuarius2" parent="." unique_id=1754947973 instance=ExtResource("8_j5wjh")]
-position = Vector2(555, 429)
-item_description = "Sacred blood that orbits its bearer.
-Circle to fire."
-
 [node name="TunicOfSaintLouis" parent="." unique_id=261723960 instance=ExtResource("12_lc2xo")]
 position = Vector2(744, 359)
-
-[node name="TunicOfSaintLouis2" parent="." unique_id=1562494752 instance=ExtResource("12_lc2xo")]
-position = Vector2(695, 365)
-
-[node name="TunicOfSaintLouis3" parent="." unique_id=1138560593 instance=ExtResource("12_lc2xo")]
-position = Vector2(772, 396)
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]

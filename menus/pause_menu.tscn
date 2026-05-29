@@ -1,0 +1,72 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://menus/pause_menu.gd" id="1_pause"]
+[ext_resource type="FontFile" uid="uid://d3cwspmxi2stk" path="res://menus/cutscene-art/PressStart2P-Regular.ttf" id="2_font"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_pause")
+
+[node name="PausePanel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Center" type="CenterContainer" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="PausePanel/Center"]
+layout_mode = 2
+theme_override_constants/separation = 28
+alignment = 1
+
+[node name="Title" type="Label" parent="PausePanel/Center/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.9, 0.75, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PausePanel/Center/VBox"]
+custom_minimum_size = Vector2(520, 56)
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.78, 0.68, 1)
+theme_override_colors/font_hover_color = Color(1, 0.93, 0.55, 1)
+theme_override_colors/font_focus_color = Color(1, 0.93, 0.55, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.93, 0.55, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "RESUME"
+flat = true
+
+[node name="MainMenuButton" type="Button" parent="PausePanel/Center/VBox"]
+custom_minimum_size = Vector2(520, 56)
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.78, 0.68, 1)
+theme_override_colors/font_hover_color = Color(1, 0.93, 0.55, 1)
+theme_override_colors/font_focus_color = Color(1, 0.93, 0.55, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.93, 0.55, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "RETURN TO MAIN MENU"
+flat = true

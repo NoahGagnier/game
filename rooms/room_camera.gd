@@ -1,7 +1,7 @@
 extends Camera2D
 
 @export var target_path: NodePath
-@export var follow_zoom: Vector2 = Vector2(2, 2)
+@export var follow_zoom: Vector2 = Vector2(2.3, 2.3)
 
 # How far ahead of the player the camera drifts (in world pixels before zoom).
 @export var lookahead_distance: float = 70.0
