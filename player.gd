@@ -26,6 +26,8 @@ var dodge_chance: float = 0.0
 var thorn_knockback: float = 0.0
 var heal_on_hit: float = 0.0
 var holy_damage: float = 20.0
+var holy_damage_multiplier: float = 1.0
+var physical_damage_multiplier: float = 1.0
 var _weapon: Weapon
 var _state: State = State.IDLE
 var _facing: Facing = Facing.DOWN
@@ -187,6 +189,10 @@ func deal_damage_to(
 		return
 	var amount := base_amount
 	var knockback := base_knockback
+	if kind == DamageKind.Type.HOLY:
+		amount *= holy_damage_multiplier
+	elif kind == DamageKind.Type.PHYSICAL:
+		amount *= physical_damage_multiplier
 	if crit_chance > 0.0 and randf() < crit_chance:
 		amount *= crit_multiplier
 		knockback *= crit_multiplier

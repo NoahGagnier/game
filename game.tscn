@@ -8,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dxw1nmwp0wx4e" path="res://chest.tscn" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://dx8rmgbo1e7cw" path="res://rooms/room_camera.gd" id="7_roomcam"]
 [ext_resource type="PackedScene" path="res://loot/items/blood_of_januarius.tscn" id="8_j5wjh"]
-[ext_resource type="PackedScene" path="res://loot/items/paschal_candle.tscn" id="9_vef74"]
-[ext_resource type="PackedScene" path="res://loot/items/holy_cruet.tscn" id="10_hve3p"]
+[ext_resource type="PackedScene" uid="uid://ce0aykhl1bg1i" path="res://loot/items/paschal_candle.tscn" id="9_vef74"]
+[ext_resource type="PackedScene" uid="uid://krm2qy6dpwvm" path="res://loot/items/holy_cruet.tscn" id="10_hve3p"]
+[ext_resource type="Texture2D" uid="uid://ygo5kbjxfkfy" path="res://loot/item-assets/holycircle.png" id="11_iotsf"]
+[ext_resource type="PackedScene" path="res://loot/items/tunic_of_saint_louis.tscn" id="12_lc2xo"]
 
 [node name="Game" type="Node2D" unique_id=1616662402]
 script = ExtResource("1_fc0e3")
@@ -80,13 +82,24 @@ position = Vector2(416, 431)
 
 [node name="HolyCruet" parent="." unique_id=2062872273 instance=ExtResource("10_hve3p")]
 position = Vector2(548, 354)
+item_icon = ExtResource("11_iotsf")
 
 [node name="HolyCruet2" parent="." unique_id=1134087416 instance=ExtResource("10_hve3p")]
 position = Vector2(501, 276)
+item_icon = ExtResource("11_iotsf")
 
 [node name="BloodOfJanuarius2" parent="." unique_id=1754947973 instance=ExtResource("8_j5wjh")]
 position = Vector2(555, 429)
 item_description = "Sacred blood that orbits its bearer.
 Circle to fire."
+
+[node name="TunicOfSaintLouis" parent="." unique_id=261723960 instance=ExtResource("12_lc2xo")]
+position = Vector2(744, 359)
+
+[node name="TunicOfSaintLouis2" parent="." unique_id=1562494752 instance=ExtResource("12_lc2xo")]
+position = Vector2(695, 365)
+
+[node name="TunicOfSaintLouis3" parent="." unique_id=1138560593 instance=ExtResource("12_lc2xo")]
+position = Vector2(772, 396)
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]

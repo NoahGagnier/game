@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://8usbhtdlytfd" path="res://loot/loot_table.gd" id="1_table_script"]
 [ext_resource type="Script" uid="uid://ut8eu0kct1sw" path="res://loot/loot_entry.gd" id="2_entry_script"]
-[ext_resource type="Resource" path="res://loot/entries/heart.tres" id="3_heart"]
 [ext_resource type="Resource" uid="uid://nsoxjl2u3rny" path="res://loot/entries/bloody_cruet.tres" id="4_cruet"]
 [ext_resource type="Resource" path="res://loot/entries/virgins_veil.tres" id="5_veil"]
 [ext_resource type="Resource" path="res://loot/entries/baptists_tooth.tres" id="6_tooth"]
@@ -13,7 +12,9 @@
 [ext_resource type="Resource" path="res://loot/entries/blood_of_januarius.tres" id="11_januarius"]
 [ext_resource type="Resource" path="res://loot/entries/paschal_candle.tres" id="12_candle"]
 [ext_resource type="Resource" path="res://loot/entries/holy_cruet.tres" id="13_cruet"]
+[ext_resource type="Resource" path="res://loot/entries/tunic_of_saint_louis.tres" id="14_tunic"]
+[ext_resource type="Resource" path="res://loot/entries/crusaders_mail.tres" id="15_mail"]
 
 [resource]
 script = ExtResource("1_table_script")
-entries = Array[ExtResource("2_entry_script")]([ExtResource("3_heart"), ExtResource("4_cruet"), ExtResource("5_veil"), ExtResource("6_tooth"), ExtResource("7_ampule"), ExtResource("8_crown"), ExtResource("9_foot"), ExtResource("10_fleam"), ExtResource("11_januarius"), ExtResource("12_candle"), ExtResource("13_cruet")])
+entries = Array[ExtResource("2_entry_script")]([ExtResource("4_cruet"), ExtResource("5_veil"), ExtResource("6_tooth"), ExtResource("7_ampule"), ExtResource("8_crown"), ExtResource("9_foot"), ExtResource("10_fleam"), ExtResource("11_januarius"), ExtResource("12_candle"), ExtResource("13_cruet"), ExtResource("14_tunic"), ExtResource("15_mail")])

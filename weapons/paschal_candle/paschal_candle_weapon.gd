@@ -24,9 +24,9 @@ func add_fireball() -> void:
 	fireball.hit_cooldown = hit_cooldown
 	if player != null:
 		fireball.bind_player(player)
-	add_child(fireball)
 	_fireballs.append(fireball)
-	_update_fireball_positions()
+	add_child.call_deferred(fireball)
+	call_deferred("_update_fireball_positions")
 
 func _process(delta: float) -> void:
 	_time += delta

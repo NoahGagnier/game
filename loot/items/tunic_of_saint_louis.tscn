@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://loot/items/tunic_of_saint_louis.gd" id="1_tunic"]
+[ext_resource type="Texture2D" path="res://loot/item-assets/tunic-saintlouis.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tunic"]
+radius = 16.0
+
+[node name="TunicOfSaintLouis" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_tunic")
+item_name = "Tunic of Saint Louis"
+item_description = "The garment of a crusader king.
+
+Increases all holy damage by 30%."
+item_icon = ExtResource("2_tex")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tunic")
