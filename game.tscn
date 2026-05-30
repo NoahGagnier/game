@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ygo5kbjxfkfy" path="res://loot/item-assets/holycircle.png" id="11_iotsf"]
 [ext_resource type="PackedScene" path="res://loot/items/tunic_of_saint_louis.tscn" id="12_lc2xo"]
 [ext_resource type="PackedScene" path="res://menus/pause_menu.tscn" id="13_pause"]
+[ext_resource type="PackedScene" path="res://enemies/wisp/wisp.tscn" id="14_215e1"]
 
 [node name="Game" type="Node2D" unique_id=1616662402]
 script = ExtResource("1_fc0e3")
@@ -89,5 +90,8 @@ item_icon = ExtResource("11_iotsf")
 
 [node name="TunicOfSaintLouis" parent="." unique_id=261723960 instance=ExtResource("12_lc2xo")]
 position = Vector2(744, 359)
+
+[node name="Wisp" parent="." unique_id=830529077 instance=ExtResource("14_215e1")]
+position = Vector2(475, 234)
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
