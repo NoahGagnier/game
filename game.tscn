@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ygo5kbjxfkfy" path="res://loot/item-assets/holycircle.png" id="11_iotsf"]
 [ext_resource type="PackedScene" path="res://loot/items/tunic_of_saint_louis.tscn" id="12_lc2xo"]
 [ext_resource type="PackedScene" path="res://menus/pause_menu.tscn" id="13_pause"]
-[ext_resource type="PackedScene" path="res://enemies/wisp/wisp.tscn" id="14_215e1"]
+[ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="14_215e1"]
 
 [node name="Game" type="Node2D" unique_id=1616662402]
 script = ExtResource("1_fc0e3")

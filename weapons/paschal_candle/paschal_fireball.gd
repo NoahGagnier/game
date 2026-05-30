@@ -4,6 +4,8 @@ extends Area2D
 @export var knockback: float = 120.0
 @export var hit_cooldown: float = 0.35
 @export var animation_fps: float = 8.0
+## Extra rotation (radians) if the art needs a tweak. Tail-left art faces +X at 0.
+@export var rotation_offset: float = 0.0
 
 var player: Player
 var _cooldowns: Dictionary = {}
