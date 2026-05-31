@@ -1,6 +1,8 @@
 class_name Rat
 extends CharacterBody2D
 
+const EnemyVision = preload("res://enemies/enemy_vision.gd")
+
 # A small, twitchy enemy. Wanders randomly when the player is out of range.
 # When the player comes close, it dashes in short bursts toward them, bites
 # on contact, then retreats before darting in again.
@@ -102,18 +104,19 @@ func _physics_process(delta: float) -> void:
 				else:
 					_enter_wander()
 		State.DASH:
-			move = _dash_dir * dash_speed
-			# Bite the instant we get within range, so we don't overshoot
-			# through the player (who has no collision layer).
-			if _distance_to_player() <= attack_range:
-				_enter_bite()
-			elif _state_timer <= 0.0:
+			if not _can_target_player():
 				_enter_pause()
+			else:
+				move = _dash_dir * dash_speed
+				if _distance_to_player() <= attack_range:
+					_enter_bite()
+				elif _state_timer <= 0.0:
+					_enter_pause()
 		State.BITE:
 			if _state_timer <= 0.0:
 				_enter_retreat()
 		State.RETREAT:
-			if is_instance_valid(_player):
+			if _can_target_player():
 				move = (global_position - _player.global_position).normalized() * retreat_speed
 			if _state_timer <= 0.0:
 				_enter_pause()
@@ -206,14 +209,10 @@ func _refresh_player() -> void:
 		add_collision_exception_with(_player)
 
 func _player_in_aggro() -> bool:
-	if not is_instance_valid(_player):
-		return false
-	# Only chase players who are inside the same room.
-	if _room != null:
-		var room_rect := Rect2(_room.global_position, Vector2(Room.ROOM_SIZE, Room.ROOM_SIZE))
-		if not room_rect.has_point(_player.global_position):
-			return false
-	return global_position.distance_to(_player.global_position) <= aggro_radius
+	return _can_target_player()
+
+func _can_target_player() -> bool:
+	return EnemyVision.can_target_player(self, _player, _room, aggro_radius)
 
 func _find_owning_room() -> Room:
 	var node: Node = get_parent()
@@ -240,17 +239,26 @@ func _roll_drop(scene: PackedScene, chance: float) -> void:
 	var parent := get_parent()
 	if parent == null:
 		return
+	call_deferred("_spawn_drop", scene, parent, global_position, drop_spread)
+
+func _spawn_drop(scene: PackedScene, parent: Node, origin: Vector2, spread: float) -> void:
+	if scene == null or not is_instance_valid(parent):
+		return
 	var item := scene.instantiate() as Node2D
 	if item == null:
 		return
+	if item is Pickup:
+		(item as Pickup).lock_pickup()
 	parent.add_child(item)
-	item.global_position = global_position
+	item.global_position = origin
 	var angle := randf() * TAU
-	var target := global_position + Vector2.RIGHT.rotated(angle) * drop_spread
+	var target := origin + Vector2.RIGHT.rotated(angle) * spread
 	if item.has_method("pop_to"):
 		item.pop_to(target)
 	else:
 		item.global_position = target
+	if item is Pickup:
+		(item as Pickup).sync_bob_origin()
 
 func _distance_to_player() -> float:
 	if not is_instance_valid(_player):

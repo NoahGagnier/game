@@ -1,6 +1,8 @@
 class_name Wisp
 extends CharacterBody2D
 
+const EnemyVision = preload("res://enemies/enemy_vision.gd")
+
 @export var max_health: float = 50.0
 @export var move_speed: float = 76.0
 @export var knockback_decay: float = 600.0
@@ -62,7 +64,7 @@ func _physics_process(delta: float) -> void:
 	_update_hover(delta)
 
 	var move := Vector2.ZERO
-	if is_instance_valid(_player) and _player_in_room():
+	if _can_target_player():
 		move = global_position.direction_to(_player.global_position) * move_speed
 
 	velocity = move + _knockback
@@ -178,13 +180,14 @@ func _refresh_player() -> void:
 	if _player is PhysicsBody2D:
 		add_collision_exception_with(_player)
 
-func _player_in_room() -> bool:
-	if not is_instance_valid(_player):
-		return false
-	if _room == null:
-		return true
-	var room_rect := Rect2(_room.global_position, Vector2(Room.ROOM_SIZE, Room.ROOM_SIZE))
-	return room_rect.has_point(_player.global_position)
+func _can_target_player() -> bool:
+	return EnemyVision.can_target_player(
+		self,
+		_player,
+		_room,
+		-1.0,
+		EnemyVision.VisionMode.PERIMETER_WALLS_ONLY,
+	)
 
 func _find_owning_room() -> Room:
 	var node: Node = get_parent()
@@ -211,14 +214,23 @@ func _roll_drop(scene: PackedScene, chance: float) -> void:
 	var parent := get_parent()
 	if parent == null:
 		return
+	call_deferred("_spawn_drop", scene, parent, global_position, drop_spread)
+
+func _spawn_drop(scene: PackedScene, parent: Node, origin: Vector2, spread: float) -> void:
+	if scene == null or not is_instance_valid(parent):
+		return
 	var item := scene.instantiate() as Node2D
 	if item == null:
 		return
+	if item is Pickup:
+		(item as Pickup).lock_pickup()
 	parent.add_child(item)
-	item.global_position = global_position
+	item.global_position = origin
 	var angle := randf() * TAU
-	var target := global_position + Vector2.RIGHT.rotated(angle) * drop_spread
+	var target := origin + Vector2.RIGHT.rotated(angle) * spread
 	if item.has_method("pop_to"):
 		item.pop_to(target)
 	else:
 		item.global_position = target
+	if item is Pickup:
+		(item as Pickup).sync_bob_origin()

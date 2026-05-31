@@ -30,6 +30,8 @@ signal cleared(room: Room)
 ## Prevents new doors from spawning on top of the player as they cross
 ## a doorway.
 @export var entry_lock_inset: float = 60.0
+## How far from the room edge counts as a perimeter wall for wisp line-of-sight.
+@export var perimeter_wall_thickness: float = 128.0
 
 var is_cleared: bool = false
 var _chest: Chest
@@ -39,6 +41,7 @@ var _active_doors: Array[Door] = []
 var _player_was_inside: bool = false
 
 func _ready() -> void:
+	_hide_door_placeholders()
 	if room_type == RoomType.TREASURE:
 		_spawn_treasure_chest()
 	if spawn_enemies_on_ready and _should_spawn_enemies():
@@ -67,12 +70,26 @@ func _player_currently_inside() -> bool:
 	var player := get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return false
-	var inset := entry_lock_inset
+	return contains_global_point(player.global_position)
+
+func contains_global_point(global_pos: Vector2, inset: float = -1.0) -> bool:
+	if inset < 0.0:
+		inset = entry_lock_inset
 	var rect := Rect2(
 		global_position + Vector2(inset, inset),
 		Vector2(ROOM_SIZE - inset * 2.0, ROOM_SIZE - inset * 2.0),
 	)
-	return rect.has_point(player.global_position)
+	return rect.has_point(global_pos)
+
+func is_perimeter_world_point(world_pos: Vector2) -> bool:
+	var local := to_local(world_pos)
+	var edge := perimeter_wall_thickness
+	return (
+		local.x < edge
+		or local.x > ROOM_SIZE - edge
+		or local.y < edge
+		or local.y > ROOM_SIZE - edge
+	)
 
 func _has_live_mobs() -> bool:
 	for m in _spawned_mobs:
@@ -98,7 +115,7 @@ func _clear_room() -> void:
 	_doors_locked = false
 	for d in _active_doors:
 		if is_instance_valid(d):
-			d.queue_free()
+			d.open()
 	_active_doors.clear()
 	cleared.emit(self)
 
@@ -176,6 +193,16 @@ func _pick_mob_scene() -> PackedScene:
 		if roll <= acc:
 			return e.scene
 	return null
+
+# Orange ColorRects under Doors/* are editor layout guides only.
+func _hide_door_placeholders() -> void:
+	var doors_root := get_node_or_null("Doors")
+	if doors_root == null:
+		return
+	for marker in doors_root.get_children():
+		for child in marker.get_children():
+			if child is CanvasItem:
+				child.visible = false
 
 func get_door_local_position(direction: String) -> Vector2:
 	match direction:

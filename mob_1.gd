@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const EnemyVision = preload("res://enemies/enemy_vision.gd")
+
 @export var move_speed: float = 170.0
 ## Higher = knockback bleeds off fast (short hits). Lower = they ragdoll farther.
 @export var knockback_decay: float = 900.0
@@ -58,12 +60,9 @@ func _refresh_player() -> void:
 # bounds. If we're not inside a Room (e.g. the dungeon test scene), fall back
 # to a simple distance check.
 func _player_in_aggro() -> bool:
-	if _room != null:
-		var room_rect := Rect2(_room.global_position, Vector2(Room.ROOM_SIZE, Room.ROOM_SIZE))
-		return room_rect.has_point(player.global_position)
-	if aggro_radius > 0.0:
-		return global_position.distance_to(player.global_position) <= aggro_radius
-	return true
+	if not is_instance_valid(player):
+		return false
+	return EnemyVision.can_target_player(self, player, _room, aggro_radius if aggro_radius > 0.0 else INF)
 
 func _find_owning_room() -> Room:
 	var node: Node = get_parent()
