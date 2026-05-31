@@ -107,4 +107,7 @@ func _finish() -> void:
 		return
 	_finished = true
 	await _fade_to(1.0)
+	await _on_cutscene_complete()
+
+func _on_cutscene_complete() -> void:
 	get_tree().change_scene_to_file(GAME_SCENE)

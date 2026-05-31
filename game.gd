@@ -20,5 +20,4 @@ func _place_player_at_start() -> void:
 		return
 
 func _on_player_health_depleted() -> void:
-	%GameOver.visible = true
-	get_tree().paused = true
+	get_tree().change_scene_to_file("res://menus/game_over.tscn")

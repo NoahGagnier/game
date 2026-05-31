@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://cs0kj4h4vcp8c"]
+
+[ext_resource type="Script" uid="uid://1svpditvv33n" path="res://menus/game_over.gd" id="1_game_over"]
+[ext_resource type="Script" uid="uid://bt7gfr4qp6cgg" path="res://menus/cutscene_slide.gd" id="2_slide"]
+[ext_resource type="Texture2D" uid="uid://ckeaas1ai3i7f" path="res://menus/cutscene-art/black.png" id="3_black"]
+[ext_resource type="Texture2D" uid="uid://ddyt3ti7hfujd" path="res://menus/cutscene-art/deathscreen.png" id="4_a6cs8"]
+[ext_resource type="FontFile" uid="uid://d3cwspmxi2stk" path="res://menus/cutscene-art/PressStart2P-Regular.ttf" id="5_font"]
+
+[sub_resource type="Resource" id="Resource_kwtkc"]
+script = ExtResource("2_slide")
+texture = ExtResource("3_black")
+text = "A voice booms through the halls."
+metadata/_custom_type_script = "uid://bt7gfr4qp6cgg"
+
+[sub_resource type="Resource" id="Resource_slide1"]
+script = ExtResource("2_slide")
+texture = ExtResource("3_black")
+duration = 4.0
+fade_out = false
+text = "\"Nothing more than a heretic yourself.\""
+
+[sub_resource type="Resource" id="Resource_slide2"]
+script = ExtResource("2_slide")
+texture = ExtResource("3_black")
+is_animated = true
+frame_count = 41
+duration = 5.0
+fade_out = false
+text = "\"Claudia, what have you done?\""
+
+[sub_resource type="Resource" id="Resource_slide3"]
+script = ExtResource("2_slide")
+texture = ExtResource("3_black")
+duration = 3.5
+text = "\"An example will be made out of you.\""
+
+[sub_resource type="Resource" id="Resource_a6cs8"]
+script = ExtResource("2_slide")
+texture = ExtResource("3_black")
+duration = 1.5
+metadata/_custom_type_script = "uid://bt7gfr4qp6cgg"
+
+[sub_resource type="Resource" id="Resource_mgyup"]
+script = ExtResource("2_slide")
+texture = ExtResource("4_a6cs8")
+duration = 5.0
+text = "\"Hoist her up.\""
+metadata/_custom_type_script = "uid://bt7gfr4qp6cgg"
+
+[node name="GameOver" type="Control" unique_id=607833305]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_game_over")
+slides = Array[ExtResource("2_slide")]([SubResource("Resource_kwtkc"), SubResource("Resource_slide1"), SubResource("Resource_slide2"), SubResource("Resource_slide3"), SubResource("Resource_a6cs8"), SubResource("Resource_mgyup")])
+
+[node name="Background" type="ColorRect" parent="." unique_id=1998150823]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="StaticDisplay" type="TextureRect" parent="." unique_id=1411617352]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="AnimatedDisplay" type="Sprite2D" parent="." unique_id=198807218]
+visible = false
+position = Vector2(960, 540)
+
+[node name="TextBox" type="Control" parent="." unique_id=1943114138]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -180.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Label" type="RichTextLabel" parent="TextBox" unique_id=202168178]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 402.0
+offset_top = -190.0
+offset_right = -399.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/line_separation = 20
+theme_override_fonts/normal_font = ExtResource("5_font")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+horizontal_alignment = 1
+visible_characters = 0
+
+[node name="Fade" type="ColorRect" parent="." unique_id=448015691]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="OptionsPanel" type="Control" parent="." unique_id=361321069]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dim" type="ColorRect" parent="OptionsPanel" unique_id=1970691789]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.65)
+
+[node name="Center" type="CenterContainer" parent="OptionsPanel" unique_id=453784841]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="OptionsPanel/Center" unique_id=2016873662]
+layout_mode = 2
+theme_override_constants/separation = 28
+alignment = 1
+
+[node name="Title" type="Label" parent="OptionsPanel/Center/VBox" unique_id=7221002]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.9, 0.75, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 28
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="RetryButton" type="Button" parent="OptionsPanel/Center/VBox" unique_id=1807280979]
+custom_minimum_size = Vector2(520, 56)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.78, 0.68, 1)
+theme_override_colors/font_focus_color = Color(1, 0.93, 0.55, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.93, 0.55, 1)
+theme_override_colors/font_hover_color = Color(1, 0.93, 0.55, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 16
+text = "RETRY"
+flat = true
+
+[node name="MainMenuButton" type="Button" parent="OptionsPanel/Center/VBox" unique_id=1483918504]
+custom_minimum_size = Vector2(520, 56)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.78, 0.68, 1)
+theme_override_colors/font_focus_color = Color(1, 0.93, 0.55, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.93, 0.55, 1)
+theme_override_colors/font_hover_color = Color(1, 0.93, 0.55, 1)
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 16
+text = "RETURN TO MAIN MENU"
+flat = true
