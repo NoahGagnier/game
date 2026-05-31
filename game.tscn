@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c1sx7bic4uhdj" path="res://player.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://dususlr2yr63q" path="res://game.gd" id="1_fc0e3"]
+[ext_resource type="PackedScene" path="res://loot/items/enchanted_bloodheart.tscn" id="2_e8heu"]
 [ext_resource type="PackedScene" uid="uid://b4751gg52qmji" path="res://enemies/rat/rat.tscn" id="2_eow3j"]
 [ext_resource type="PackedScene" uid="uid://bcn8uks5yf5oi" path="res://hud.tscn" id="2_hud"]
 [ext_resource type="PackedScene" uid="uid://b6y8u63ynub3m" path="res://rooms/dungeon.tscn" id="6_dungeon"]
@@ -77,6 +78,12 @@ player_path = null
 
 [node name="Chest" parent="." unique_id=2058236937 instance=ExtResource("7_eow3j")]
 position = Vector2(731, 508)
+
+[node name="EnchantedBloodheart" parent="." unique_id=910990151 instance=ExtResource("2_e8heu")]
+position = Vector2(566, 220)
+item_description = "A divine heart.
+
+Restores 200 health."
 
 [node name="Rat" parent="." unique_id=1008351163 instance=ExtResource("2_eow3j")]
 position = Vector2(659, 243)
