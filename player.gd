@@ -37,6 +37,7 @@ var _last_anim: String = ""
 var _hit_targets: Array[Node] = []
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _shadow: AnimatedSprite2D = $Shadow
 @onready var _hurtbox: Area2D = $HurtBox
 @onready var _hitbox: Area2D = $HitBox
 
@@ -44,7 +45,15 @@ func _ready() -> void:
 	add_to_group("player")
 	_set_health(max_health)
 	_hitbox.monitoring = false
+	if _shadow != null:
+		_shadow.sprite_frames = _sprite.sprite_frames
 	_play_current_animation()
+
+func _process(_delta: float) -> void:
+	if _shadow == null or _sprite == null:
+		return
+	_shadow.frame = _sprite.frame
+	_shadow.flip_h = _sprite.flip_h
 
 func _set_health(new_health: float) -> void:
 	health = clampf(new_health, 0.0, max_health)
@@ -281,28 +290,53 @@ func _start_invincibility() -> void:
 func _play_current_animation() -> void:
 	if _sprite == null or _sprite.sprite_frames == null:
 		return
-	var anim := _current_anim_name()
+	var base := _current_anim_base()
+	var anim := _resolve_anim_for_facing(base)
+	# Mirror left-only animations when facing right.
+	var flip := _facing == Facing.RIGHT and anim.ends_with("_left")
+	_sprite.flip_h = flip
 	if anim == _last_anim:
 		return
 	if _sprite.sprite_frames.has_animation(anim):
 		_last_anim = anim
 		_sprite.play(anim)
+		if _shadow != null:
+			_shadow.play(anim)
 	elif _sprite.sprite_frames.has_animation("default") and _last_anim != "default":
 		_last_anim = "default"
 		_sprite.play("default")
+		if _shadow != null:
+			_shadow.play("default")
+
+# Looks up the best animation for the current facing, falling back to the
+# left-facing version (which we'll horizontally flip) when a dedicated
+# right-facing animation isn't authored.
+func _resolve_anim_for_facing(base: String) -> String:
+	var suffix := _facing_suffix()
+	var anim := "%s_%s" % [base, suffix]
+	if _sprite.sprite_frames.has_animation(anim):
+		return anim
+	if _facing == Facing.RIGHT:
+		var mirrored := "%s_left" % base
+		if _sprite.sprite_frames.has_animation(mirrored):
+			return mirrored
+	return anim
+
+func _current_anim_base() -> String:
+	match _state:
+		State.IDLE: return "idle"
+		State.WALK: return "walk"
+		State.ATTACK: return "attack"
+		State.HURT: return "hurt"
+		State.DEAD: return "death"
+	return "idle"
+
+func _facing_suffix() -> String:
+	match _facing:
+		Facing.UP: return "up"
+		Facing.LEFT: return "left"
+		Facing.RIGHT: return "right"
+		_: return "down"
 
 func _current_anim_name() -> String:
-	var base := ""
-	match _state:
-		State.IDLE: base = "idle"
-		State.WALK: base = "walk"
-		State.ATTACK: base = "attack"
-		State.HURT: base = "hurt"
-		State.DEAD: base = "death"
-	var suffix := ""
-	match _facing:
-		Facing.DOWN: suffix = "down"
-		Facing.UP: suffix = "up"
-		Facing.LEFT: suffix = "left"
-		Facing.RIGHT: suffix = "right"
-	return "%s_%s" % [base, suffix]
+	return "%s_%s" % [_current_anim_base(), _facing_suffix()]
