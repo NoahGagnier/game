@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://c1sx7bic4uhdj" path="res://player.tscn" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://dususlr2yr63q" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://c5eombtrk0mw4" path="res://loot/items/enchanted_bloodheart.tscn" id="2_e8heu"]
-[ext_resource type="PackedScene" uid="uid://b4751gg52qmji" path="res://enemies/rat/rat.tscn" id="2_eow3j"]
 [ext_resource type="PackedScene" uid="uid://bcn8uks5yf5oi" path="res://hud.tscn" id="2_hud"]
 [ext_resource type="PackedScene" uid="uid://b6y8u63ynub3m" path="res://rooms/dungeon.tscn" id="6_dungeon"]
 [ext_resource type="PackedScene" uid="uid://dxw1nmwp0wx4e" path="res://chest.tscn" id="7_eow3j"]
@@ -14,9 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://ygo5kbjxfkfy" path="res://loot/item-assets/holycircle.png" id="11_iotsf"]
 [ext_resource type="PackedScene" path="res://loot/items/tunic_of_saint_louis.tscn" id="12_lc2xo"]
 [ext_resource type="PackedScene" path="res://menus/pause_menu.tscn" id="13_pause"]
-[ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="14_215e1"]
 [ext_resource type="PackedScene" uid="uid://dwv5fpwkxl87g" path="res://locked_chest.tscn" id="15_7sc4i"]
 [ext_resource type="PackedScene" path="res://loot/items/key.tscn" id="16_80cx4"]
+[ext_resource type="PackedScene" uid="uid://cmpastorscene" path="res://enemies/pastor/pastor.tscn" id="16_e8heu"]
 
 [node name="Game" type="Node2D" unique_id=1616662402]
 y_sort_enabled = true
@@ -85,9 +84,6 @@ item_description = "A divine heart.
 
 Restores 200 health."
 
-[node name="Rat" parent="." unique_id=1008351163 instance=ExtResource("2_eow3j")]
-position = Vector2(659, 243)
-
 [node name="BloodOfJanuarius" parent="." unique_id=537159713 instance=ExtResource("8_j5wjh")]
 position = Vector2(468, 385)
 
@@ -101,13 +97,13 @@ item_icon = ExtResource("11_iotsf")
 [node name="TunicOfSaintLouis" parent="." unique_id=261723960 instance=ExtResource("12_lc2xo")]
 position = Vector2(744, 359)
 
-[node name="Wisp" parent="." unique_id=830529077 instance=ExtResource("14_215e1")]
-position = Vector2(475, 234)
-
 [node name="LockedChest" parent="." unique_id=1981121731 instance=ExtResource("15_7sc4i")]
 position = Vector2(621, 434)
 
 [node name="Key" parent="." unique_id=880206414 instance=ExtResource("16_80cx4")]
 position = Vector2(468, 477)
+
+[node name="Pastor" parent="." unique_id=1195305037 instance=ExtResource("16_e8heu")]
+position = Vector2(503, 250)
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]

@@ -222,8 +222,6 @@ func _spawn_drop(scene: PackedScene, parent: Node, origin: Vector2, spread: floa
 	var item := scene.instantiate() as Node2D
 	if item == null:
 		return
-	if item is Pickup:
-		(item as Pickup).lock_pickup()
 	parent.add_child(item)
 	item.global_position = origin
 	var angle := randf() * TAU

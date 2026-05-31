@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://c1sx7bic4uhdj"]
 
 [ext_resource type="Script" uid="uid://yh2ao5or56lq" path="res://player.gd" id="1_player"]
-[ext_resource type="Texture2D" uid="uid://hj3e18hsj07" path="res://icon.png" id="2_icon"]
 [ext_resource type="Texture2D" uid="uid://dqt6hu3tgyk4p" path="res://characters/claudia-art/claudia-attack-down-!!!!!!!!!!!.png" id="2_nvl01"]
 [ext_resource type="Texture2D" uid="uid://cmqcwf250laj6" path="res://characters/claudia-art/claudia-attack-left-!!!!!!!!!!!.png" id="3_ivps1"]
 [ext_resource type="Texture2D" uid="uid://dej131bdld7tb" path="res://characters/claudia-art/ATTACK-up.png" id="4_urp6f"]
+[ext_resource type="Texture2D" uid="uid://blr1fnipi3mee" path="res://characters/claudia-art/down-hurt.png" id="5_urp6f"]
+[ext_resource type="Texture2D" uid="uid://b8se51f70yj5j" path="res://characters/claudia-art/hurt-LeftT.png" id="6_ivps1"]
+[ext_resource type="Texture2D" uid="uid://bm8hjgtikbg76" path="res://characters/claudia-art/up-hurt.png" id="7_bwjto"]
 [ext_resource type="Texture2D" uid="uid://bkwrxdqt85a8v" path="res://characters/claudia-art/hooded-claudia-idle.png" id="7_nvl01"]
 [ext_resource type="Texture2D" uid="uid://dpecvq1lce2v2" path="res://characters/claudia-art/hooded-claudia-runDown.png" id="8_ivps1"]
 [ext_resource type="Texture2D" uid="uid://bpgeffincq05a" path="res://characters/claudia-art/hooded-claudia-idleLeft.png" id="8_urp6f"]
@@ -87,6 +89,30 @@ region = Rect2(480, 0, 120, 150)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xg1a7"]
 atlas = ExtResource("4_urp6f")
 region = Rect2(600, 0, 120, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax26h"]
+atlas = ExtResource("5_urp6f")
+region = Rect2(0, 0, 50, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh4g0"]
+atlas = ExtResource("5_urp6f")
+region = Rect2(50, 0, 50, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urp6f"]
+atlas = ExtResource("6_ivps1")
+region = Rect2(0, 0, 50, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob4mi"]
+atlas = ExtResource("6_ivps1")
+region = Rect2(50, 0, 50, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgmjd"]
+atlas = ExtResource("7_bwjto")
+region = Rect2(0, 0, 50, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va2xi"]
+atlas = ExtResource("7_bwjto")
+region = Rect2(50, 0, 50, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwjto"]
 atlas = ExtResource("7_nvl01")
@@ -452,35 +478,36 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_icon")
+"texture": SubResource("AtlasTexture_ax26h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh4g0")
 }],
 "loop": true,
 "name": &"hurt_down",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_icon")
+"texture": SubResource("AtlasTexture_urp6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob4mi")
 }],
 "loop": true,
 "name": &"hurt_left",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_icon")
-}],
-"loop": true,
-"name": &"hurt_right",
-"speed": 5.0
+"texture": SubResource("AtlasTexture_mgmjd")
 }, {
-"frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_icon")
+"texture": SubResource("AtlasTexture_va2xi")
 }],
 "loop": true,
 "name": &"hurt_up",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -753,7 +780,7 @@ animation = &"idle_down"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1464739290]
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_default")
-animation = &"attack_up"
+animation = &"hurt_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=376936190]
 position = Vector2(0, 9)

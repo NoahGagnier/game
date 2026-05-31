@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cmpastorscene"]
+
+[ext_resource type="Script" path="res://enemies/pastor/pastor.gd" id="1_pastor"]
+[ext_resource type="Texture2D" uid="uid://fy4uex7dkld8" path="res://enemies/pastor-enemy-idle-new.png" id="2_walk"]
+[ext_resource type="Texture2D" uid="uid://b711wivvat4vb" path="res://enemies/pastor-death.png" id="3_death"]
+[ext_resource type="PackedScene" uid="uid://dm1pastorbeam" path="res://enemies/pastor/pastor_beam.tscn" id="4_beam"]
+[ext_resource type="PackedScene" path="res://loot/items/enchanted_bloodheart.tscn" id="5_drop"]
+[ext_resource type="PackedScene" path="res://loot/items/key.tscn" id="6_key"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pastor"]
+radius = 14.0
+
+[node name="Pastor" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_pastor")
+walk_texture = ExtResource("2_walk")
+death_texture = ExtResource("3_death")
+beam_scene = ExtResource("4_beam")
+drop_scene = ExtResource("5_drop")
+drop_chance = 0.2
+bonus_drop_scene = ExtResource("6_key")
+bonus_drop_chance = 0.1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_pastor")
