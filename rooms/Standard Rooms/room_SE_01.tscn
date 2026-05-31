@@ -3,6 +3,25 @@
 [ext_resource type="Script" uid="uid://j6fawo5441ay" path="res://rooms/room.gd" id="1_kjsw0"]
 [ext_resource type="Texture2D" uid="uid://de03atsve8x3b" path="res://rooms/room art/SE-garden.png" id="2_ev121"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_jpemh"]
+[ext_resource type="PackedScene" uid="uid://dwv5fpwkxl87g" path="res://locked_chest.tscn" id="4_aq7or"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ev121"]
+size = Vector2(96.88518, 1027.0033)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq7or"]
+size = Vector2(475, 66.999466)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vh8ux"]
+size = Vector2(457, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70raj"]
+size = Vector2(62.744934, 473.9843)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17k6a"]
+size = Vector2(65.252686, 474.00076)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwh5t"]
+size = Vector2(1023.45374, 97.74695)
 
 [node name="Room2" type="Node2D" unique_id=101820627]
 script = ExtResource("1_kjsw0")
@@ -56,3 +75,34 @@ offset_right = 1024.0
 offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+
+[node name="Walls2" type="StaticBody2D" parent="." unique_id=1151566109]
+position = Vector2(1025, 1023)
+rotation = -3.1420853
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2" unique_id=1099105612]
+position = Vector2(977.32745, 509.9762)
+shape = SubResource("RectangleShape2D_ev121")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls2" unique_id=528919905]
+position = Vector2(787.49963, 30.888489)
+shape = SubResource("RectangleShape2D_aq7or")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls2" unique_id=738406861]
+position = Vector2(244.5, 31.12024)
+shape = SubResource("RectangleShape2D_vh8ux")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Walls2" unique_id=1342197549]
+position = Vector2(33.3573, 786.0239)
+shape = SubResource("RectangleShape2D_70raj")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls2" unique_id=1485128283]
+position = Vector2(33.12213, 236.01593)
+shape = SubResource("RectangleShape2D_17k6a")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=720956045]
+position = Vector2(512.2724, 975.12665)
+shape = SubResource("RectangleShape2D_vwh5t")
+
+[node name="LockedChest" parent="." unique_id=361220295 instance=ExtResource("4_aq7or")]
+position = Vector2(817, 814)

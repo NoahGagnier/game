@@ -4,6 +4,18 @@
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_d4iba"]
 [ext_resource type="Texture2D" uid="uid://bgtmyad88y85e" path="res://rooms/room art/room-S.png" id="2_tbss2"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbss2"]
+size = Vector2(236.4931, 32.55802)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6r1kr"]
+size = Vector2(131.50021, 511.46844)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrpp8"]
+size = Vector2(130.99028, 512.04846)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wlr7"]
+size = Vector2(235.51355, 31.943796)
+
 [node name="Room" type="Node2D" unique_id=301017955]
 script = ExtResource("1_cvltf")
 available_doors = Array[String](["S"])
@@ -46,3 +58,28 @@ offset_right = 1024.0
 offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+
+[node name="Walls2" type="StaticBody2D" parent="." unique_id=1443508083]
+position = Vector2(2050, 2046)
+rotation = 3.1411
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Walls2" unique_id=1890310504]
+position = Vector2(631.4861, 526.59045)
+shape = SubResource("RectangleShape2D_tbss2")
+debug_color = Color(0.16860333, 0.5909963, 0.71088666, 0.41960785)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Walls2" unique_id=1132371208]
+position = Vector2(578.498, 767.052)
+shape = SubResource("RectangleShape2D_6r1kr")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls2" unique_id=1485463656]
+position = Vector2(959.1173, 767.4653)
+shape = SubResource("RectangleShape2D_wrpp8")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=2065653029]
+position = Vector2(906.9893, 526.917)
+shape = SubResource("RectangleShape2D_1wlr7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls2" unique_id=1251784019]
+polygon = PackedVector2Array(898.1747, 660.4426, 894.17175, 666.4406, 888.1604, 689.4376, 876.64984, 710.932, 872.14636, 717.9298, 855.13654, 737.9214, 832.62866, 753.9103, 818.1252, 760.9032, 800.6225, 766.39453, 778.12054, 770.3835, 747.621, 769.36847, 731.623, 765.3606, 710.1272, 756.85, 686.1353, 740.33813, 671.64246, 725.831, 658.15204, 706.32434, 648.66266, 684.8197, 644.17004, 669.81744, 643.6784, 652.8172, 631.1624, 685.31104, 628.99567, 1023.81006, 906.49585, 1023.4468)

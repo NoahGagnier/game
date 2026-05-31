@@ -1,8 +1,20 @@
 [gd_scene format=4 uid="uid://6wq48hdiq0xf"]
 
 [ext_resource type="Script" uid="uid://j6fawo5441ay" path="res://rooms/room.gd" id="1_hajge"]
-[ext_resource type="Texture2D" uid="uid://w10yq2timxnh" path="res://rooms/room art/room-E.png" id="2_244lj"]
+[ext_resource type="Texture2D" uid="uid://qby0dwiyxlpp" path="res://rooms/room art/room-E.png" id="2_244lj"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_gn842"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_244lj"]
+size = Vector2(511.46866, 133.00224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0blq"]
+size = Vector2(31.627808, 236.00006)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xt2h1"]
+size = Vector2(30.432625, 237.00723)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jdlb"]
+size = Vector2(511.4602, 131.24739)
 
 [node name="Room" type="Node2D" unique_id=301017955]
 script = ExtResource("1_hajge")
@@ -46,3 +58,27 @@ offset_right = 1024.0
 offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+
+[node name="Walls2" type="StaticBody2D" parent="." unique_id=1751598943]
+position = Vector2(2050, 2046)
+rotation = 3.1411
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2" unique_id=331887393]
+position = Vector2(768.4822, 578.254)
+shape = SubResource("RectangleShape2D_244lj")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls2" unique_id=842870563]
+position = Vector2(528.0449, 629.2603)
+shape = SubResource("RectangleShape2D_d0blq")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls2" unique_id=1276648209]
+position = Vector2(528.32874, 904.75665)
+shape = SubResource("RectangleShape2D_xt2h1")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=690998644]
+position = Vector2(768.2696, 958.3764)
+shape = SubResource("RectangleShape2D_1jdlb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls2" unique_id=391455901]
+polygon = PackedVector2Array(656.0604, 892.32336, 681.06213, 888.8357, 696.5648, 883.3433, 715.5698, 873.35266, 726.574, 864.8581, 738.07935, 853.8638, 746.08435, 843.8677, 751.58826, 835.8704, 757.5934, 825.37335, 764.10034, 811.3766, 768.1075, 796.87854, 771.6151, 781.38025, 772.1237, 763.8805, 770.6311, 748.87976, 767.1388, 733.37805, 760.64734, 715.8749, 750.1572, 695.8697, 742.16187, 686.3657, 733.6666, 676.8616, 727.6693, 671.3586, 718.1727, 664.3539, 707.1762, 657.3485, 696.17865, 652.3431, 684.68115, 647.3374, 673.6824, 644.83203, 659.1843, 640.8248, 1024.6824, 645.0049, 1025.0602, 893.0051, 641.55994, 893.3162)

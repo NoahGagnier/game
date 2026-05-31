@@ -4,6 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://dstg634jh0cja" path="res://rooms/room art/room-N.png" id="2_4wwui"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_6uf2p"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wwui"]
+size = Vector2(511.46866, 134.28397)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crdea"]
+size = Vector2(29.312574, 236.6514)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hfkc"]
+size = Vector2(30.432625, 237.00723)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26bs6"]
+size = Vector2(511.4602, 126.83946)
+
 [node name="Room" type="Node2D" unique_id=301017955]
 script = ExtResource("1_wsuns")
 available_doors = Array[String](["N"])
@@ -35,6 +47,7 @@ offset_top = -8.0
 offset_right = 32.0
 offset_bottom = 8.0
 color = Color(0.9, 0.6, 0.2, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Spawns" type="Node2D" parent="." unique_id=234626652]
 
@@ -42,7 +55,38 @@ color = Color(0.9, 0.6, 0.2, 1)
 position = Vector2(512, 512)
 
 [node name="Bounds_Debug" type="ReferenceRect" parent="." unique_id=525415263]
-offset_right = 1024.0
-offset_bottom = 1024.0
+offset_left = 1.0
+offset_top = -4.0
+offset_right = 1025.0
+offset_bottom = 1020.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Walls2" type="StaticBody2D" parent="." unique_id=1392292068]
+position = Vector2(2368, 2182)
+rotation = 1.5742117
+scale = Vector2(2.0863583, 2.0656965)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2" unique_id=1483078548]
+position = Vector2(-795.7627, 714.0364)
+scale = Vector2(1.0000001, 1)
+shape = SubResource("RectangleShape2D_4wwui")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls2" unique_id=533185434]
+position = Vector2(-1027.727, 764.39764)
+scale = Vector2(1.0000001, 1)
+shape = SubResource("RectangleShape2D_crdea")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls2" unique_id=511007008]
+position = Vector2(-1028.4308, 1040.008)
+shape = SubResource("RectangleShape2D_4hfkc")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=1932708982]
+position = Vector2(-795.97534, 1085.681)
+scale = Vector2(1.0000002, 1)
+shape = SubResource("RectangleShape2D_26bs6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls2" unique_id=173919398]
+position = Vector2(-1564.2446, 135.14143)
+polygon = PackedVector2Array(651.273, 888.9771, 680.02124, 885.9734, 694.86816, 882.53345, 713.05054, 873.27277, 724.5259, 865.0035, 735.03455, 854.317, 744.1052, 843.6355, 749.8339, 836.8383, 755.54626, 825.2002, 762.68994, 811.6207, 766.9529, 796.5989, 770.2556, 781.09625, 770.6776, 764.15125, 770.6311, 748.87976, 767.1388, 733.37805, 760.64734, 715.8749, 750.1572, 695.8697, 742.16187, 686.3657, 733.6666, 676.8616, 727.6693, 671.3586, 718.1727, 664.3539, 707.1762, 657.3485, 696.17865, 652.3431, 683.0519, 648.2693, 670.5819, 645.8917, 654.28235, 644.9798, 1024.6824, 645.0049, 1025.0602, 893.0051, 641.55994, 893.3162)

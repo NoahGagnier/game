@@ -1,8 +1,32 @@
 [gd_scene format=4 uid="uid://ddp3qqvurc35h"]
 
 [ext_resource type="Script" uid="uid://j6fawo5441ay" path="res://rooms/room.gd" id="1_xsjkv"]
-[ext_resource type="Texture2D" uid="uid://bpib8r0jx3ctm" path="res://rooms/room art/spawn-room.png" id="2_7g1oc"]
+[ext_resource type="Texture2D" uid="uid://ccbewbboyn04n" path="res://rooms/room art/spawn-room.png" id="2_7g1oc"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_rwaeu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwaeu"]
+size = Vector2(470.98254, 62.99989)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7g1oc"]
+size = Vector2(63.768402, 473.015)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f215t"]
+size = Vector2(475, 68.99942)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cr6m"]
+size = Vector2(457, 67.00049)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bdt05"]
+size = Vector2(62.744934, 473.9843)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ct46r"]
+size = Vector2(65.252686, 474.00076)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3onn5"]
+size = Vector2(64, 474)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0djjp"]
+size = Vector2(471.47418, 60.7277)
 
 [node name="Room" type="Node2D" unique_id=301017955]
 script = ExtResource("1_xsjkv")
@@ -76,3 +100,40 @@ offset_right = 1024.0
 offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+
+[node name="Walls2" type="StaticBody2D" parent="." unique_id=1660245655]
+position = Vector2(1025, 1023)
+rotation = -3.1420853
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Walls2" unique_id=177424353]
+position = Vector2(236.01892, 993.6169)
+shape = SubResource("RectangleShape2D_rwaeu")
+debug_color = Color(0.16860333, 0.5909963, 0.71088666, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2" unique_id=1636853351]
+position = Vector2(993.88605, 232.98175)
+shape = SubResource("RectangleShape2D_7g1oc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls2" unique_id=1852956622]
+position = Vector2(787.49976, 31.888489)
+shape = SubResource("RectangleShape2D_f215t")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls2" unique_id=1914224190]
+position = Vector2(244.5, 31.620483)
+shape = SubResource("RectangleShape2D_2cr6m")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Walls2" unique_id=38209392]
+position = Vector2(33.3573, 786.0239)
+shape = SubResource("RectangleShape2D_bdt05")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls2" unique_id=142925857]
+position = Vector2(33.12213, 236.01593)
+shape = SubResource("RectangleShape2D_ct46r")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls2" unique_id=1506663201]
+position = Vector2(992.6127, 786.48914)
+shape = SubResource("RectangleShape2D_3onn5")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=1989528381]
+position = Vector2(788.2625, 993.6362)
+shape = SubResource("RectangleShape2D_0djjp")

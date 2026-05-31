@@ -4,6 +4,24 @@
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_76j1i"]
 [ext_resource type="Texture2D" uid="uid://dbq8qaseriy" path="res://rooms/room art/room-SW.png" id="2_rffdl"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rffdl"]
+size = Vector2(66, 475)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmotv"]
+size = Vector2(475, 68.99942)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0l1m"]
+size = Vector2(457, 67.00049)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bkkg"]
+size = Vector2(65.252686, 1023.98535)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbsv3"]
+size = Vector2(64, 474)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fal40"]
+size = Vector2(1025, 60.748383)
+
 [node name="Room2" type="Node2D" unique_id=101820627]
 script = ExtResource("1_t85np")
 available_doors = Array[String](["S", "W"])
@@ -35,6 +53,7 @@ offset_top = -8.0
 offset_right = 32.0
 offset_bottom = 8.0
 color = Color(0.9, 0.6, 0.2, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="DoorW" type="Marker2D" parent="Doors" unique_id=353277343]
 position = Vector2(0, 512)
@@ -45,6 +64,7 @@ offset_top = -32.0
 offset_right = 8.0
 offset_bottom = 32.0
 color = Color(0.9, 0.6, 0.2, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Spawns" type="Node2D" parent="." unique_id=2121255650]
 
@@ -56,3 +76,32 @@ offset_right = 1024.0
 offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Walls2" type="StaticBody2D" parent="." unique_id=994988451]
+position = Vector2(1025, 1023)
+rotation = -3.1420853
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2" unique_id=978745391]
+position = Vector2(993.8846, 234.48964)
+shape = SubResource("RectangleShape2D_rffdl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls2" unique_id=819998988]
+position = Vector2(787.49976, 31.888489)
+shape = SubResource("RectangleShape2D_wmotv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls2" unique_id=735585329]
+position = Vector2(244.5, 31.620483)
+shape = SubResource("RectangleShape2D_p0l1m")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls2" unique_id=118859018]
+position = Vector2(33.122375, 511.008)
+shape = SubResource("RectangleShape2D_8bkkg")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls2" unique_id=2078960730]
+position = Vector2(992.6127, 786.48914)
+shape = SubResource("RectangleShape2D_gbsv3")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=574365493]
+position = Vector2(511.49976, 993.62585)
+shape = SubResource("RectangleShape2D_fal40")

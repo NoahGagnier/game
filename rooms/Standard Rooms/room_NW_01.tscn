@@ -3,6 +3,25 @@
 [ext_resource type="Script" uid="uid://j6fawo5441ay" path="res://rooms/room.gd" id="1_pvtna"]
 [ext_resource type="Texture2D" uid="uid://d4ng6gqsvka6r" path="res://rooms/room art/NW-garden.png" id="2_begbi"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_xlwbh"]
+[ext_resource type="PackedScene" uid="uid://dwv5fpwkxl87g" path="res://locked_chest.tscn" id="4_3ps8v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_begbi"]
+size = Vector2(66, 475)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ps8v"]
+size = Vector2(475, 64.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ontis"]
+size = Vector2(457, 63.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ls5h"]
+size = Vector2(97, 1023)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xl4tl"]
+size = Vector2(64, 474)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7078"]
+size = Vector2(1025, 101)
 
 [node name="Room2" type="Node2D" unique_id=101820627]
 script = ExtResource("1_pvtna")
@@ -56,3 +75,32 @@ offset_right = 1024.0
 offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+
+[node name="Walls2" type="StaticBody2D" parent="." unique_id=1311046988]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2" unique_id=1062558064]
+position = Vector2(31, 237.5)
+shape = SubResource("RectangleShape2D_begbi")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls2" unique_id=1231040926]
+position = Vector2(787.5, 31.6875)
+shape = SubResource("RectangleShape2D_3ps8v")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls2" unique_id=1089148094]
+position = Vector2(244.5, 32.375)
+shape = SubResource("RectangleShape2D_ontis")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls2" unique_id=1333665817]
+position = Vector2(976.5, 511.5)
+shape = SubResource("RectangleShape2D_7ls5h")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls2" unique_id=1818118659]
+position = Vector2(32, 787)
+shape = SubResource("RectangleShape2D_xl4tl")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=668335503]
+position = Vector2(511.5, 973.5)
+shape = SubResource("RectangleShape2D_o7078")
+
+[node name="LockedChest" parent="." unique_id=361220295 instance=ExtResource("4_3ps8v")]
+position = Vector2(216, 798)

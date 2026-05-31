@@ -4,6 +4,18 @@
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_7ufum"]
 [ext_resource type="Texture2D" uid="uid://bhi2p1wbb8so6" path="res://rooms/room art/room-W.png" id="2_kryn3"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kryn3"]
+size = Vector2(15.515522, 57.746284)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipnib"]
+size = Vector2(256.50012, 66.812225)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgfdv"]
+size = Vector2(256.10046, 65.79566)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xf667"]
+size = Vector2(15.374956, 65.220085)
+
 [node name="Room" type="Node2D" unique_id=301017955]
 script = ExtResource("1_tpvk3")
 available_doors = Array[String](["W"])
@@ -46,3 +58,28 @@ offset_right = 1024.0
 offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+
+[node name="Walls2" type="StaticBody2D" parent="." unique_id=1686288205]
+position = Vector2(4100, 4092)
+rotation = 3.1411
+scale = Vector2(4, 4)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Walls2" unique_id=262916181]
+position = Vector2(1016.8343, 857.1281)
+shape = SubResource("RectangleShape2D_kryn3")
+debug_color = Color(0.16860333, 0.5909963, 0.71088666, 0.41960785)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Walls2" unique_id=252632846]
+position = Vector2(896.60583, 800.53577)
+shape = SubResource("RectangleShape2D_ipnib")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls2" unique_id=1268206070]
+position = Vector2(896.5625, 990.5918)
+shape = SubResource("RectangleShape2D_cgfdv")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=771810877]
+position = Vector2(1016.6083, 938.63983)
+shape = SubResource("RectangleShape2D_xf667")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls2" unique_id=1947203590]
+polygon = PackedVector2Array(952.2773, 959.71936, 941.0289, 956.4638, 930.5308, 952.4586, 920.0338, 946.4535, 914.28625, 941.4506, 908.5395, 934.9478, 902.04425, 925.1946, 898.79736, 918.943, 896.80066, 912.192, 894.8067, 899.94104, 894.8126, 887.94104, 896.5672, 878.6919, 900.3224, 868.1937, 906.8279, 856.94696, 913.08124, 850.2, 920.0844, 843.7035, 927.33655, 839.45703, 934.3384, 835.7105, 943.0895, 833.4648, 949.3402, 831.9679, 768.84106, 830.12897, 768.7758, 962.6289)

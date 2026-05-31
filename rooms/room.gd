@@ -26,6 +26,10 @@ signal cleared(room: Room)
 @export_group("Clearing")
 ## If true, doors lock behind the player until every spawned mob is dead.
 @export var locks_doors_when_entered: bool = true
+## How far past the wall the player must be before doors spawn behind them.
+## Prevents new doors from spawning on top of the player as they cross
+## a doorway.
+@export var entry_lock_inset: float = 60.0
 
 var is_cleared: bool = false
 var _chest: Chest
@@ -63,7 +67,11 @@ func _player_currently_inside() -> bool:
 	var player := get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return false
-	var rect := Rect2(global_position, Vector2(ROOM_SIZE, ROOM_SIZE))
+	var inset := entry_lock_inset
+	var rect := Rect2(
+		global_position + Vector2(inset, inset),
+		Vector2(ROOM_SIZE - inset * 2.0, ROOM_SIZE - inset * 2.0),
+	)
 	return rect.has_point(player.global_position)
 
 func _has_live_mobs() -> bool:

@@ -4,6 +4,27 @@
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_qs8lf"]
 [ext_resource type="Texture2D" uid="uid://c7ar347d4fdo0" path="res://rooms/room art/NSE.png" id="2_r734v"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r734v"]
+size = Vector2(236.4931, 32.55802)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rv1wm"]
+size = Vector2(236.74591, 31.28968)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekh52"]
+size = Vector2(237.50711, 31.463081)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wmfy"]
+size = Vector2(31.495998, 237.71317)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5t0fu"]
+size = Vector2(30.874138, 236.44212)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svd71"]
+size = Vector2(206.49149, 512.04846)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ie4p"]
+size = Vector2(235.51355, 31.943796)
+
 [node name="Room2" type="Node2D" unique_id=101820627]
 script = ExtResource("1_nrc63")
 available_doors = Array[String](["N", "S", "E"])
@@ -66,3 +87,37 @@ offset_right = 1024.0
 offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+
+[node name="Walls2" type="StaticBody2D" parent="." unique_id=2053598960]
+position = Vector2(2050, 2046)
+rotation = 3.1411
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Walls2" unique_id=243572072]
+position = Vector2(631.4861, 526.59045)
+shape = SubResource("RectangleShape2D_r734v")
+debug_color = Color(0.16860333, 0.5909963, 0.71088666, 0.41960785)
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Walls2" unique_id=1481593492]
+position = Vector2(905.3844, 1007.5328)
+shape = SubResource("RectangleShape2D_rv1wm")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Walls2" unique_id=1261564027]
+position = Vector2(630.74976, 1008.02094)
+shape = SubResource("RectangleShape2D_ekh52")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Walls2" unique_id=1352611488]
+position = Vector2(528.24365, 904.8962)
+shape = SubResource("RectangleShape2D_1wmfy")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Walls2" unique_id=2105612330]
+position = Vector2(528.18494, 629.53937)
+shape = SubResource("RectangleShape2D_5t0fu")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls2" unique_id=44995314]
+position = Vector2(921.3668, 767.4654)
+shape = SubResource("RectangleShape2D_svd71")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=981560009]
+position = Vector2(906.9893, 526.917)
+shape = SubResource("RectangleShape2D_5ie4p")

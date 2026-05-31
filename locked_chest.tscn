@@ -87,6 +87,7 @@ size = Vector2(50, 17)
 radius = 64.0
 
 [node name="LockedChest" type="StaticBody2D" unique_id=361220295]
+y_sort_enabled = true
 script = ExtResource("1_chest")
 loot_table = ExtResource("2_loot")
 
