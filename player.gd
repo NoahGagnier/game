@@ -28,6 +28,7 @@ var heal_on_hit: float = 0.0
 var holy_damage: float = 20.0
 var holy_damage_multiplier: float = 1.0
 var physical_damage_multiplier: float = 1.0
+var keys: int = 0
 var _weapon: Weapon
 var _state: State = State.IDLE
 var _facing: Facing = Facing.DOWN
@@ -124,6 +125,11 @@ func heal(amount: float) -> void:
 	if _state == State.DEAD or amount <= 0.0:
 		return
 	_set_health(health + amount)
+
+func add_keys(amount: int = 1) -> void:
+	if amount <= 0:
+		return
+	keys += amount
 
 # Permanently raises max_health by `amount` and tops the player off by the same
 # amount, so the freshly added chunk of the bar starts full.

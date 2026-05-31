@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://loot/items/key.gd" id="1_key"]
+[ext_resource type="Texture2D" path="res://loot/item-assets/key.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_key"]
+radius = 10.0
+
+[node name="Key" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_key")
+item_name = "Key"
+item_description = "An ancient key.
+
+It must open something."
+item_icon = ExtResource("2_tex")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_key")

@@ -14,8 +14,11 @@
 [ext_resource type="PackedScene" path="res://loot/items/tunic_of_saint_louis.tscn" id="12_lc2xo"]
 [ext_resource type="PackedScene" path="res://menus/pause_menu.tscn" id="13_pause"]
 [ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="14_215e1"]
+[ext_resource type="PackedScene" uid="uid://dwv5fpwkxl87g" path="res://locked_chest.tscn" id="15_7sc4i"]
+[ext_resource type="PackedScene" path="res://loot/items/key.tscn" id="16_80cx4"]
 
 [node name="Game" type="Node2D" unique_id=1616662402]
+y_sort_enabled = true
 script = ExtResource("1_fc0e3")
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=1848879435]
@@ -79,7 +82,7 @@ position = Vector2(731, 508)
 position = Vector2(659, 243)
 
 [node name="BloodOfJanuarius" parent="." unique_id=537159713 instance=ExtResource("8_j5wjh")]
-position = Vector2(487, 428)
+position = Vector2(468, 385)
 
 [node name="PaschalCandle" parent="." unique_id=684973445 instance=ExtResource("9_vef74")]
 position = Vector2(416, 431)
@@ -93,5 +96,11 @@ position = Vector2(744, 359)
 
 [node name="Wisp" parent="." unique_id=830529077 instance=ExtResource("14_215e1")]
 position = Vector2(475, 234)
+
+[node name="LockedChest" parent="." unique_id=1981121731 instance=ExtResource("15_7sc4i")]
+position = Vector2(621, 434)
+
+[node name="Key" parent="." unique_id=880206414 instance=ExtResource("16_80cx4")]
+position = Vector2(468, 477)
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]

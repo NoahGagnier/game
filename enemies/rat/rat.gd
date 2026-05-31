@@ -45,6 +45,9 @@ extends CharacterBody2D
 @export var drop_scene: PackedScene
 @export_range(0.0, 1.0) var drop_chance: float = 0.08
 @export var drop_spread: float = 24.0
+## Independent bonus drop (e.g. Key). Rolled separately from the main drop.
+@export var bonus_drop_scene: PackedScene
+@export_range(0.0, 1.0) var bonus_drop_chance: float = 0.0
 
 enum State { WANDER, PAUSE, DASH, BITE, RETREAT, DEAD }
 enum Facing { DOWN, UP, LEFT, RIGHT }
@@ -228,12 +231,16 @@ func _confine_to_room() -> void:
 	global_position = global_position.clamp(min_pos, max_pos)
 
 func _try_drop_loot() -> void:
-	if drop_scene == null or randf() >= drop_chance:
+	_roll_drop(drop_scene, drop_chance)
+	_roll_drop(bonus_drop_scene, bonus_drop_chance)
+
+func _roll_drop(scene: PackedScene, chance: float) -> void:
+	if scene == null or randf() >= chance:
 		return
 	var parent := get_parent()
 	if parent == null:
 		return
-	var item := drop_scene.instantiate() as Node2D
+	var item := scene.instantiate() as Node2D
 	if item == null:
 		return
 	parent.add_child(item)

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://p7df2r4srpo5" path="res://enemies/wisp/wisp.gd" id="1_wisp"]
 [ext_resource type="Texture2D" uid="uid://xhdvva4kvs1t" path="res://enemies/wisp/assets/wisp-death.png" id="2_8xd83"]
 [ext_resource type="PackedScene" uid="uid://dfjgd8ob4ae8c" path="res://loot/items/heart_pickup.tscn" id="3_heart"]
+[ext_resource type="PackedScene" path="res://loot/items/key.tscn" id="4_key"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wisp"]
 
@@ -14,6 +15,8 @@ script = ExtResource("1_wisp")
 death_texture = ExtResource("2_8xd83")
 death_frame_count = 8
 drop_scene = ExtResource("3_heart")
+bonus_drop_scene = ExtResource("4_key")
+bonus_drop_chance = 0.1
 
 [node name="Shadow" type="AnimatedSprite2D" parent="." unique_id=2129249443]
 modulate = Color(0, 0, 0, 0.38)
