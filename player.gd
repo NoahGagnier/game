@@ -295,6 +295,7 @@ func _play_current_animation() -> void:
 	# Mirror left-only animations when facing right.
 	var flip := _facing == Facing.RIGHT and anim.ends_with("_left")
 	_sprite.flip_h = flip
+	_update_shadow_orientation(anim)
 	if anim == _last_anim:
 		return
 	if _sprite.sprite_frames.has_animation(anim):
@@ -307,6 +308,16 @@ func _play_current_animation() -> void:
 		_sprite.play("default")
 		if _shadow != null:
 			_shadow.play("default")
+
+# attack_up flips Claudia upward, so the shadow should extend the opposite
+# way (positive y scale) instead of forward like every other animation.
+func _update_shadow_orientation(anim: String) -> void:
+	if _shadow == null:
+		return
+	var y_scale := absf(_shadow.scale.y)
+	if anim != "attack_up":
+		y_scale = -y_scale
+	_shadow.scale.y = y_scale
 
 # Looks up the best animation for the current facing, falling back to the
 # left-facing version (which we'll horizontally flip) when a dedicated

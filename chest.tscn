@@ -109,15 +109,5 @@ collision_layer = 0
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_interact")
 
-[node name="InteractPrompt" type="Label" parent="." unique_id=853264998]
-offset_left = -40.0
-offset_top = -72.0
-offset_right = 40.0
-offset_bottom = -48.0
-theme_override_font_sizes/font_size = 20
-text = "Press E"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

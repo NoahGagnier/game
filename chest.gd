@@ -15,10 +15,8 @@ var is_open: bool = false
 var _player_in_range: bool = false
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var _prompt: Label = $InteractPrompt
 
 func _ready() -> void:
-	_prompt.visible = false
 	_play_animation("closed")
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -32,7 +30,6 @@ func open() -> void:
 		return
 	is_open = true
 	_player_in_range = false
-	_prompt.visible = false
 	_play_animation("open")
 	if drop_delay > 0.0:
 		await get_tree().create_timer(drop_delay).timeout
@@ -80,9 +77,7 @@ func _on_interact_area_body_entered(body: Node2D) -> void:
 		return
 	if body is Player:
 		_player_in_range = true
-		_prompt.visible = true
 
 func _on_interact_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		_player_in_range = false
-		_prompt.visible = false

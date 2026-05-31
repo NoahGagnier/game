@@ -7,6 +7,9 @@ const PICKUP_SCENE_PATH := "res://loot/items/blood_of_januarius.tscn"
 @export var fire_cooldown: float = 0.45
 @export var beam_knockback: float = 220.0
 @export var base_damage: float = 30.0
+## Distance (px) the beam spawns ahead of the player along the aim direction.
+## Increase to push the shot further out, set to 0 to spawn at the player.
+@export var spawn_offset: float = 18.0
 
 var _cooldown_timer: float = 0.0
 
@@ -47,5 +50,6 @@ func _spawn_beam() -> void:
 		return
 	parent.add_child(beam)
 	var direction := player.get_facing_vector()
+	var origin := player.global_position + direction * spawn_offset
 	var damage := base_damage * get_damage_multiplier()
-	beam.setup(player.global_position, direction, player, beam_knockback, damage)
+	beam.setup(origin, direction, player, beam_knockback, damage)
