@@ -10,9 +10,7 @@ radius = 16.0
 collision_layer = 0
 script = ExtResource("1_foot")
 item_name = "Foot of Magdalane"
-item_description = "What's better than 2?
-
-Increases movement speed by 15%."
+item_description = "Increases movement speed by 15%."
 item_icon = ExtResource("2_tex")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1580138056]

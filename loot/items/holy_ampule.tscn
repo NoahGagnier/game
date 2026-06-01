@@ -10,8 +10,7 @@ radius = 16.0
 collision_layer = 0
 script = ExtResource("1_ampule")
 item_name = "Holy Ampule"
-item_description = "A vial blessed by saintly hands.
-15% chance to ignore damage when struck."
+item_description = "15% chance to ignore damage when struck."
 item_icon = ExtResource("2_tex")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1717353206]

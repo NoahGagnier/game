@@ -1,22 +1,23 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dt8ayu5nu11xe"]
 
-[ext_resource type="Script" path="res://loot/items/blood_of_januarius.gd" id="1_pickup"]
-[ext_resource type="Texture2D" path="res://loot/item-assets/blood-of-januarius.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://b0uk6w85j0p8p" path="res://loot/items/blood_of_januarius.gd" id="1_pickup"]
+[ext_resource type="Texture2D" uid="uid://cn3qk074u0ega" path="res://loot/item-assets/blood-of-januarius.png" id="2_tex"]
 [ext_resource type="PackedScene" path="res://weapons/blood_of_januarius/blood_of_januarius_weapon.tscn" id="3_weapon"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
 radius = 16.0
 
-[node name="BloodOfJanuarius" type="Area2D"]
+[node name="BloodOfJanuarius" type="Area2D" unique_id=1685607663]
 collision_layer = 0
 script = ExtResource("1_pickup")
 weapon_scene = ExtResource("3_weapon")
 item_name = "Blood of Januarius"
-item_description = "Sacred blood that orbits its bearer.\nPress E / Circle to fire a holy beam."
+item_description = "Sacred blood that orbits its bearer.
+Press 'Circle' to fire."
 item_icon = ExtResource("2_tex")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1017971607]
 texture = ExtResource("2_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1569715264]
 shape = SubResource("CircleShape2D_pickup")

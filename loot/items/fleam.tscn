@@ -1,20 +1,20 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://crgq7146fym5p"]
 
-[ext_resource type="Script" path="res://loot/items/fleam.gd" id="1_fleam"]
-[ext_resource type="Texture2D" path="res://loot/item-assets/fleam.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://cf8ph225c1rf6" path="res://loot/items/fleam.gd" id="1_fleam"]
+[ext_resource type="Texture2D" uid="uid://dwtxllw3kx5sf" path="res://loot/item-assets/fleam.png" id="2_tex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fleam"]
 radius = 16.0
 
-[node name="Fleam" type="Area2D"]
+[node name="Fleam" type="Area2D" unique_id=1578702304]
 collision_layer = 0
 script = ExtResource("1_fleam")
 item_name = "The Fleam"
-item_description = "A bleeding blade that drinks from its prey.\nHeals 2 HP each time you strike an enemy."
+item_description = "Heals 2 HP each time you strike an enemy."
 item_icon = ExtResource("2_tex")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1334947718]
 texture = ExtResource("2_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2032526219]
 shape = SubResource("CircleShape2D_fleam")

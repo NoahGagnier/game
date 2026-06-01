@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://d0xuqbf5qtw" path="res://assets/hud/Sprite-0003.png" id="3_8sq4i"]
 [ext_resource type="FontFile" uid="uid://d3cwspmxi2stk" path="res://menus/cutscene-art/PressStart2P-Regular.ttf" id="4_640wx"]
 [ext_resource type="PackedScene" path="res://menus/item_popup.tscn" id="5_popup"]
-[ext_resource type="Script" path="res://menus/minimap.gd" id="6_minimap"]
-[ext_resource type="Script" path="res://menus/boss_bar.gd" id="7_bossbar"]
+[ext_resource type="Texture2D" uid="uid://cd6fexbgmkg5d" path="res://enemies/boss-cardinal/assets/9patch.png" id="6_61f8s"]
+[ext_resource type="Script" uid="uid://c6nligupf77x4" path="res://menus/minimap.gd" id="6_minimap"]
+[ext_resource type="Script" uid="uid://busaxquxh7vf3" path="res://menus/boss_bar.gd" id="7_bossbar"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1157650514]
 script = ExtResource("1_hud")
@@ -28,27 +29,39 @@ offset_left = 127.0
 offset_top = 76.0
 offset_right = 417.0
 offset_bottom = 102.0
-mouse_filter = 2
 theme_override_fonts/font = ExtResource("4_640wx")
 theme_override_font_sizes/font_size = 18
 text = "100/100"
 horizontal_alignment = 1
 
-[node name="ItemPopup" parent="." instance=ExtResource("5_popup")]
+[node name="ItemPopup" parent="." unique_id=1804358424 instance=ExtResource("5_popup")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -534.0
+offset_top = -333.0
+offset_right = -39.0
+offset_bottom = -20.0
+grow_horizontal = 0
+panel_texture = ExtResource("6_61f8s")
 
-[node name="Minimap" type="Control" parent="."]
+[node name="Minimap" type="Control" parent="." unique_id=960625469]
+layout_mode = 3
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -220.0
 offset_top = 20.0
 offset_right = -20.0
 offset_bottom = 200.0
+grow_horizontal = 0
 mouse_filter = 2
 script = ExtResource("6_minimap")
 
-[node name="BossBar" type="Control" parent="."]
+[node name="BossBar" type="Control" parent="." unique_id=1033159764]
 visible = false
-layout_mode = 1
+layout_mode = 3
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -62,7 +75,7 @@ grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("7_bossbar")
 
-[node name="BG" type="ColorRect" parent="BossBar"]
+[node name="BG" type="ColorRect" parent="BossBar" unique_id=167343650]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,9 +83,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.04, 0.0, 0.0, 0.88)
+color = Color(0.04, 0, 0, 0.88)
 
-[node name="VBox" type="VBoxContainer" parent="BossBar"]
+[node name="VBox" type="VBoxContainer" parent="BossBar" unique_id=1600227]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,23 +96,20 @@ offset_right = -18.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 8
-mouse_filter = 2
 
-[node name="NameLabel" type="Label" parent="BossBar/VBox"]
+[node name="NameLabel" type="Label" parent="BossBar/VBox" unique_id=1751084877]
 layout_mode = 2
-mouse_filter = 2
-theme_override_colors/font_color = Color(0.95, 0.82, 0.65, 1.0)
+theme_override_colors/font_color = Color(0.95, 0.82, 0.65, 1)
 theme_override_fonts/font = ExtResource("4_640wx")
 theme_override_font_sizes/font_size = 14
-text = ""
 horizontal_alignment = 1
 
-[node name="Bar" type="ProgressBar" parent="BossBar/VBox"]
+[node name="Bar" type="ProgressBar" parent="BossBar/VBox" unique_id=445327845]
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-max_value = 100.0
 value = 100.0
 show_percentage = false

@@ -1,22 +1,20 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://behccw47hcccs"]
 
-[ext_resource type="Script" path="res://loot/items/crusaders_mail.gd" id="1_mail"]
-[ext_resource type="Texture2D" path="res://loot/item-assets/crusader-mail.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://bkskria7nhexc" path="res://loot/items/crusaders_mail.gd" id="1_mail"]
+[ext_resource type="Texture2D" uid="uid://bo2l7gskkwubj" path="res://loot/item-assets/crusader-mail.png" id="2_tex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mail"]
 radius = 16.0
 
-[node name="CrusadersMail" type="Area2D"]
+[node name="CrusadersMail" type="Area2D" unique_id=1750346830]
 collision_layer = 0
 script = ExtResource("1_mail")
 item_name = "Crusader's Mail"
-item_description = "Chainmail worn into the Holy Land.
-
-Increases physical damage by 66%."
+item_description = "Increases physical damage by 66%."
 item_icon = ExtResource("2_tex")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=727912642]
 texture = ExtResource("2_tex")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1386651798]
 shape = SubResource("CircleShape2D_mail")

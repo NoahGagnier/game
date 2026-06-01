@@ -10,9 +10,7 @@ radius = 16.0
 collision_layer = 0
 script = ExtResource("1_crown")
 item_name = "Thorny Crown"
-item_description = "A crown made of brambles.
-
-Enemies that strike you are repelled and wounded."
+item_description = "Damages enemies that hit you."
 item_icon = ExtResource("2_tex")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=921371472]
