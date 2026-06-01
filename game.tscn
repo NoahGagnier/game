@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" path="res://menus/pause_menu.tscn" id="13_pause"]
 [ext_resource type="PackedScene" uid="uid://dwv5fpwkxl87g" path="res://locked_chest.tscn" id="15_7sc4i"]
 [ext_resource type="PackedScene" path="res://loot/items/key.tscn" id="16_80cx4"]
-[ext_resource type="PackedScene" uid="uid://cmpastorscene" path="res://enemies/pastor/pastor.tscn" id="16_e8heu"]
+[ext_resource type="PackedScene" path="res://enemies/boss-cardinal/cardinal.tscn" id="16_e8heu"]
 
 [node name="Game" type="Node2D" unique_id=1616662402]
 y_sort_enabled = true
@@ -75,7 +75,7 @@ position = Vector2(621, 434)
 [node name="Key" parent="." unique_id=880206414 instance=ExtResource("16_80cx4")]
 position = Vector2(468, 477)
 
-[node name="Pastor" parent="." unique_id=1195305037 instance=ExtResource("16_e8heu")]
-position = Vector2(503, 250)
+[node name="Cardinal" parent="." unique_id=741015155 instance=ExtResource("16_e8heu")]
+position = Vector2(467, 255)
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]

@@ -8,10 +8,12 @@ const FLASH_DURATION := 0.25
 
 var _fill_style: StyleBoxFlat
 var _flash_tween: Tween
+var _boss_connected: bool = false
 
 @onready var _bar: TextureProgressBar = $ProgressBar
 @onready var _label: Label = $Label
 @onready var _item_popup: ItemPopup = $ItemPopup
+@onready var _boss_bar: Control = $BossBar
 
 func _ready() -> void:
 	ItemEvents.item_collected.connect(_item_popup.show_item)
@@ -22,6 +24,19 @@ func _ready() -> void:
 		return
 	player.health_changed.connect(_on_player_health_changed)
 	_on_player_health_changed(player.health, player.max_health)
+
+func _process(_delta: float) -> void:
+	if _boss_connected:
+		return
+	var boss := get_tree().get_first_node_in_group("boss")
+	if boss == null or not is_instance_valid(boss):
+		return
+	_boss_connected = true
+	var display_name: String = "BOSS"
+	if "boss_name" in boss:
+		display_name = boss.boss_name
+	_boss_bar.bind(boss, display_name)
+	boss.tree_exited.connect(func() -> void: _boss_connected = false, CONNECT_ONE_SHOT)
 
 func _on_player_health_changed(current: float, max_health: float) -> void:
 	var previous := _bar.value

@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://d3cwspmxi2stk" path="res://menus/cutscene-art/PressStart2P-Regular.ttf" id="4_640wx"]
 [ext_resource type="PackedScene" path="res://menus/item_popup.tscn" id="5_popup"]
 [ext_resource type="Script" path="res://menus/minimap.gd" id="6_minimap"]
+[ext_resource type="Script" path="res://menus/boss_bar.gd" id="7_bossbar"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1157650514]
 script = ExtResource("1_hud")
@@ -44,3 +45,61 @@ offset_right = -20.0
 offset_bottom = 200.0
 mouse_filter = 2
 script = ExtResource("6_minimap")
+
+[node name="BossBar" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -420.0
+offset_top = -130.0
+offset_right = 420.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("7_bossbar")
+
+[node name="BG" type="ColorRect" parent="BossBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.04, 0.0, 0.0, 0.88)
+
+[node name="VBox" type="VBoxContainer" parent="BossBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 12.0
+offset_right = -18.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="BossBar/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.95, 0.82, 0.65, 1.0)
+theme_override_fonts/font = ExtResource("4_640wx")
+theme_override_font_sizes/font_size = 14
+text = ""
+horizontal_alignment = 1
+
+[node name="Bar" type="ProgressBar" parent="BossBar/VBox"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+max_value = 100.0
+value = 100.0
+show_percentage = false
