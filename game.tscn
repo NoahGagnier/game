@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dt8ayu5nu11xe" path="res://loot/items/blood_of_januarius.tscn" id="8_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://ce0aykhl1bg1i" path="res://loot/items/paschal_candle.tscn" id="9_vef74"]
 [ext_resource type="PackedScene" uid="uid://krm2qy6dpwvm" path="res://loot/items/holy_cruet.tscn" id="10_hve3p"]
-[ext_resource type="Texture2D" uid="uid://ygo5kbjxfkfy" path="res://loot/item-assets/holycircle.png" id="11_iotsf"]
 [ext_resource type="PackedScene" uid="uid://c6lcw7pevw6mx" path="res://loot/items/tunic_of_saint_louis.tscn" id="12_lc2xo"]
 [ext_resource type="PackedScene" path="res://menus/pause_menu.tscn" id="13_pause"]
 [ext_resource type="PackedScene" uid="uid://dwv5fpwkxl87g" path="res://locked_chest.tscn" id="15_7sc4i"]
@@ -70,7 +69,6 @@ position = Vector2(203, 308)
 
 [node name="HolyCruet" parent="." unique_id=2062872273 instance=ExtResource("10_hve3p")]
 position = Vector2(353, 312)
-item_icon = ExtResource("11_iotsf")
 
 [node name="TunicOfSaintLouis" parent="." unique_id=261723960 instance=ExtResource("12_lc2xo")]
 position = Vector2(504, 308)

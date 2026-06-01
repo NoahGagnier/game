@@ -87,8 +87,7 @@ collision_layer = 0
 script = ExtResource("1_pickup")
 weapon_scene = ExtResource("3_weapon")
 item_name = "Holy Cruet"
-item_description = "A blessed ring that orbits its bearer.
-Circle to Fire.
+item_description = "Circle to Fire.
 (+50% dmg per stack)"
 item_icon = SubResource("AtlasTexture_icon")
 

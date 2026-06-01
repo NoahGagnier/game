@@ -12,6 +12,7 @@ signal picked_up(pickup: Pickup)
 @export var item_name: String = ""
 @export_multiline var item_description: String = ""
 @export var item_icon: Texture2D
+@export var item_icon_ui_shadow: bool = false
 
 @export_group("Drop Shadow")
 @export var shadow_enabled: bool = true
@@ -62,7 +63,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		apply(body)
 		if item_name != "" or item_description != "":
-			ItemEvents.notify(item_name, item_description, item_icon)
+			ItemEvents.notify(item_name, item_description, item_icon, item_icon_ui_shadow)
 		picked_up.emit(self)
 		queue_free()
 

@@ -12,8 +12,8 @@ collision_layer = 0
 script = ExtResource("1_pickup")
 weapon_scene = ExtResource("3_weapon")
 item_name = "Blood of Januarius"
-item_description = "Sacred blood that orbits its bearer.
-Press 'Circle' to fire."
+item_description = "'Circle' to fire.
+(+50% dmg per stack)"
 item_icon = ExtResource("2_tex")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1017971607]

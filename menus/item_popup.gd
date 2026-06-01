@@ -19,7 +19,9 @@ extends Control
 @onready var _margin_container: MarginContainer = $VBox/Panel/MarginContainer
 @onready var _content_row: HBoxContainer = $VBox/Panel/MarginContainer/HBox
 @onready var _background: NinePatchRect = $VBox/Panel/Background
-@onready var _icon: TextureRect = $VBox/Panel/MarginContainer/HBox/Icon
+@onready var _icon_slot: Control = $VBox/Panel/MarginContainer/HBox/IconSlot
+@onready var _icon_shadow: TextureRect = $VBox/Panel/MarginContainer/HBox/IconSlot/IconShadow
+@onready var _icon: TextureRect = $VBox/Panel/MarginContainer/HBox/IconSlot/Icon
 @onready var _name_label: Label = $VBox/NameLabel
 @onready var _desc_label: RichTextLabel = $VBox/Panel/MarginContainer/HBox/DescLabel
 
@@ -72,11 +74,10 @@ func _apply_panel_texture() -> void:
 	_background.patch_margin_bottom = patch_margin_bottom
 	_update_background_scale()
 
-func show_item(pickup_name: String, description: String, icon: Texture2D) -> void:
+func show_item(pickup_name: String, description: String, icon: Texture2D, icon_ui_shadow: bool = false) -> void:
 	_name_label.text = pickup_name
 	_desc_label.text = description
-	_icon.texture = icon
-	_icon.visible = icon != null
+	_apply_icon(icon, icon_ui_shadow)
 	call_deferred("_update_panel_layout")
 
 	if _tween != null and _tween.is_valid():
@@ -86,3 +87,15 @@ func show_item(pickup_name: String, description: String, icon: Texture2D) -> voi
 	_tween.tween_property(self, "modulate:a", 1.0, fade_duration)
 	_tween.tween_interval(display_duration)
 	_tween.tween_property(self, "modulate:a", 0.0, fade_duration)
+
+func _apply_icon(icon: Texture2D, icon_ui_shadow: bool) -> void:
+	var has_icon := icon != null
+	_icon_slot.visible = has_icon
+	_icon.visible = has_icon
+	_icon_shadow.visible = has_icon and icon_ui_shadow
+	if not has_icon:
+		return
+
+	_icon.texture = icon
+	if icon_ui_shadow:
+		_icon_shadow.texture = icon

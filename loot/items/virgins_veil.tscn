@@ -13,6 +13,7 @@ regen_per_second = 0.5
 item_name = "Virgin's Veil"
 item_description = "Slowly regenerate health over time."
 item_icon = ExtResource("2_tex")
+item_icon_ui_shadow = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1232206860]
 texture = ExtResource("2_tex")
