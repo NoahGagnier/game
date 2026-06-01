@@ -265,10 +265,14 @@ func _enter_state(new_state: State) -> void:
 func _resolve_hurtbox() -> void:
 	if _invincible:
 		return
-	var bodies := _hurtbox.get_overlapping_bodies()
-	if bodies.is_empty():
+	var attacker: Node2D = null
+	for body in _hurtbox.get_overlapping_bodies():
+		if body.is_in_group("no_contact_damage"):
+			continue
+		attacker = body as Node2D
+		break
+	if attacker == null:
 		return
-	var attacker := bodies[0] as Node2D
 	var hit_landed := take_damage(contact_damage_taken, attacker.global_position)
 	if hit_landed and thorn_knockback > 0.0 and attacker.has_method("take_damage"):
 		var push_dir := (attacker.global_position - global_position).normalized()

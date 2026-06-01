@@ -57,6 +57,7 @@ var _room: Room
 func _ready() -> void:
 	health = max_health
 	add_to_group("enemies")
+	add_to_group("no_contact_damage")
 	_refresh_player()
 	_room = _find_owning_room()
 	_setup_animations()

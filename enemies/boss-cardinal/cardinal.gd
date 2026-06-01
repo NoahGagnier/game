@@ -8,6 +8,7 @@ signal health_changed(current: float, max_health: float)
 @export var boss_name: String = "THE CARDINAL"
 @export var max_health: float = 550.0
 @export var knockback_decay: float = 700.0
+@export_range(0.0, 1.0) var knockback_multiplier: float = 0.25
 @export var room_margin: float = 24.0
 
 @export_group("Movement")
@@ -70,6 +71,7 @@ func _ready() -> void:
 	health = max_health
 	add_to_group("enemies")
 	add_to_group("boss")
+	add_to_group("no_contact_damage")
 	_refresh_player()
 	_room = _find_owning_room()
 	_setup_animations()
@@ -136,7 +138,7 @@ func take_damage(
 		return
 	health -= amount
 	if hit_direction != Vector2.ZERO:
-		_knockback += hit_direction.normalized() * knockback
+		_knockback += hit_direction.normalized() * knockback * knockback_multiplier
 	_sprite.modulate = Color(1.6, 0.35, 0.35, 1.0)
 	_hurt_timer = hurt_flash_duration
 	if health <= 0.0:
