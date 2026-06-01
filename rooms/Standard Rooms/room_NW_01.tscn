@@ -4,6 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://d4ng6gqsvka6r" path="res://rooms/room art/NW-garden.png" id="2_begbi"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_xlwbh"]
 [ext_resource type="PackedScene" uid="uid://dwv5fpwkxl87g" path="res://locked_chest.tscn" id="4_3ps8v"]
+[ext_resource type="PackedScene" uid="uid://6yvjw5a24nb5" path="res://rooms/extras/olive_tree_1.tscn" id="5_ontis"]
+[ext_resource type="PackedScene" uid="uid://6yvjw7a24nb7" path="res://rooms/extras/olive_tree_3.tscn" id="6_xl4tl"]
+[ext_resource type="PackedScene" uid="uid://6yvjw8a24nb8" path="res://rooms/extras/olive_tree_4.tscn" id="7_o7078"]
+[ext_resource type="PackedScene" uid="uid://c8babytree001" path="res://rooms/extras/baby_tree.tscn" id="8_5wvrv"]
+[ext_resource type="PackedScene" uid="uid://6yvjw6a24nb6" path="res://rooms/extras/olive_tree_2.tscn" id="9_gps6u"]
+[ext_resource type="PackedScene" uid="uid://cbgu50eb3hobx" path="res://rooms/extras/mini_fountain.tscn" id="10_w0vla"]
+[ext_resource type="PackedScene" uid="uid://c8nqdwpqkuie4" path="res://rooms/extras/graves.tscn" id="11_4h0xa"]
+[ext_resource type="PackedScene" uid="uid://ckonrmv1mjoco" path="res://rooms/extras/benches_h.tscn" id="12_4xopq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_begbi"]
 size = Vector2(66, 475)
@@ -71,7 +79,8 @@ color = Color(0.9, 0.6, 0.2, 1)
 position = Vector2(512, 512)
 
 [node name="Bounds_Debug" type="ReferenceRect" parent="." unique_id=1075746099]
-offset_right = 1024.0
+offset_left = 10.0
+offset_right = 1034.0
 offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
@@ -99,8 +108,46 @@ position = Vector2(32, 787)
 shape = SubResource("RectangleShape2D_xl4tl")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=668335503]
-position = Vector2(511.5, 973.5)
+position = Vector2(512, 977)
 shape = SubResource("RectangleShape2D_o7078")
 
 [node name="LockedChest" parent="." unique_id=361220295 instance=ExtResource("4_3ps8v")]
-position = Vector2(216, 798)
+position = Vector2(607, 858)
+
+[node name="Props" type="Node2D" parent="." unique_id=1544384742]
+
+[node name="OliveTree1" parent="Props" unique_id=591809942 instance=ExtResource("5_ontis")]
+position = Vector2(382, 652)
+script = null
+
+[node name="OliveTree3" parent="Props" unique_id=302364051 instance=ExtResource("6_xl4tl")]
+position = Vector2(326, 464)
+script = null
+
+[node name="OliveTree4" parent="Props" unique_id=665962169 instance=ExtResource("7_o7078")]
+position = Vector2(646, 436)
+script = null
+
+[node name="BabyTree" parent="Props" unique_id=267230418 instance=ExtResource("8_5wvrv")]
+position = Vector2(594, 657)
+script = null
+
+[node name="OliveTree2" parent="Props" unique_id=801535418 instance=ExtResource("9_gps6u")]
+position = Vector2(662, 594)
+script = null
+
+[node name="OliveTree5" parent="Props" unique_id=1061111026 instance=ExtResource("5_ontis")]
+position = Vector2(439, 392)
+script = null
+
+[node name="MiniFountain" parent="Props" unique_id=946121192 instance=ExtResource("10_w0vla")]
+position = Vector2(388, 416)
+script = null
+
+[node name="Graves" parent="Props" unique_id=478461757 instance=ExtResource("11_4h0xa")]
+position = Vector2(774, 856)
+script = null
+
+[node name="BenchesH" parent="Props" unique_id=2118578149 instance=ExtResource("12_4xopq")]
+position = Vector2(250, 573)
+script = null

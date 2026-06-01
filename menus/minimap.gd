@@ -7,7 +7,7 @@ extends Control
 const ROOM_SIZE := 1024
 
 @export var dungeon_path: NodePath = ^"../../Dungeon"
-@export var player_path: NodePath = ^"../../Player"
+@export var player_path: NodePath = ^"../../World/Player"
 
 @export_group("Appearance")
 @export var cell_size: int = 14

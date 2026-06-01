@@ -42,12 +42,26 @@ var _player_was_inside: bool = false
 
 func _ready() -> void:
 	_hide_door_placeholders()
+	call_deferred("_setup_world_entities")
+
+func _setup_world_entities() -> void:
+	if not is_inside_tree():
+		return
 	if room_type == RoomType.TREASURE:
 		_spawn_treasure_chest()
 	if spawn_enemies_on_ready and _should_spawn_enemies():
 		_spawn_enemies()
+	_promote_props()
 	if not _has_live_mobs():
 		is_cleared = true
+
+func _promote_props() -> void:
+	var props_root := get_node_or_null("Props")
+	if props_root == null:
+		return
+	for child in props_root.get_children():
+		if child is Node2D:
+			WorldLayer.promote(child as Node2D)
 
 func _physics_process(_delta: float) -> void:
 	_update_entry_lock()
@@ -128,8 +142,8 @@ func _spawn_treasure_chest() -> void:
 	if chest == null:
 		return
 	var marker := get_node_or_null("ChestSpawn") as Marker2D
-	chest.position = marker.position if marker != null else Vector2(ROOM_SIZE / 2.0, ROOM_SIZE / 2.0)
-	add_child(chest)
+	var spawn_pos := marker.position if marker != null else Vector2(ROOM_SIZE / 2.0, ROOM_SIZE / 2.0)
+	WorldLayer.add_entity(self, chest, global_position + spawn_pos)
 	_chest = chest
 
 # Only normal rooms spawn mobs for now. Boss rooms get a dedicated boss later,
@@ -148,8 +162,7 @@ func _spawn_enemies() -> void:
 		var mob := mob_scene.instantiate() as Node2D
 		if mob == null:
 			continue
-		add_child(mob)
-		mob.position = pos
+		WorldLayer.add_entity(self, mob, global_position + pos)
 		_spawned_mobs.append(mob)
 
 # If the room has a "MobSpawns" child container, one mob spawns at each of its

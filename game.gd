@@ -13,7 +13,7 @@ func _place_player_at_start() -> void:
 			continue
 		var spawn := room.get_node_or_null("Spawns/PlayerSpawn") as Marker2D
 		if spawn != null:
-			$Player.global_position = spawn.global_position
+			$World/Player.global_position = spawn.global_position
 			var cam := $RoomCamera as Node
 			if cam != null and cam.has_method("snap_to_target"):
 				cam.snap_to_target()

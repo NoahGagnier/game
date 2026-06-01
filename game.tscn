@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b6y8u63ynub3m" path="res://rooms/dungeon.tscn" id="6_dungeon"]
 [ext_resource type="PackedScene" uid="uid://dxw1nmwp0wx4e" path="res://chest.tscn" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://dx8rmgbo1e7cw" path="res://rooms/room_camera.gd" id="7_roomcam"]
+[ext_resource type="Script" path="res://rooms/world_layer.gd" id="7_world"]
 [ext_resource type="PackedScene" uid="uid://dt8ayu5nu11xe" path="res://loot/items/blood_of_januarius.tscn" id="8_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://ce0aykhl1bg1i" path="res://loot/items/paschal_candle.tscn" id="9_vef74"]
 [ext_resource type="PackedScene" uid="uid://krm2qy6dpwvm" path="res://loot/items/holy_cruet.tscn" id="10_hve3p"]
@@ -24,7 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://dhrare5nfd8b" path="res://loot/items/virgins_veil.tscn" id="23_36jdj"]
 
 [node name="Game" type="Node2D" unique_id=1616662402]
-y_sort_enabled = true
 script = ExtResource("1_fc0e3")
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=1848879435]
@@ -38,15 +38,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Dungeon" parent="." unique_id=1478560868 instance=ExtResource("6_dungeon")]
-z_index = -10
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("7_world")
 
-[node name="Player" parent="." unique_id=30358551 instance=ExtResource("1_e2o6t")]
+[node name="Player" parent="World" unique_id=30358551 instance=ExtResource("1_e2o6t")]
 position = Vector2(512, 512)
+
+[node name="Dungeon" parent="." unique_id=1478560868 instance=ExtResource("6_dungeon")]
 
 [node name="RoomCamera" type="Camera2D" parent="." unique_id=1625892897]
 script = ExtResource("7_roomcam")
-target_path = NodePath("../Player")
+target_path = NodePath("../World/Player")
 
 [node name="HUD" parent="." unique_id=557941797 instance=ExtResource("2_hud")]
 
@@ -103,4 +106,4 @@ position = Vector2(512, 372)
 [node name="VirginsVeil" parent="." unique_id=1178440362 instance=ExtResource("23_36jdj")]
 position = Vector2(558, 373)
 
-[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="health_depleted" from="World/Player" to="." method="_on_player_health_depleted"]

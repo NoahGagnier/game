@@ -4,7 +4,7 @@ const FILL_COLOR := Color(0.87, 0.23, 0.26, 1.0)
 const FLASH_COLOR := Color(1.0, 1.0, 1.0, 1.0)
 const FLASH_DURATION := 0.25
 
-@export var player_path: NodePath = ^"../Player"
+@export var player_path: NodePath = ^"../World/Player"
 
 var _fill_style: StyleBoxFlat
 var _flash_tween: Tween
