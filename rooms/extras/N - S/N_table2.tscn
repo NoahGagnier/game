@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c0om0jrirgb75"]
+
+[ext_resource type="Script" uid="uid://chvtop6k328p3" path="res://rooms/extras/room_prop.gd" id="1_k8ev0"]
+[ext_resource type="Texture2D" uid="uid://baqutgg0t78it" path="res://rooms/extras!/N - S/table2-N.png" id="2_k8ev0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dhiw"]
+size = Vector2(20, 13.5)
+
+[node name="ETable3" type="StaticBody2D" unique_id=1274147502]
+script = ExtResource("1_k8ev0")
+texture = ExtResource("2_k8ev0")
+texture_path = "res://rooms/extras!/E/e-table3.png"
+sprite_scale = 2.0
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1606528095]
+texture_filter = 1
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+texture = ExtResource("2_k8ev0")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1376740446]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_0dhiw")

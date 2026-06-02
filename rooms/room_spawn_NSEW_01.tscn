@@ -3,10 +3,6 @@
 [ext_resource type="Script" uid="uid://j6fawo5441ay" path="res://rooms/room.gd" id="1_xsjkv"]
 [ext_resource type="Texture2D" uid="uid://ccbewbboyn04n" path="res://rooms/room art/spawn-room.png" id="2_7g1oc"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_rwaeu"]
-[ext_resource type="PackedScene" uid="uid://6yvjw5a24nb5" path="res://rooms/extras/NW - SE/olive_tree_1.tscn" id="3_tree1"]
-[ext_resource type="PackedScene" uid="uid://6yvjw6a24nb6" path="res://rooms/extras/NW - SE/olive_tree_2.tscn" id="4_tree2"]
-[ext_resource type="PackedScene" uid="uid://6yvjw7a24nb7" path="res://rooms/extras/NW - SE/olive_tree_3.tscn" id="5_tree3"]
-[ext_resource type="PackedScene" uid="uid://6yvjw8a24nb8" path="res://rooms/extras/NW - SE/olive_tree_4.tscn" id="6_tree4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwaeu"]
 size = Vector2(470.98254, 62.99989)
@@ -98,22 +94,6 @@ color = Color(0.9, 0.6, 0.2, 1)
 
 [node name="PlayerSpawn" type="Marker2D" parent="Spawns" unique_id=1341763818]
 position = Vector2(512, 512)
-
-[node name="Props" type="Node2D" parent="." unique_id=1571160915]
-
-[node name="OliveTree1" parent="Props" unique_id=854559150 instance=ExtResource("3_tree1")]
-position = Vector2(320, 420)
-sprite_scale = 1.0
-shadow_enabled = false
-
-[node name="OliveTree2" parent="Props" unique_id=395940529 instance=ExtResource("4_tree2")]
-position = Vector2(720, 380)
-
-[node name="OliveTree3" parent="Props" unique_id=2028423695 instance=ExtResource("5_tree3")]
-position = Vector2(580, 680)
-
-[node name="OliveTree4" parent="Props" unique_id=835308742 instance=ExtResource("6_tree4")]
-position = Vector2(507, 355)
 
 [node name="Bounds_Debug" type="ReferenceRect" parent="." unique_id=525415263]
 offset_right = 1024.0

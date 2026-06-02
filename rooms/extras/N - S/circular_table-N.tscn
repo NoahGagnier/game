@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ch46jbnpd87q8"]
+
+[ext_resource type="Script" uid="uid://chvtop6k328p3" path="res://rooms/extras/room_prop.gd" id="1_1e8bl"]
+[ext_resource type="Texture2D" uid="uid://drc718uvskltk" path="res://rooms/extras!/N - S/BIGcircle-N.png" id="2_t5aa8"]
+
+[node name="CircularTableThing" type="StaticBody2D" unique_id=1983592172]
+script = ExtResource("1_1e8bl")
+texture = ExtResource("2_t5aa8")
+texture_path = "res://rooms/extras!/E/circular-table-thing.png"
+sprite_scale = 2.0
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1555422629]
+texture_filter = 1
+position = Vector2(-3, 46)
+scale = Vector2(2, 2)
+texture = ExtResource("2_t5aa8")
+offset = Vector2(0, -57.5)
+flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=266287839]
+polygon = PackedVector2Array(-150, -176, -190, -175, -187, -115, -168, -61, -152, -34, -126, -6, -106, 9, -72, 28, -48, 35, -17, 41, 17, 41, 59, 31, 84, 21, 108, 4, 128, -11, 144, -31, 165, -60, 173, -78, 180, -102, 185, -125, 185, -174, 138, -175, 139, -146, 136, -118, 130, -97, 108, -58, 94, -45, 75, -30, 51, -19, 29, -13, 1, -11, -28, -11, -78, -31, -99, -51, -118, -75, -140, -124, -143, -149, -143, -177)

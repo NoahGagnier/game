@@ -81,7 +81,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
-size = Vector2(49, 30)
+size = Vector2(52, 14.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
 radius = 64.0
@@ -91,15 +91,13 @@ script = ExtResource("1_chest")
 loot_table = ExtResource("3_loot_table")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1930799736]
-position = Vector2(0, -7)
+position = Vector2(0, -12)
 scale = Vector2(1.40625, 1.40625)
 sprite_frames = SubResource("SpriteFrames_chest")
-animation = &"open"
-frame = 7
-frame_progress = 1.0
+animation = &"closed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1685929593]
-position = Vector2(0.5, 0)
+position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_body")
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=679237147]

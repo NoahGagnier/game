@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ccorjftx7a1ge"]
+
+[ext_resource type="Script" uid="uid://chvtop6k328p3" path="res://rooms/extras/room_prop.gd" id="1_unjqp"]
+[ext_resource type="Texture2D" uid="uid://dh12b6pc11qlt" path="res://rooms/extras!/N - S/column-N.png" id="2_unjqp"]
+
+[node name="ETable3" type="StaticBody2D" unique_id=1274147502]
+script = ExtResource("1_unjqp")
+texture = ExtResource("2_unjqp")
+texture_path = "res://rooms/extras!/E/e-table3.png"
+sprite_scale = 2.0
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1606528095]
+texture_filter = 1
+position = Vector2(0, 27)
+scale = Vector2(2, 2)
+texture = ExtResource("2_unjqp")
+offset = Vector2(0, -19.5)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2127835875]
+polygon = PackedVector2Array(-21, 20, -15, 26, 13, 26, 21, 18, 21, -21, -22, -21)

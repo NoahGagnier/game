@@ -92,13 +92,13 @@ script = ExtResource("1_chest")
 loot_table = ExtResource("2_loot")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882686357]
-position = Vector2(0, -13.999999)
+position = Vector2(0, -7.0000005)
 scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_locked")
 animation = &"closed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=67119820]
-position = Vector2(1, -3)
+position = Vector2(1, 7)
 shape = SubResource("RectangleShape2D_body")
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=1474650394]
