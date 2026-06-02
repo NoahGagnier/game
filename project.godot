@@ -79,6 +79,10 @@ run/main_scene="uid://b3u84076due2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.png"
 
+[audio]
+
+buses/default_bus_layout="uid://c0r1synmqj70v"
+
 [autoload]
 
 ItemEvents="*res://loot/item_events.gd"
@@ -165,5 +169,4 @@ pause={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
-2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

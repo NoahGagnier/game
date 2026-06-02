@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bf00dmstcpfls"]
 
 [ext_resource type="Script" uid="uid://blbg6sktsxdly" path="res://rooms/room_playtest.gd" id="1_playtest"]
-[ext_resource type="PackedScene" uid="uid://2q3erjwy3ym" path="res://rooms/Standard Rooms/room_NW_01.tscn" id="2_1js7h"]
+[ext_resource type="PackedScene" uid="uid://byu66k5evghi8" path="res://rooms/Standard Rooms/room_W_01.tscn" id="2_1js7h"]
 [ext_resource type="Script" uid="uid://dbwqyfe0wq06y" path="res://rooms/world_layer.gd" id="2_world"]
 [ext_resource type="PackedScene" uid="uid://c1sx7bic4uhdj" path="res://player.tscn" id="3_player"]
 [ext_resource type="Script" uid="uid://dx8rmgbo1e7cw" path="res://rooms/room_camera.gd" id="4_cam"]
@@ -20,7 +20,7 @@ position = Vector2(512, 512)
 [node name="RoomSlot" type="Node2D" parent="." unique_id=1742194992]
 
 [node name="PlaytestSpawn" type="Marker2D" parent="." unique_id=143007902]
-position = Vector2(653, 525)
+position = Vector2(184, 506)
 gizmo_extents = 24.0
 
 [node name="RoomCamera" type="Camera2D" parent="." unique_id=1482742876]

@@ -3,6 +3,23 @@
 [ext_resource type="Script" uid="uid://j6fawo5441ay" path="res://rooms/room.gd" id="1_tpvk3"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_7ufum"]
 [ext_resource type="Texture2D" uid="uid://bhi2p1wbb8so6" path="res://rooms/room art/room-W.png" id="2_kryn3"]
+[ext_resource type="PackedScene" uid="uid://c8etable50005" path="res://rooms/extras/E/e_table_5.tscn" id="4_xgdij"]
+[ext_resource type="PackedScene" uid="uid://c8etable40004" path="res://rooms/extras/E/e_table_4.tscn" id="5_lc1r3"]
+[ext_resource type="PackedScene" uid="uid://c8etable30003" path="res://rooms/extras/E/e_table_3.tscn" id="6_jsu5b"]
+[ext_resource type="PackedScene" uid="uid://c8etable10001" path="res://rooms/extras/E/e_table_1.tscn" id="7_36kjl"]
+[ext_resource type="PackedScene" uid="uid://c8columne0001" path="res://rooms/extras/E/column_e.tscn" id="8_o8t6q"]
+[ext_resource type="PackedScene" uid="uid://b6pgx4tmptsjf" path="res://rooms/extras/W/circular_table_thing-flip.tscn" id="9_lc1r3"]
+[ext_resource type="PackedScene" uid="uid://bx80odl5jrq5" path="res://rooms/extras/W/W_table2.tscn" id="10_36kjl"]
+[ext_resource type="PackedScene" uid="uid://dw7su7uhpyxdl" path="res://rooms/extras/W/W_table.tscn" id="11_o8t6q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsu5b"]
+size = Vector2(64.00192, 213.78015)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36kjl"]
+size = Vector2(10, 17.999996)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgdij"]
+size = Vector2(12.246208, 7.756363)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kryn3"]
 size = Vector2(15.515522, 57.746284)
@@ -54,10 +71,73 @@ color = Color(0.9, 0.6, 0.2, 1)
 position = Vector2(512, 512)
 
 [node name="Bounds_Debug" type="ReferenceRect" parent="." unique_id=525415263]
-offset_right = 1024.0
-offset_bottom = 1024.0
+offset_left = -2.0
+offset_top = 4.0
+offset_right = 1022.0
+offset_bottom = 1028.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+
+[node name="Props" type="Node2D" parent="." unique_id=101383133]
+position = Vector2(73.527405, 132.30057)
+rotation = 3.1356337
+scale = Vector2(2, 2)
+
+[node name="ETable5" parent="Props" unique_id=6400432 instance=ExtResource("4_xgdij")]
+position = Vector2(-134.08472, -193.65215)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
+
+[node name="ETable4" parent="Props" unique_id=452933397 instance=ExtResource("5_lc1r3")]
+position = Vector2(-85.10645, -189.86024)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
+
+[node name="ETable3" parent="Props" unique_id=1274147502 instance=ExtResource("6_jsu5b")]
+position = Vector2(-67.792046, -74.755005)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
+
+[node name="ETable1" parent="Props" unique_id=1076090492 instance=ExtResource("7_36kjl")]
+position = Vector2(-66.37084, -313.25073)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
+
+[node name="ColumnE" parent="Props" unique_id=2145173532 instance=ExtResource("8_o8t6q")]
+position = Vector2(-35.336197, -235.06447)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
+
+[node name="ColumnE2" parent="Props" unique_id=2140063493 instance=ExtResource("8_o8t6q")]
+position = Vector2(-34.7295, -169.05966)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
+
+[node name="extra prop collisions" type="StaticBody2D" parent="." unique_id=800087625]
+position = Vector2(-12308.062, -12267.917)
+rotation = -0.0009854479
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="extra prop collisions" unique_id=403283218]
+position = Vector2(796.0285, 799.35944)
+rotation = -3.1401145
+scale = Vector2(0.015625, 0.015625)
+shape = SubResource("RectangleShape2D_jsu5b")
+debug_color = Color(0.16860333, 0.5909963, 0.71088666, 0.41960785)
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="extra prop collisions" unique_id=1811355998]
+position = Vector2(794.029, 799.34015)
+rotation = 0.0009854476
+scale = Vector2(0.0625, 0.0625)
+shape = SubResource("RectangleShape2D_36kjl")
+debug_color = Color(0.16860333, 0.5909963, 0.71088666, 0.41960785)
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="extra prop collisions" unique_id=1409314170]
+position = Vector2(776.07495, 784.41626)
+rotation = -3.1411
+scale = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_xgdij")
+debug_color = Color(0.16860333, 0.5909963, 0.71088666, 0.41960785)
 
 [node name="Walls2" type="StaticBody2D" parent="." unique_id=1686288205]
 position = Vector2(4100, 4092)
@@ -83,3 +163,12 @@ shape = SubResource("RectangleShape2D_xf667")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls2" unique_id=1947203590]
 polygon = PackedVector2Array(952.2773, 959.71936, 941.0289, 956.4638, 930.5308, 952.4586, 920.0338, 946.4535, 914.28625, 941.4506, 908.5395, 934.9478, 902.04425, 925.1946, 898.79736, 918.943, 896.80066, 912.192, 894.8067, 899.94104, 894.8126, 887.94104, 896.5672, 878.6919, 900.3224, 868.1937, 906.8279, 856.94696, 913.08124, 850.2, 920.0844, 843.7035, 927.33655, 839.45703, 934.3384, 835.7105, 943.0895, 833.4648, 949.3402, 831.9679, 768.84106, 830.12897, 768.7758, 962.6289)
+
+[node name="CircularTableThing" parent="." unique_id=1983592172 instance=ExtResource("9_lc1r3")]
+position = Vector2(370, 519)
+
+[node name="ETable3" parent="." unique_id=1738797166 instance=ExtResource("10_36kjl")]
+position = Vector2(74, 325)
+
+[node name="ETable4" parent="." unique_id=1020897144 instance=ExtResource("11_o8t6q")]
+position = Vector2(74, 693)
