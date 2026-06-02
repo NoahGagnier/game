@@ -22,7 +22,7 @@ signal player_entered(room: Room)
 @export var enemies_max: int = 4
 ## Distance from each wall reserved as a no-spawn margin when scattering.
 @export var spawn_margin: float = 160.0
-@export var spawn_enemies_on_ready: bool = true
+@export var spawn_enemies_on_ready: bool = false
 
 @export_group("Clearing")
 ## If true, doors lock behind the player until every spawned mob is dead.
@@ -53,6 +53,7 @@ func _setup_world_entities() -> void:
 	if spawn_enemies_on_ready and _should_spawn_enemies():
 		_spawn_enemies()
 	_promote_props()
+	_promote_enemies()
 	if not _has_live_mobs():
 		is_cleared = true
 
@@ -67,6 +68,16 @@ func _promote_props() -> void:
 	for child in get_children():
 		if child is RoomProp:
 			WorldLayer.promote(child)
+
+func _promote_enemies() -> void:
+	var enemies_root := get_node_or_null("Enemies")
+	if enemies_root == null:
+		return
+	for child in enemies_root.get_children():
+		if child is Node2D:
+			# _room is already cached in the enemy's _ready() before this runs,
+			# so promoting to World does not break the room-based aggro check.
+			WorldLayer.promote(child as Node2D)
 
 func _physics_process(_delta: float) -> void:
 	_update_entry_lock()

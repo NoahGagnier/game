@@ -176,7 +176,10 @@ func _update_facing() -> void:
 	_sprite.flip_h = _player.global_position.x < global_position.x
 
 func _can_target_player() -> bool:
-	return EnemyVision.can_target_player(self, _player, _room)
+	return EnemyVision.can_target_player(
+		self, _player, _room, -1.0,
+		EnemyVision.VisionMode.PERIMETER_WALLS_ONLY,
+	)
 
 func _distance_to_player() -> float:
 	if not is_instance_valid(_player):

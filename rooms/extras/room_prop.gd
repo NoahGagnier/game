@@ -26,6 +26,8 @@ extends StaticBody2D
 var _y_sort_shift_applied: float = 0.0
 
 func _ready() -> void:
+	if not Engine.is_editor_hint():
+		collision_layer = 4  # prop layer (layer 3) — flying enemies skip this layer
 	_update_sprite()
 
 func _enter_tree() -> void:

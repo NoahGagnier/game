@@ -212,7 +212,10 @@ func _player_in_aggro() -> bool:
 	return _can_target_player()
 
 func _can_target_player() -> bool:
-	return EnemyVision.can_target_player(self, _player, _room, aggro_radius)
+	return EnemyVision.can_target_player(
+		self, _player, _room, aggro_radius,
+		EnemyVision.VisionMode.PERIMETER_WALLS_ONLY,
+	)
 
 func _find_owning_room() -> Room:
 	var node: Node = get_parent()
