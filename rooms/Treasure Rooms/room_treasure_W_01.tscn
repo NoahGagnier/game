@@ -59,6 +59,16 @@ color = Color(0.9, 0.6, 0.2, 1)
 [node name="PlayerSpawn" type="Marker2D" parent="Spawns" unique_id=1341763818]
 position = Vector2(512, 512)
 
+[node name="ChestSpawn" type="Marker2D" parent="Spawns" unique_id=508830861]
+position = Vector2(298.01544, 514.1304)
+rotation = 3.140396
+scale = Vector2(1.0003467, 1.0003467)
+
+[node name="ChestSpawn2" type="Marker2D" parent="Spawns" unique_id=2064602503]
+position = Vector2(394.04865, 514.01544)
+rotation = 3.140396
+scale = Vector2(1.0003467, 1.0003467)
+
 [node name="Bounds_Debug" type="ReferenceRect" parent="." unique_id=525415263]
 offset_right = 1024.0
 offset_bottom = 1024.0

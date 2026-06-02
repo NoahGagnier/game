@@ -140,18 +140,46 @@ func _clear_room() -> void:
 	_active_doors.clear()
 	cleared.emit(self)
 
-# Places a chest at the room's center, unless the scene has a "ChestSpawn"
-# Marker2D child to override the position.
+# Spawns one chest per ChestSpawn marker found in the room.
+# Looks in three places (in order): a "ChestSpawns" container node, any Marker2D
+# whose name starts with "ChestSpawn" inside the "Spawns" node, or a single
+# "ChestSpawn" direct child. Falls back to room center when none are found.
 func _spawn_treasure_chest() -> void:
-	if _chest != null:
+	# 1. Dedicated container node named "ChestSpawns".
+	var container := get_node_or_null("ChestSpawns")
+	if container != null:
+		for child in container.get_children():
+			if child is Node2D:
+				_spawn_one_chest((child as Node2D).global_position)
 		return
+
+	# 2. Markers under the shared "Spawns" node whose name starts with "ChestSpawn".
+	var spawns_node := get_node_or_null("Spawns")
+	if spawns_node != null:
+		var found := false
+		for child in spawns_node.get_children():
+			if child is Marker2D and (child.name as String).begins_with("ChestSpawn"):
+				_spawn_one_chest((child as Marker2D).global_position)
+				found = true
+		if found:
+			return
+
+	# 3. Single "ChestSpawn" as a direct child of the Room.
+	var marker := get_node_or_null("ChestSpawn") as Marker2D
+	if marker != null:
+		_spawn_one_chest(marker.global_position)
+		return
+
+	# 4. Fallback: room center.
+	_spawn_one_chest(global_position + Vector2(ROOM_SIZE / 2.0, ROOM_SIZE / 2.0))
+
+func _spawn_one_chest(world_pos: Vector2) -> void:
 	var chest := CHEST_SCENE.instantiate() as Chest
 	if chest == null:
 		return
-	var marker := get_node_or_null("ChestSpawn") as Marker2D
-	var spawn_pos := marker.position if marker != null else Vector2(ROOM_SIZE / 2.0, ROOM_SIZE / 2.0)
-	WorldLayer.add_entity(self, chest, global_position + spawn_pos)
-	_chest = chest
+	WorldLayer.add_entity(self, chest, world_pos)
+	if _chest == null:
+		_chest = chest
 
 # Only normal rooms spawn mobs for now. Boss rooms get a dedicated boss later,
 # treasure/start rooms stay safe.

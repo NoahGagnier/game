@@ -57,7 +57,13 @@ color = Color(0.9, 0.6, 0.2, 1)
 [node name="Spawns" type="Node2D" parent="." unique_id=234626652]
 
 [node name="PlayerSpawn" type="Marker2D" parent="Spawns" unique_id=1341763818]
-position = Vector2(512, 512)
+position = Vector2(512, 415)
+
+[node name="ChestSpawn" type="Marker2D" parent="Spawns" unique_id=720956307]
+position = Vector2(559, 346)
+
+[node name="ChestSpawn2" type="Marker2D" parent="Spawns" unique_id=111100001]
+position = Vector2(464, 343)
 
 [node name="Walls2" type="StaticBody2D" parent="." unique_id=25086430]
 position = Vector2(1, 1026)
@@ -85,8 +91,10 @@ position = Vector2(512.2972, 899.8652)
 shape = SubResource("RectangleShape2D_4fewq")
 
 [node name="Bounds_Debug" type="ReferenceRect" parent="." unique_id=525415263]
-offset_right = 1024.0
-offset_bottom = 1024.0
+offset_left = -49.0
+offset_top = -162.0
+offset_right = 975.0
+offset_bottom = 862.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
 

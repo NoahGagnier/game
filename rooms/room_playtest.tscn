@@ -15,12 +15,12 @@ y_sort_enabled = true
 script = ExtResource("2_world")
 
 [node name="Player" parent="World" unique_id=1395412479 instance=ExtResource("3_player")]
-position = Vector2(512, 512)
+position = Vector2(215, 177)
 
 [node name="RoomSlot" type="Node2D" parent="." unique_id=1742194992]
 
 [node name="PlaytestSpawn" type="Marker2D" parent="." unique_id=143007902]
-position = Vector2(368, 518)
+position = Vector2(902, 282)
 gizmo_extents = 24.0
 
 [node name="RoomCamera" type="Camera2D" parent="." unique_id=1482742876]

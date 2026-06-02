@@ -67,6 +67,9 @@ color = Color(0.9, 0.6, 0.2, 1)
 [node name="PlayerSpawn" type="Marker2D" parent="Spawns" unique_id=1341763818]
 position = Vector2(512, 512)
 
+[node name="ChestSpawn" type="Marker2D" parent="." unique_id=111100004]
+position = Vector2(512, 512)
+
 [node name="Bounds_Debug" type="ReferenceRect" parent="." unique_id=525415263]
 offset_right = 1024.0
 offset_bottom = 1024.0

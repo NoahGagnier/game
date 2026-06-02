@@ -59,6 +59,12 @@ color = Color(0.9, 0.6, 0.2, 1)
 [node name="PlayerSpawn" type="Marker2D" parent="Spawns" unique_id=1341763818]
 position = Vector2(512, 512)
 
+[node name="ChestSpawn2" type="Marker2D" parent="Spawns" unique_id=361104640]
+position = Vector2(560, 659)
+
+[node name="ChestSpawn3" type="Marker2D" parent="Spawns" unique_id=623844201]
+position = Vector2(464, 659)
+
 [node name="Walls2" type="StaticBody2D" parent="." unique_id=1208320685]
 position = Vector2(1034.0001, 22.000002)
 rotation = 1.571365
