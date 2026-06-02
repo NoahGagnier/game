@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://j6fawo5441ay" path="res://rooms/room.gd" id="1_klxyv"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_eyni5"]
 [ext_resource type="Texture2D" uid="uid://c7mk1phxn3xn8" path="res://rooms/room art/room-NS.png" id="2_fmr4l"]
+[ext_resource type="PackedScene" uid="uid://cfqt4sycmdeh2" path="res://rooms/extras/EW - NS/column-NS.tscn" id="4_r8kex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_moclc"]
+size = Vector2(37.002, 104.000015)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmr4l"]
 size = Vector2(470.98254, 62.99989)
@@ -75,6 +79,18 @@ offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
 
+[node name="prop extra collision" type="StaticBody2D" parent="." unique_id=1583305593]
+position = Vector2(-0.50390625, 0.50512695)
+rotation = -0.0009853204
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="prop extra collision" unique_id=1353786289]
+position = Vector2(511.76514, 743.9999)
+shape = SubResource("RectangleShape2D_moclc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prop extra collision" unique_id=883371455]
+position = Vector2(512.72534, 281.99973)
+shape = SubResource("RectangleShape2D_moclc")
+
 [node name="Walls2" type="StaticBody2D" parent="." unique_id=537242670]
 position = Vector2(1025, 1023)
 rotation = -3.1420853
@@ -103,3 +119,28 @@ shape = SubResource("RectangleShape2D_1rp7o")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=1951432395]
 position = Vector2(788.2625, 993.6362)
 shape = SubResource("RectangleShape2D_nedop")
+
+[node name="Props" type="Node2D" parent="." unique_id=634286710]
+position = Vector2(-1.0078125, 1.010376)
+rotation = -0.0009854476
+scale = Vector2(2, 2)
+
+[node name="ColumnWithshadow" parent="Props" unique_id=1730525595 instance=ExtResource("4_r8kex")]
+position = Vector2(256.08054, 429.74738)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="ColumnWithshadow2" parent="Props" unique_id=1241978697 instance=ExtResource("4_r8kex")]
+position = Vector2(255.67563, 333.24692)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="ColumnWithshadow3" parent="Props" unique_id=862920582 instance=ExtResource("4_r8kex")]
+position = Vector2(256.31165, 195.2475)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="ColumnWithshadow4" parent="Props" unique_id=791639991 instance=ExtResource("4_r8kex")]
+position = Vector2(256.90768, 97.748024)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)

@@ -13,11 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://c8nqdwpqkuie4" path="res://rooms/extras/NW - SE/graves.tscn" id="11_4h0xa"]
 [ext_resource type="PackedScene" uid="uid://ckonrmv1mjoco" path="res://rooms/extras/NW - SE/benches_h.tscn" id="12_4xopq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gps6u"]
-size = Vector2(32, 78)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_5wvrv"]
 radius = 81.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gps6u"]
+size = Vector2(32, 78)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0vla"]
 size = Vector2(94.5, 34.25)
@@ -108,13 +108,13 @@ border_width = 2.0
 
 [node name="extra prop hitboxes" type="StaticBody2D" parent="." unique_id=1894722569]
 
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=194537966]
+position = Vector2(512, 515)
+shape = SubResource("CircleShape2D_5wvrv")
+
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1997402561]
 position = Vector2(278, 831)
 shape = SubResource("RectangleShape2D_gps6u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="extra prop hitboxes/CollisionShape2D6" unique_id=194537966]
-position = Vector2(234, -316)
-shape = SubResource("CircleShape2D_5wvrv")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=902747735]
 position = Vector2(245.75, 852.875)
@@ -147,6 +147,14 @@ shape = SubResource("RectangleShape2D_5wvrv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1173888863]
 position = Vector2(457, 167.5)
 shape = SubResource("RectangleShape2D_5wvrv")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1776969247]
+position = Vector2(136, 163)
+shape = SubResource("RectangleShape2D_4h0xa")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1763340039]
+position = Vector2(168, 140)
+shape = SubResource("RectangleShape2D_4xopq")
 
 [node name="Walls2" type="StaticBody2D" parent="." unique_id=1311046988]
 
@@ -184,7 +192,7 @@ position = Vector2(382, 652)
 script = null
 
 [node name="OliveTree3" parent="Props" unique_id=302364051 instance=ExtResource("6_xl4tl")]
-position = Vector2(326, 464)
+position = Vector2(324, 442)
 script = null
 
 [node name="OliveTree4" parent="Props" unique_id=665962169 instance=ExtResource("7_o7078")]
@@ -212,13 +220,5 @@ position = Vector2(774, 856)
 script = null
 
 [node name="BenchesH" parent="Props" unique_id=2118578149 instance=ExtResource("12_4xopq")]
-position = Vector2(250, 573)
+position = Vector2(252, 553)
 script = null
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=1776969247]
-position = Vector2(136, 163)
-shape = SubResource("RectangleShape2D_4h0xa")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=1763340039]
-position = Vector2(168, 140)
-shape = SubResource("RectangleShape2D_4xopq")

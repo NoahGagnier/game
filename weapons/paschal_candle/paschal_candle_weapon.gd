@@ -41,7 +41,12 @@ func _update_fireball_positions() -> void:
 		var pos := Vector2(cos(phase), sin(phase)) * orbit_radius
 		var fireball := _fireballs[i]
 		fireball.position = pos
-		fireball.z_index = 1 if pos.y > 0.0 else -1
+		if pos.y > 0.0:
+			fireball.z_index = 10
+			fireball.z_as_relative = false
+		else:
+			fireball.z_index = -1
+			fireball.z_as_relative = true
 		var tangent := Vector2(sin(phase), -cos(phase))
 		if tangent.length_squared() > 0.0001:
 			fireball.rotation = tangent.angle() + fireball.rotation_offset

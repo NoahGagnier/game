@@ -100,6 +100,7 @@ sprite_frames = SubResource("SpriteFrames_back")
 autoplay = "default"
 
 [node name="CircleFront" type="AnimatedSprite2D" parent="."]
-z_index = 1
+z_index = 10
+z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_front")
 autoplay = "default"

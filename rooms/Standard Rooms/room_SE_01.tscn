@@ -111,13 +111,14 @@ border_width = 2.0
 position = Vector2(-0.50390625, 0.50512695)
 rotation = -0.0009853204
 
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1190173265]
-position = Vector2(568.78577, 727.0566)
-rotation = 0.001970641
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1775572752]
+position = Vector2(572.6735, 843.0595)
+rotation = 0.0039412826
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_cteik")
 
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="extra prop hitboxes/CollisionShape2D12" unique_id=1775572752]
-position = Vector2(4.116289, 115.99511)
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1190173265]
+position = Vector2(568.78577, 727.0566)
 rotation = 0.001970641
 shape = SubResource("RectangleShape2D_cteik")
 
@@ -156,15 +157,15 @@ position = Vector2(849.3949, 872.2072)
 rotation = 0.0009853204
 shape = SubResource("RectangleShape2D_3qlnx")
 
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=538205773]
+position = Vector2(432.72528, 788.67236)
+rotation = 0.0019706408
+shape = SubResource("RectangleShape2D_s58v5")
+
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1593281300]
 position = Vector2(757.7414, 774.2419)
 rotation = 0.0009853204
 shape = SubResource("RectangleShape2D_etne1")
-
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="extra prop hitboxes/CollisionShape2D10" unique_id=538205773]
-position = Vector2(-325.00174, 14.750732)
-rotation = 0.0009853204
-shape = SubResource("RectangleShape2D_s58v5")
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=887265985]
 position = Vector2(789.76404, 751.2734)
@@ -225,12 +226,12 @@ shadow_enabled = false
 shadow_color = Color(0, 0, 0, 0.2)
 
 [node name="OliveTree2" parent="Props" unique_id=635436502 instance=ExtResource("9_b8d0e")]
-position = Vector2(436, 409)
+position = Vector2(436, 388)
 shadow_enabled = false
 shadow_color = Color(0, 0, 0, 0.2)
 
 [node name="OliveTree5" parent="Props" unique_id=1364977047 instance=ExtResource("6_s0oxs")]
-position = Vector2(650, 584)
+position = Vector2(658, 577)
 shadow_color = Color(0, 0, 0, 0.2)
 
 [node name="MiniFountain" parent="Props" unique_id=1071045033 instance=ExtResource("10_v524n")]
@@ -240,4 +241,4 @@ position = Vector2(642, 627)
 position = Vector2(246, 254)
 
 [node name="BenchesH" parent="Props" unique_id=72364748 instance=ExtResource("12_cteik")]
-position = Vector2(774, 464)
+position = Vector2(776, 445)

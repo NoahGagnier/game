@@ -21,6 +21,8 @@ var _flash_tween: Tween
 func add_orb() -> void:
 	var s := Sprite2D.new()
 	s.texture = shield_texture
+	s.z_as_relative = false
+	s.z_index = 10
 	add_child(s)
 	_orbs.append(s)
 

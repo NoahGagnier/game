@@ -50,7 +50,8 @@ animations = [{
 radius = 28.0
 
 [node name="HolyCircleBurst" type="Area2D" unique_id=137478525]
-z_index = -1
+z_index = 10
+z_as_relative = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_burst")
