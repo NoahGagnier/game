@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c8babytree001"]
+
+[ext_resource type="Script" uid="uid://chvtop6k328p3" path="res://rooms/extras/room_prop.gd" id="1_4bku2"]
+[ext_resource type="Texture2D" uid="uid://j1k0xvam6vpd" path="res://rooms/extras!/NW - SE/baby-tree.png" id="2_76v1b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qoiha"]
+radius = 4.0
+
+[node name="BabyTree" type="StaticBody2D" unique_id=1788017510]
+script = ExtResource("1_4bku2")
+texture_path = "res://rooms/extras!/baby-tree.png"
+sprite_scale = 2.0
+shadow_enabled = true
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1902885257]
+texture_filter = 1
+position = Vector2(-2, 29)
+scale = Vector2(2, 2)
+texture = ExtResource("2_76v1b")
+offset = Vector2(0, -16.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=477603188]
+position = Vector2(3, 20)
+shape = SubResource("CircleShape2D_qoiha")

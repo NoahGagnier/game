@@ -758,7 +758,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
 radius = 11.0
-height = 34.4
+height = 28.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nvl01"]
 radius = 11.0
@@ -784,8 +784,7 @@ sprite_frames = SubResource("SpriteFrames_default")
 animation = &"hurt_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=376936190]
-visible = false
-position = Vector2(0, 9)
+position = Vector2(0, 19)
 shape = SubResource("CapsuleShape2D_body")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=2120863703]

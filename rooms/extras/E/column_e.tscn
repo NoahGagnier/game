@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c8columne0001"]
+
+[ext_resource type="Script" uid="uid://chvtop6k328p3" path="res://rooms/extras/room_prop.gd" id="1_prop"]
+[ext_resource type="Texture2D" uid="uid://6jgdkylks5rw" path="res://rooms/extras!/E/column-E.png" id="2_tex"]
+
+[node name="ColumnE" type="StaticBody2D" unique_id=2145173532]
+script = ExtResource("1_prop")
+texture = ExtResource("2_tex")
+texture_path = "res://rooms/extras!/E/column-E.png"
+sprite_scale = 2.0
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1121914762]
+texture_filter = 1
+position = Vector2(-1, 36)
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")
+offset = Vector2(0, -22.5)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1630814837]
+polygon = PackedVector2Array(-24, 6, -31, 1, -31, -18, 29, -18, 29, 0, 21, 6)

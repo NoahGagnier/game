@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://t2ylckpof6b5"]
+
+[ext_resource type="Script" uid="uid://chvtop6k328p3" path="res://rooms/extras/room_prop.gd" id="1_prop"]
+[ext_resource type="Texture2D" uid="uid://4o3ej8458ynh" path="res://rooms/extras!/EW - NS/column-withshadow.png" id="2_tex"]
+
+[node name="ColumnWithshadow" type="StaticBody2D" unique_id=1730525595]
+script = ExtResource("1_prop")
+texture = ExtResource("2_tex")
+texture_path = "res://rooms/extras!/EW - NS/column-withshadow.png"
+sprite_scale = 2.0
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=476632395]
+texture_filter = 1
+position = Vector2(0, 31)
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")
+offset = Vector2(0, -21.5)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1711641354]
+polygon = PackedVector2Array(-30, 0, -20, 8, 20, 7, 29, -3, 30, -20, -30, -20)

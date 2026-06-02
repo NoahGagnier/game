@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://j6fawo5441ay" path="res://rooms/room.gd" id="1_4bphw"]
 [ext_resource type="Texture2D" uid="uid://be07pjhhwb56q" path="res://rooms/room art/room-EW.png" id="2_2ixhq"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_6yp28"]
+[ext_resource type="PackedScene" uid="uid://t2ylckpof6b5" path="res://rooms/extras/EW - NS/column_withshadow.tscn" id="4_mj0vf"]
+[ext_resource type="PackedScene" uid="uid://bcnn8w08r0mb5" path="res://rooms/extras/EW - NS/table_wshadow.tscn" id="5_52d4n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ixhq"]
 size = Vector2(66, 475)
@@ -74,6 +76,36 @@ offset_right = 1024.0
 offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+
+[node name="Props" type="Node2D" parent="." unique_id=448525314]
+position = Vector2(1025, 1023)
+rotation = 3.1411
+
+[node name="ColumnWithshadow4" parent="Props" unique_id=1438740032 instance=ExtResource("4_mj0vf")]
+position = Vector2(180.75952, 488.0891)
+rotation = -3.141249
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="ColumnWithshadow3" parent="Props" unique_id=1730525595 instance=ExtResource("4_mj0vf")]
+position = Vector2(372.75848, 490.18372)
+rotation = 3.1366823
+
+[node name="ColumnWithshadow2" parent="Props" unique_id=1480095612 instance=ExtResource("4_mj0vf")]
+position = Vector2(654.7584, 490.32263)
+rotation = 3.1398327
+
+[node name="ColumnWithshadow" parent="Props" unique_id=1522924564 instance=ExtResource("4_mj0vf")]
+position = Vector2(848.75726, 492.41818)
+rotation = -3.1411
+
+[node name="TableWshadow2" parent="Props" unique_id=1959207261 instance=ExtResource("5_52d4n")]
+position = Vector2(750.75366, 500.36993)
+rotation = -3.1404545
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="TableWshadow" parent="Props" unique_id=755346253 instance=ExtResource("5_52d4n")]
+position = Vector2(280.75363, 500.1384)
+rotation = -3.1344464
 
 [node name="Walls2" type="StaticBody2D" parent="." unique_id=307564679]
 position = Vector2(1025, 1023)

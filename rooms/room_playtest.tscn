@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bf00dmstcpfls"]
+
+[ext_resource type="Script" uid="uid://blbg6sktsxdly" path="res://rooms/room_playtest.gd" id="1_playtest"]
+[ext_resource type="PackedScene" uid="uid://2o1dadwfkn4s" path="res://rooms/Standard Rooms/room_SW_01.tscn" id="2_1js7h"]
+[ext_resource type="Script" uid="uid://dbwqyfe0wq06y" path="res://rooms/world_layer.gd" id="2_world"]
+[ext_resource type="PackedScene" uid="uid://c1sx7bic4uhdj" path="res://player.tscn" id="3_player"]
+[ext_resource type="Script" uid="uid://dx8rmgbo1e7cw" path="res://rooms/room_camera.gd" id="4_cam"]
+
+[node name="RoomPlaytest" type="Node2D" unique_id=976115251]
+script = ExtResource("1_playtest")
+room_scene = ExtResource("2_1js7h")
+
+[node name="World" type="Node2D" parent="." unique_id=1025943826]
+y_sort_enabled = true
+script = ExtResource("2_world")
+
+[node name="Player" parent="World" unique_id=1395412479 instance=ExtResource("3_player")]
+position = Vector2(512, 512)
+
+[node name="RoomSlot" type="Node2D" parent="." unique_id=1742194992]
+
+[node name="PlaytestSpawn" type="Marker2D" parent="." unique_id=143007902]
+position = Vector2(428, 581)
+gizmo_extents = 24.0
+
+[node name="RoomCamera" type="Camera2D" parent="." unique_id=1482742876]
+position = Vector2(512, 512)
+script = ExtResource("4_cam")
+target_path = NodePath("../World/Player")

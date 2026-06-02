@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://c8nqdwpqkuie4"]
+
+[ext_resource type="Script" uid="uid://chvtop6k328p3" path="res://rooms/extras/room_prop.gd" id="1_f07qg"]
+[ext_resource type="Texture2D" uid="uid://cefvxkn4lujmq" path="res://rooms/extras!/NW - SE/graves.png" id="2_fw8kr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wb4b5"]
+size = Vector2(24, 26)
+
+[node name="Graves" type="StaticBody2D" unique_id=963958469]
+script = ExtResource("1_f07qg")
+texture_path = "res://rooms/extras!/graves.png"
+sprite_scale = 2.0
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1938495204]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_fw8kr")
+offset = Vector2(0, -26.5)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="." unique_id=430372804]
+position = Vector2(-22, -94)
+shape = SubResource("RectangleShape2D_wb4b5")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="." unique_id=505044816]
+position = Vector2(24, -94)
+shape = SubResource("RectangleShape2D_wb4b5")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=879439273]
+position = Vector2(68, -94)
+shape = SubResource("RectangleShape2D_wb4b5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=269305394]
+position = Vector2(-50, -16)
+shape = SubResource("RectangleShape2D_wb4b5")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=2094229673]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_wb4b5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=41167759]
+position = Vector2(46, -16)
+shape = SubResource("RectangleShape2D_wb4b5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1154223549]
+position = Vector2(-70, -92)
+shape = SubResource("RectangleShape2D_wb4b5")

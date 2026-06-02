@@ -4,6 +4,12 @@
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_qs8lf"]
 [ext_resource type="Texture2D" uid="uid://c7ar347d4fdo0" path="res://rooms/room art/NSE.png" id="2_r734v"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmued"]
+size = Vector2(31.001753, 7.5707364)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvxjx"]
+size = Vector2(61.999603, 14.500316)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r734v"]
 size = Vector2(236.4931, 32.55802)
 
@@ -87,6 +93,23 @@ offset_right = 1024.0
 offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+
+[node name="extra prop htiboxes" type="StaticBody2D" parent="." unique_id=1482662124]
+position = Vector2(-1018.00006, 601.0001)
+rotation = 3.1366193
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=1578646650]
+position = Vector2(-1686.619, 523.76416)
+rotation = 0.008961327
+scale = Vector2(4.0000005, 4.0000005)
+shape = SubResource("RectangleShape2D_hmued")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=288540680]
+position = Vector2(-1838.6243, 523.36285)
+rotation = 0.0044806637
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_mvxjx")
 
 [node name="Walls2" type="StaticBody2D" parent="." unique_id=2053598960]
 position = Vector2(2050, 2046)

@@ -3,6 +3,36 @@
 [ext_resource type="Script" uid="uid://j6fawo5441ay" path="res://rooms/room.gd" id="1_t85np"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_76j1i"]
 [ext_resource type="Texture2D" uid="uid://dbq8qaseriy" path="res://rooms/room art/room-SW.png" id="2_rffdl"]
+[ext_resource type="PackedScene" uid="uid://5r6kve141t31" path="res://rooms/extras/NE - SW/doubletable_sw.tscn" id="4_p0l1m"]
+[ext_resource type="PackedScene" uid="uid://c8neswtablene" path="res://rooms/extras/NE - SW/table_ne.tscn" id="5_8bkkg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxyg2"]
+size = Vector2(110.00864, 22.554104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqi3t"]
+size = Vector2(21.896072, 63.008522)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_th0k0"]
+a = Vector2(-24.457458, 59.127228)
+b = Vector2(2.4227905, 83.26123)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5qcj"]
+size = Vector2(107.23715, 225.98851)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n287i"]
+size = Vector2(195.11479, 327.79443)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hw65y"]
+size = Vector2(114.21961, 30.130987)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcq7q"]
+size = Vector2(385.36624, 30.158836)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pi2m"]
+size = Vector2(253.96698, 108.01853)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcuuf"]
+size = Vector2(385.36624, 213.02213)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rffdl"]
 size = Vector2(66, 475)
@@ -78,6 +108,65 @@ border_color = Color(1, 0, 1, 1)
 border_width = 2.0
 metadata/_edit_use_anchors_ = true
 
+[node name="extra prop htiboxes" type="StaticBody2D" parent="." unique_id=356463020]
+position = Vector2(-1018.00006, 601.0001)
+rotation = 9.419805
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=1851397019]
+position = Vector2(-1197.5219, 521.33765)
+shape = SubResource("RectangleShape2D_mxyg2")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=286310092]
+position = Vector2(-1095.1053, 420.55902)
+shape = SubResource("RectangleShape2D_sqi3t")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=533512510]
+position = Vector2(-1091.3126, 462.25464)
+shape = SubResource("RectangleShape2D_sqi3t")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=1845436859]
+position = Vector2(-1964.5707, -286.1411)
+shape = SubResource("RectangleShape2D_sqi3t")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=1514225094]
+position = Vector2(-1649.5515, 139.5499)
+shape = SubResource("SegmentShape2D_th0k0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=1965755768]
+position = Vector2(-1721.8527, 99.38755)
+shape = SubResource("RectangleShape2D_i5qcj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=1062892366]
+position = Vector2(-1873.2527, 57.170387)
+shape = SubResource("RectangleShape2D_n287i")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=106558365]
+position = Vector2(-1785.0564, 466.12817)
+rotation = 0.76913
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_hw65y")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=821819272]
+position = Vector2(-1930.0911, 317.86304)
+rotation = 0.7816796
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_hw65y")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=1542799013]
+position = Vector2(-1866.158, 421.08423)
+rotation = 0.7942291
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_jcq7q")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=1395505080]
+position = Vector2(-1522.5281, 275.40234)
+shape = SubResource("RectangleShape2D_4pi2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=1065648730]
+position = Vector2(-1497.7979, 434.06213)
+shape = SubResource("RectangleShape2D_pcuuf")
+
 [node name="Walls2" type="StaticBody2D" parent="." unique_id=994988451]
 position = Vector2(1025, 1023)
 rotation = -3.1420853
@@ -105,3 +194,9 @@ shape = SubResource("RectangleShape2D_gbsv3")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=574365493]
 position = Vector2(511.49976, 993.62585)
 shape = SubResource("RectangleShape2D_fal40")
+
+[node name="DoubletableSw" parent="." unique_id=1161605187 instance=ExtResource("4_p0l1m")]
+position = Vector2(846, 960)
+
+[node name="TableNe" parent="." unique_id=2484962 instance=ExtResource("5_8bkkg")]
+position = Vector2(947, 856)

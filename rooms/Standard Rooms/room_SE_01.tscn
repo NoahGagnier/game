@@ -4,14 +4,35 @@
 [ext_resource type="Texture2D" uid="uid://de03atsve8x3b" path="res://rooms/room art/SE-garden.png" id="2_ev121"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_jpemh"]
 [ext_resource type="PackedScene" uid="uid://dwv5fpwkxl87g" path="res://locked_chest.tscn" id="4_aq7or"]
-[ext_resource type="PackedScene" uid="uid://c8babytree001" path="res://rooms/extras/baby_tree.tscn" id="5_uivgy"]
-[ext_resource type="PackedScene" uid="uid://6yvjw5a24nb5" path="res://rooms/extras/olive_tree_1.tscn" id="6_s0oxs"]
-[ext_resource type="PackedScene" uid="uid://6yvjw7a24nb7" path="res://rooms/extras/olive_tree_3.tscn" id="7_v524n"]
-[ext_resource type="PackedScene" uid="uid://6yvjw8a24nb8" path="res://rooms/extras/olive_tree_4.tscn" id="8_cteik"]
-[ext_resource type="PackedScene" uid="uid://6yvjw6a24nb6" path="res://rooms/extras/olive_tree_2.tscn" id="9_b8d0e"]
-[ext_resource type="PackedScene" path="res://rooms/extras/mini_fountain.tscn" id="10_v524n"]
-[ext_resource type="PackedScene" path="res://rooms/extras/graves.tscn" id="11_cteik"]
-[ext_resource type="PackedScene" uid="uid://ckonrmv1mjoco" path="res://rooms/extras/benches_h.tscn" id="12_cteik"]
+[ext_resource type="PackedScene" uid="uid://c8babytree001" path="res://rooms/extras/NW - SE/baby_tree.tscn" id="5_uivgy"]
+[ext_resource type="PackedScene" uid="uid://6yvjw5a24nb5" path="res://rooms/extras/NW - SE/olive_tree_1.tscn" id="6_s0oxs"]
+[ext_resource type="PackedScene" uid="uid://6yvjw7a24nb7" path="res://rooms/extras/NW - SE/olive_tree_3.tscn" id="7_v524n"]
+[ext_resource type="PackedScene" uid="uid://6yvjw8a24nb8" path="res://rooms/extras/NW - SE/olive_tree_4.tscn" id="8_cteik"]
+[ext_resource type="PackedScene" uid="uid://6yvjw6a24nb6" path="res://rooms/extras/NW - SE/olive_tree_2.tscn" id="9_b8d0e"]
+[ext_resource type="PackedScene" uid="uid://cbgu50eb3hobx" path="res://rooms/extras/NW - SE/mini_fountain.tscn" id="10_v524n"]
+[ext_resource type="PackedScene" uid="uid://c8nqdwpqkuie4" path="res://rooms/extras/NW - SE/graves.tscn" id="11_cteik"]
+[ext_resource type="PackedScene" uid="uid://ckonrmv1mjoco" path="res://rooms/extras/NW - SE/benches_h.tscn" id="12_cteik"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cteik"]
+size = Vector2(10.001038, 59.999985)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cteik"]
+radius = 81.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8d0e"]
+size = Vector2(32, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qlnx"]
+size = Vector2(94.5, 34.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_etne1"]
+size = Vector2(32, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgh3b"]
+size = Vector2(94.5, 34.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s58v5"]
+size = Vector2(32, 291.50137)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ev121"]
 size = Vector2(96.88518, 1027.0033)
@@ -86,6 +107,70 @@ offset_bottom = 1031.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
 
+[node name="extra prop hitboxes" type="StaticBody2D" parent="." unique_id=1573984603]
+position = Vector2(-0.50390625, 0.50512695)
+rotation = -0.0009853204
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1190173265]
+position = Vector2(568.78577, 727.0566)
+rotation = 0.001970641
+shape = SubResource("RectangleShape2D_cteik")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="extra prop hitboxes/CollisionShape2D12" unique_id=1775572752]
+position = Vector2(4.116289, 115.99511)
+rotation = 0.001970641
+shape = SubResource("RectangleShape2D_cteik")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1805798508]
+position = Vector2(512.0134, 497.99957)
+rotation = 0.0009853204
+shape = SubResource("CircleShape2D_cteik")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1859557228]
+position = Vector2(873.2527, 255.35544)
+rotation = 0.0009853204
+shape = SubResource("RectangleShape2D_b8d0e")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=908107876]
+position = Vector2(840.98114, 277.19864)
+rotation = 0.0009853204
+shape = SubResource("RectangleShape2D_3qlnx")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=2111465728]
+position = Vector2(749.32764, 179.23329)
+rotation = 0.0009853204
+shape = SubResource("RectangleShape2D_etne1")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1381889480]
+position = Vector2(781.35034, 156.26483)
+rotation = 0.0009853204
+shape = SubResource("RectangleShape2D_wgh3b")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=48622119]
+position = Vector2(881.66644, 850.364)
+rotation = 0.0009853204
+shape = SubResource("RectangleShape2D_b8d0e")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=513216459]
+position = Vector2(849.3949, 872.2072)
+rotation = 0.0009853204
+shape = SubResource("RectangleShape2D_3qlnx")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1593281300]
+position = Vector2(757.7414, 774.2419)
+rotation = 0.0009853204
+shape = SubResource("RectangleShape2D_etne1")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="extra prop hitboxes/CollisionShape2D10" unique_id=538205773]
+position = Vector2(-325.00174, 14.750732)
+rotation = 0.0009853204
+shape = SubResource("RectangleShape2D_s58v5")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=887265985]
+position = Vector2(789.76404, 751.2734)
+rotation = 0.0009853204
+shape = SubResource("RectangleShape2D_wgh3b")
+
 [node name="Walls2" type="StaticBody2D" parent="." unique_id=1151566109]
 position = Vector2(1025, 1023)
 rotation = -3.1420853
@@ -115,7 +200,7 @@ position = Vector2(512.2724, 975.12665)
 shape = SubResource("RectangleShape2D_vwh5t")
 
 [node name="LockedChest" parent="." unique_id=361220295 instance=ExtResource("4_aq7or")]
-position = Vector2(817, 814)
+position = Vector2(457, 175)
 
 [node name="Props" type="Node2D" parent="." unique_id=563961034]
 
@@ -149,10 +234,10 @@ position = Vector2(650, 584)
 shadow_color = Color(0, 0, 0, 0.2)
 
 [node name="MiniFountain" parent="Props" unique_id=1071045033 instance=ExtResource("10_v524n")]
-position = Vector2(642, 640)
+position = Vector2(642, 627)
 
 [node name="Graves" parent="Props" unique_id=840569000 instance=ExtResource("11_cteik")]
-position = Vector2(246, 264)
+position = Vector2(246, 254)
 
 [node name="BenchesH" parent="Props" unique_id=72364748 instance=ExtResource("12_cteik")]
 position = Vector2(774, 464)

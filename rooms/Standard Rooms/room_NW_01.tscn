@@ -4,14 +4,35 @@
 [ext_resource type="Texture2D" uid="uid://d4ng6gqsvka6r" path="res://rooms/room art/NW-garden.png" id="2_begbi"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_xlwbh"]
 [ext_resource type="PackedScene" uid="uid://dwv5fpwkxl87g" path="res://locked_chest.tscn" id="4_3ps8v"]
-[ext_resource type="PackedScene" uid="uid://6yvjw5a24nb5" path="res://rooms/extras/olive_tree_1.tscn" id="5_ontis"]
-[ext_resource type="PackedScene" uid="uid://6yvjw7a24nb7" path="res://rooms/extras/olive_tree_3.tscn" id="6_xl4tl"]
-[ext_resource type="PackedScene" uid="uid://6yvjw8a24nb8" path="res://rooms/extras/olive_tree_4.tscn" id="7_o7078"]
-[ext_resource type="PackedScene" uid="uid://c8babytree001" path="res://rooms/extras/baby_tree.tscn" id="8_5wvrv"]
-[ext_resource type="PackedScene" uid="uid://6yvjw6a24nb6" path="res://rooms/extras/olive_tree_2.tscn" id="9_gps6u"]
-[ext_resource type="PackedScene" uid="uid://cbgu50eb3hobx" path="res://rooms/extras/mini_fountain.tscn" id="10_w0vla"]
-[ext_resource type="PackedScene" uid="uid://c8nqdwpqkuie4" path="res://rooms/extras/graves.tscn" id="11_4h0xa"]
-[ext_resource type="PackedScene" uid="uid://ckonrmv1mjoco" path="res://rooms/extras/benches_h.tscn" id="12_4xopq"]
+[ext_resource type="PackedScene" uid="uid://6yvjw5a24nb5" path="res://rooms/extras/NW - SE/olive_tree_1.tscn" id="5_ontis"]
+[ext_resource type="PackedScene" uid="uid://6yvjw7a24nb7" path="res://rooms/extras/NW - SE/olive_tree_3.tscn" id="6_xl4tl"]
+[ext_resource type="PackedScene" uid="uid://6yvjw8a24nb8" path="res://rooms/extras/NW - SE/olive_tree_4.tscn" id="7_o7078"]
+[ext_resource type="PackedScene" uid="uid://c8babytree001" path="res://rooms/extras/NW - SE/baby_tree.tscn" id="8_5wvrv"]
+[ext_resource type="PackedScene" uid="uid://6yvjw6a24nb6" path="res://rooms/extras/NW - SE/olive_tree_2.tscn" id="9_gps6u"]
+[ext_resource type="PackedScene" uid="uid://cbgu50eb3hobx" path="res://rooms/extras/NW - SE/mini_fountain.tscn" id="10_w0vla"]
+[ext_resource type="PackedScene" uid="uid://c8nqdwpqkuie4" path="res://rooms/extras/NW - SE/graves.tscn" id="11_4h0xa"]
+[ext_resource type="PackedScene" uid="uid://ckonrmv1mjoco" path="res://rooms/extras/NW - SE/benches_h.tscn" id="12_4xopq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gps6u"]
+size = Vector2(32, 78)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5wvrv"]
+radius = 81.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0vla"]
+size = Vector2(94.5, 34.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4h0xa"]
+size = Vector2(32, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xopq"]
+size = Vector2(94.5, 34.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo5dx"]
+size = Vector2(31, 289)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wvrv"]
+size = Vector2(14, 57.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_begbi"]
 size = Vector2(66, 475)
@@ -85,6 +106,48 @@ offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
 
+[node name="extra prop hitboxes" type="StaticBody2D" parent="." unique_id=1894722569]
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1997402561]
+position = Vector2(278, 831)
+shape = SubResource("RectangleShape2D_gps6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="extra prop hitboxes/CollisionShape2D6" unique_id=194537966]
+position = Vector2(234, -316)
+shape = SubResource("CircleShape2D_5wvrv")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=902747735]
+position = Vector2(245.75, 852.875)
+shape = SubResource("RectangleShape2D_w0vla")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1635264342]
+position = Vector2(154, 755)
+shape = SubResource("RectangleShape2D_4h0xa")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=938785156]
+position = Vector2(186, 732)
+shape = SubResource("RectangleShape2D_4xopq")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=838928247]
+position = Vector2(260, 239)
+shape = SubResource("RectangleShape2D_gps6u")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=647964421]
+position = Vector2(227.75, 260.875)
+shape = SubResource("RectangleShape2D_w0vla")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=670226658]
+position = Vector2(587.5, 222.5)
+shape = SubResource("RectangleShape2D_bo5dx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=166459710]
+position = Vector2(457, 287.75)
+shape = SubResource("RectangleShape2D_5wvrv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1173888863]
+position = Vector2(457, 167.5)
+shape = SubResource("RectangleShape2D_5wvrv")
+
 [node name="Walls2" type="StaticBody2D" parent="." unique_id=1311046988]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2" unique_id=1062558064]
@@ -141,7 +204,7 @@ position = Vector2(439, 392)
 script = null
 
 [node name="MiniFountain" parent="Props" unique_id=946121192 instance=ExtResource("10_w0vla")]
-position = Vector2(388, 416)
+position = Vector2(388, 403)
 script = null
 
 [node name="Graves" parent="Props" unique_id=478461757 instance=ExtResource("11_4h0xa")]
@@ -151,3 +214,11 @@ script = null
 [node name="BenchesH" parent="Props" unique_id=2118578149 instance=ExtResource("12_4xopq")]
 position = Vector2(250, 573)
 script = null
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=1776969247]
+position = Vector2(136, 163)
+shape = SubResource("RectangleShape2D_4h0xa")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=1763340039]
+position = Vector2(168, 140)
+shape = SubResource("RectangleShape2D_4xopq")
