@@ -2,6 +2,8 @@ extends Control
 
 const GAME_SCENE := "res://game.tscn"
 
+const _TRACK_CUTSCENE := 5
+
 @export var slides: Array[CutsceneSlide] = []
 @export var chars_per_second: float = 30.0
 @export var fade_duration: float = 0.5
@@ -19,6 +21,9 @@ var _finished: bool = false
 var _fading: bool = false
 
 func _ready() -> void:
+	var m := get_node_or_null("/root/MusicManager")
+	if m != null:
+		m.call("play", _TRACK_CUTSCENE)
 	_fading = true
 	_fade.modulate.a = 1.0
 	_label.text = ""

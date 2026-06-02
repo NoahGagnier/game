@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://idmkv4h42uw"]
+
+[ext_resource type="Script" uid="uid://chvtop6k328p3" path="res://rooms/extras/room_prop.gd" id="1_prop"]
+[ext_resource type="Texture2D" uid="uid://d3usvg3y4i4xq" path="res://rooms/extras!/NSE - NSW/stairs-NSE.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssfiy"]
+size = Vector2(9.5, 11.5)
+
+[node name="StairsNse" type="StaticBody2D" unique_id=1284302691]
+script = ExtResource("1_prop")
+texture = ExtResource("2_tex")
+texture_path = "res://rooms/extras!/NSE - NSW/stairs-NSE.png"
+sprite_scale = 2.0
+y_sort_use_sprite_back_edge = null
+y_sort_extra = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=802649760]
+position = Vector2(-0.5, 17.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ssfiy")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=215226658]
+texture_filter = 1
+position = Vector2(-1, 30)
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")
+offset = Vector2(0, -9.5)

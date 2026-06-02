@@ -11,6 +11,7 @@ script = ExtResource("1_prop")
 texture = ExtResource("2_tex")
 texture_path = "res://rooms/extras!/NE - SW/pewstop-NE.png"
 sprite_scale = 2.0
+y_sort_use_sprite_back_edge = true
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=30791558]
 texture_filter = 1

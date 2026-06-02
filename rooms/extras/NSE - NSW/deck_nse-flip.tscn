@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dv7vvh6t8uj7q"]
+
+[ext_resource type="Script" uid="uid://chvtop6k328p3" path="res://rooms/extras/room_prop.gd" id="1_h8oko"]
+[ext_resource type="Texture2D" uid="uid://86a4rc6gsyoe" path="res://rooms/extras!/NSE - NSW/deck-NSE.png" id="2_4lidq"]
+
+[node name="DeckNse" type="StaticBody2D" unique_id=159957527]
+script = ExtResource("1_h8oko")
+texture = ExtResource("2_4lidq")
+texture_path = "res://rooms/extras!/NSE - NSW/deck-NSE.png"
+sprite_scale = 2.0
+y_sort_use_sprite_back_edge = null
+y_sort_extra = null
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2102589239]
+texture_filter = 1
+position = Vector2(-0.19999695, 176.6)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4lidq")
+offset = Vector2(0, -76)
+flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=206577070]
+position = Vector2(-0.19999695, 176.6)
+polygon = PackedVector2Array(53, 0, 35, -7, 21, -16, 3, -28, -9, -40, -26, -62, -39, -82, -46, -105, -51, -130, -52, -177, -43, -186, -33, -211, -25, -233, -14, -244, -3, -257, 11, -268, 22, -279, 36, -287, 49, -292, 54, -292)

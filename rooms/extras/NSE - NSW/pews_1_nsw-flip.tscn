@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dndyiv7ecy7h2"]
+
+[ext_resource type="Script" uid="uid://chvtop6k328p3" path="res://rooms/extras/room_prop.gd" id="1_rborm"]
+[ext_resource type="Texture2D" uid="uid://ywglbr7ivd67" path="res://rooms/extras!/NSE - NSW/pews-1-NSW.png" id="2_03ia4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5x31k"]
+size = Vector2(144, 88)
+
+[node name="Pews1Nsw" type="StaticBody2D" unique_id=848704604]
+script = ExtResource("1_rborm")
+texture = ExtResource("2_03ia4")
+texture_path = "res://rooms/extras!/NSE - NSW/pews-1-NSW.png"
+sprite_scale = 2.0
+y_sort_use_sprite_back_edge = true
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1314862605]
+texture_filter = 1
+position = Vector2(-20, 22)
+scale = Vector2(2, 2)
+texture = ExtResource("2_03ia4")
+offset = Vector2(0, -27.5)
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1976881869]
+position = Vector2(-8, -30)
+shape = SubResource("RectangleShape2D_5x31k")

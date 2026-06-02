@@ -38,12 +38,18 @@ func _pause() -> void:
 	_paused = true
 	visible = true
 	get_tree().paused = true
+	var m := get_node_or_null("/root/MusicManager")
+	if m != null:
+		m.call("pause_music")
 	_resume_button.grab_focus()
 
 func _resume() -> void:
 	_paused = false
 	visible = false
 	get_tree().paused = false
+	var m := get_node_or_null("/root/MusicManager")
+	if m != null:
+		m.call("resume_music")
 
 func _on_resume_pressed() -> void:
 	_resume()

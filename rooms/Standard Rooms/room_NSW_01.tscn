@@ -3,15 +3,23 @@
 [ext_resource type="Script" uid="uid://j6fawo5441ay" path="res://rooms/room.gd" id="1_3ip0k"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_0lf81"]
 [ext_resource type="Texture2D" uid="uid://u6dc6wnb7fdx" path="res://rooms/room art/NSW.png" id="2_8ilpx"]
+[ext_resource type="PackedScene" uid="uid://dv7vvh6t8uj7q" path="res://rooms/extras/NSE - NSW/deck_nse-flip.tscn" id="4_pe7dy"]
+[ext_resource type="PackedScene" uid="uid://dafbked10af40" path="res://rooms/extras/NSE - NSW/stairs_nse-flip.tscn" id="5_8uaca"]
+[ext_resource type="PackedScene" uid="uid://56rcc05pn2c5" path="res://rooms/extras/NSE - NSW/pews_1_nsw.tscn" id="6_hts4r"]
+[ext_resource type="PackedScene" uid="uid://56rcc05pn2b5" path="res://rooms/extras/NSE - NSW/pews_nsw.tscn" id="7_dw5rg"]
+[ext_resource type="PackedScene" uid="uid://idmkwltnxus" path="res://rooms/extras/NSE - NSW/table1_nsw.tscn" id="8_4r24e"]
+[ext_resource type="PackedScene" uid="uid://idmkwltoxus" path="res://rooms/extras/NSE - NSW/table2_nsw.tscn" id="9_pifql"]
+[ext_resource type="PackedScene" uid="uid://dvlw0dprcu5hd" path="res://rooms/extras/NSE - NSW/midsmallbot-pew.tscn" id="10_hts4r"]
+[ext_resource type="PackedScene" uid="uid://j4wo2gl8g67d" path="res://rooms/extras/NSE - NSW/smalltop-pew.tscn" id="11_dw5rg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxedm"]
+size = Vector2(122.66101, 30.902672)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ilpx"]
 size = Vector2(470.98254, 62.99989)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emo8h"]
 size = Vector2(63.768402, 473.015)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxedm"]
-size = Vector2(474.01556, 68.99942)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8r35"]
 size = Vector2(457, 67.00049)
@@ -83,14 +91,36 @@ color = Color(0.9, 0.6, 0.2, 1)
 position = Vector2(512, 512)
 
 [node name="Bounds_Debug" type="ReferenceRect" parent="." unique_id=1075746099]
-offset_right = 1024.0
-offset_bottom = 1024.0
+offset_left = -0.78175354
+offset_top = 2.3452148
+offset_right = 1023.21826
+offset_bottom = 1026.3452
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+
+[node name="prop extra hitboxes" type="StaticBody2D" parent="Bounds_Debug" unique_id=1123124060]
+position = Vector2(0.2778473, -1.8400879)
+rotation = -0.0009853204
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds_Debug/prop extra hitboxes" unique_id=2125017744]
+position = Vector2(366.77307, 68.41343)
+rotation = -3.1411
+shape = SubResource("RectangleShape2D_qxedm")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds_Debug/prop extra hitboxes" unique_id=1648843359]
+position = Vector2(214.09311, 70.078545)
+rotation = -3.1411
+shape = SubResource("RectangleShape2D_qxedm")
 
 [node name="Walls2" type="StaticBody2D" parent="." unique_id=1410224156]
 position = Vector2(1025, 1023)
 rotation = -3.1420853
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Walls2" unique_id=1573521452]
+position = Vector2(788.4916, 29.499512)
+rotation = 3.1411
+shape = SubResource("RectangleShape2D_8ilpx")
+debug_color = Color(0.16860333, 0.5909963, 0.71088666, 0.41960785)
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Walls2" unique_id=1353831577]
 position = Vector2(236.01892, 993.6169)
@@ -100,10 +130,6 @@ debug_color = Color(0.16860333, 0.5909963, 0.71088666, 0.41960785)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2" unique_id=1101441055]
 position = Vector2(993.88605, 232.98175)
 shape = SubResource("RectangleShape2D_emo8h")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls2" unique_id=2125017744]
-position = Vector2(787.9918, 31.888489)
-shape = SubResource("RectangleShape2D_qxedm")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls2" unique_id=1629742512]
 position = Vector2(244.5, 31.620483)
@@ -120,3 +146,135 @@ shape = SubResource("RectangleShape2D_koc2k")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=1330173598]
 position = Vector2(788.2625, 993.6362)
 shape = SubResource("RectangleShape2D_pe7dy")
+
+[node name="Props" type="Node2D" parent="." unique_id=1590038439]
+position = Vector2(-1.0078125, 1.010376)
+rotation = -0.0009854476
+scale = Vector2(2, 2)
+
+[node name="DeckNse" parent="Props" unique_id=159957527 instance=ExtResource("4_pe7dy")]
+position = Vector2(277.4489, 243.26765)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+y_sort_use_sprite_back_edge = false
+y_sort_extra = 0.0
+
+[node name="StairsNse" parent="Props" unique_id=1284302691 instance=ExtResource("5_8uaca")]
+position = Vector2(246.75497, 252.73811)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw10" parent="Props" unique_id=848704604 instance=ExtResource("6_hts4r")]
+position = Vector2(206.37619, 129.69824)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="PewsNsw2" parent="Props" unique_id=582074845 instance=ExtResource("7_dw5rg")]
+position = Vector2(96.4068, 98.58987)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Table1Nsw" parent="Props" unique_id=88220063 instance=ExtResource("8_4r24e")]
+position = Vector2(298.88797, 117.78941)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Table1Nsw2" parent="Props" unique_id=399570400 instance=ExtResource("8_4r24e")]
+position = Vector2(298.66623, 342.7893)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Table2Nsw" parent="Props" unique_id=942571377 instance=ExtResource("9_pifql")]
+position = Vector2(140.03134, 479.63303)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw" parent="Props" unique_id=1754165001 instance=ExtResource("10_hts4r")]
+position = Vector2(197.22543, 282.68927)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw2" parent="Props" unique_id=189773141 instance=ExtResource("11_dw5rg")]
+position = Vector2(196.3097, 197.18837)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw3" parent="Props" unique_id=150770711 instance=ExtResource("10_hts4r")]
+position = Vector2(108.14076, 282.8328)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw4" parent="Props" unique_id=1715189673 instance=ExtResource("10_hts4r")]
+position = Vector2(86.00925, 282.65448)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw6" parent="Props" unique_id=434258481 instance=ExtResource("11_dw5rg")]
+position = Vector2(85.17473, 334.07892)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw5" parent="Props" unique_id=1031700613 instance=ExtResource("11_dw5rg")]
+position = Vector2(107.17471, 334.1006)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw7" parent="Props" unique_id=283353315 instance=ExtResource("11_dw5rg")]
+position = Vector2(196.32782, 334.0533)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw8" parent="Props" unique_id=1385946016 instance=ExtResource("11_dw5rg")]
+position = Vector2(207.17468, 334.19913)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw9" parent="Props" unique_id=1038977442 instance=ExtResource("11_dw5rg")]
+position = Vector2(107.12643, 383.10056)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw11" parent="Props" unique_id=212447653 instance=ExtResource("11_dw5rg")]
+position = Vector2(85.12644, 383.0789)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw12" parent="Props" unique_id=330799327 instance=ExtResource("11_dw5rg")]
+position = Vector2(196.1264, 383.18826)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw13" parent="Props" unique_id=59993610 instance=ExtResource("11_dw5rg")]
+position = Vector2(206.6599, 383.19864)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw14" parent="Props" unique_id=1331948914 instance=ExtResource("11_dw5rg")]
+position = Vector2(107.30972, 197.10066)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw15" parent="Props" unique_id=987336570 instance=ExtResource("11_dw5rg")]
+position = Vector2(85.30974, 197.07898)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw16" parent="Props" unique_id=573872853 instance=ExtResource("11_dw5rg")]
+position = Vector2(85.358025, 148.079)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw17" parent="Props" unique_id=1921798704 instance=ExtResource("11_dw5rg")]
+position = Vector2(107.35801, 148.10068)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw18" parent="Props" unique_id=1293907279 instance=ExtResource("11_dw5rg")]
+position = Vector2(196.35799, 148.18839)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)
+
+[node name="Pews1Nsw19" parent="Props" unique_id=1416444448 instance=ExtResource("11_dw5rg")]
+position = Vector2(207.35799, 148.19923)
+rotation = 0.0009854476
+scale = Vector2(0.5, 0.5)

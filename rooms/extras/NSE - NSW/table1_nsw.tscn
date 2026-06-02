@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://idmkwltnxus"]
+
+[ext_resource type="Script" uid="uid://chvtop6k328p3" path="res://rooms/extras/room_prop.gd" id="1_prop"]
+[ext_resource type="Texture2D" uid="uid://ejomua200t61" path="res://rooms/extras!/NSE - NSW/table1-NSW.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l35ng"]
+size = Vector2(21, 113)
+
+[node name="Table1Nsw" type="StaticBody2D" unique_id=88220063]
+script = ExtResource("1_prop")
+texture = ExtResource("2_tex")
+texture_path = "res://rooms/extras!/NSE - NSW/table1-NSW.png"
+sprite_scale = 2.0
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=677968]
+texture_filter = 1
+position = Vector2(-1, 118)
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")
+offset = Vector2(0, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=556449861]
+position = Vector2(-0.5, 57.5)
+shape = SubResource("RectangleShape2D_l35ng")

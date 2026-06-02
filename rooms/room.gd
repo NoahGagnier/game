@@ -9,6 +9,7 @@ const DEFAULT_MOB_SCENE: PackedScene = preload("res://mob1.tscn")
 const DOOR_SCENE: PackedScene = preload("res://door.tscn")
 
 signal cleared(room: Room)
+signal player_entered(room: Room)
 
 @export var available_doors: Array[String] = ["N", "S", "E", "W"]
 @export var room_type: RoomType = RoomType.NORMAL
@@ -57,11 +58,15 @@ func _setup_world_entities() -> void:
 
 func _promote_props() -> void:
 	var props_root := get_node_or_null("Props")
-	if props_root == null:
-		return
-	for child in props_root.get_children():
-		if child is Node2D:
-			WorldLayer.promote(child as Node2D)
+	if props_root != null:
+		for child in props_root.get_children():
+			if child is Node2D:
+				WorldLayer.promote(child as Node2D)
+	# Props placed as direct children of the room (outside Props/) still need World
+	# promotion or they draw in the Dungeon layer on top of the player.
+	for child in get_children():
+		if child is RoomProp:
+			WorldLayer.promote(child)
 
 func _physics_process(_delta: float) -> void:
 	_update_entry_lock()
@@ -72,10 +77,12 @@ func _physics_process(_delta: float) -> void:
 # if there are still live mobs. Once the room is cleared, further entries are
 # no-ops.
 func _update_entry_lock() -> void:
-	if is_cleared or _doors_locked or not locks_doors_when_entered:
-		_player_was_inside = _player_currently_inside()
-		return
 	var inside := _player_currently_inside()
+	if inside and not _player_was_inside:
+		player_entered.emit(self)
+	if is_cleared or _doors_locked or not locks_doors_when_entered:
+		_player_was_inside = inside
+		return
 	if inside and not _player_was_inside and _has_live_mobs():
 		_lock_doors()
 	_player_was_inside = inside

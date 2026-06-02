@@ -12,6 +12,9 @@ const CONTINUE_HIGHLIGHT_TEXTURE := preload("res://menus/art/continue-hover.png"
 const SETTINGS_TEXTURE := preload("res://menus/art/settings.png")
 const SETTINGS_HIGHLIGHT_TEXTURE := preload("res://menus/art/settings-hover.png")
 
+# Keep working even if MusicManager autoload isn't set.
+const _TRACK_MAIN_MENU := 1
+
 # Main logo bob -- subtle drift.
 @export var logo_bob_amplitude: float = 8.0
 @export var logo_bob_speed: float = 0.6
@@ -35,6 +38,9 @@ var _accent_base_y: float
 var _time: float = 0.0
 
 func _ready() -> void:
+	var m := get_node_or_null("/root/MusicManager")
+	if m != null:
+		m.call("play", _TRACK_MAIN_MENU)
 	_new_game_button.pressed.connect(_on_new_game_pressed)
 	_bind_button_visual(_new_game_button, NEW_GAME_TEXTURE, NEW_GAME_HIGHLIGHT_TEXTURE)
 	_bind_button_visual(_continue_button, CONTINUE_TEXTURE, CONTINUE_HIGHLIGHT_TEXTURE)

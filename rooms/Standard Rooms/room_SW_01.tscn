@@ -12,6 +12,9 @@ size = Vector2(110.00864, 22.554104)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqi3t"]
 size = Vector2(21.896072, 63.008522)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_th0k0"]
+size = Vector2(24.94432, 63.008522)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_th0k0"]
 a = Vector2(-24.457458, 59.127228)
 b = Vector2(2.4227905, 83.26123)
@@ -108,6 +111,25 @@ border_color = Color(1, 0, 1, 1)
 border_width = 2.0
 metadata/_edit_use_anchors_ = true
 
+[node name="Props" type="Node2D" parent="." unique_id=2147326980]
+position = Vector2(73.527405, 132.30057)
+rotation = 3.1356337
+scale = Vector2(2, 2)
+
+[node name="TableNe" parent="Props" unique_id=2484962 instance=ExtResource("5_8bkkg")]
+position = Vector2(-434.57233, -364.4457)
+rotation = -3.1356337
+scale = Vector2(0.49999997, 0.49999997)
+y_sort_use_sprite_back_edge = null
+y_sort_extra = null
+
+[node name="DoubletableSw" parent="Props" unique_id=1161605187 instance=ExtResource("4_p0l1m")]
+position = Vector2(-383.76337, -416.14386)
+rotation = -3.1356337
+scale = Vector2(0.49999997, 0.49999997)
+y_sort_use_sprite_back_edge = null
+y_sort_extra = null
+
 [node name="extra prop htiboxes" type="StaticBody2D" parent="." unique_id=356463020]
 position = Vector2(-1018.00006, 601.0001)
 rotation = 9.419805
@@ -122,8 +144,8 @@ position = Vector2(-1095.1053, 420.55902)
 shape = SubResource("RectangleShape2D_sqi3t")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=533512510]
-position = Vector2(-1091.3126, 462.25464)
-shape = SubResource("RectangleShape2D_sqi3t")
+position = Vector2(-1092.837, 462.25476)
+shape = SubResource("RectangleShape2D_th0k0")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=1845436859]
 position = Vector2(-1964.5707, -286.1411)
@@ -194,9 +216,3 @@ shape = SubResource("RectangleShape2D_gbsv3")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=574365493]
 position = Vector2(511.49976, 993.62585)
 shape = SubResource("RectangleShape2D_fal40")
-
-[node name="DoubletableSw" parent="." unique_id=1161605187 instance=ExtResource("4_p0l1m")]
-position = Vector2(846, 960)
-
-[node name="TableNe" parent="." unique_id=2484962 instance=ExtResource("5_8bkkg")]
-position = Vector2(947, 856)

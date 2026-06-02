@@ -11,6 +11,18 @@
 [ext_resource type="PackedScene" uid="uid://c8columne0001" path="res://rooms/extras/E/column_e.tscn" id="9_8fijx"]
 [ext_resource type="PackedScene" uid="uid://tv4y4iak1to5" path="res://rooms/extras/E/circular_table_thing.tscn" id="10_vyi8i"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fijx"]
+size = Vector2(10.486351, 26.000011)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah8y6"]
+size = Vector2(7.755499, 27.002941)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06woc"]
+size = Vector2(4.499957, 8.499994)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vyi8i"]
+size = Vector2(10.486351, 51.99996)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_244lj"]
 size = Vector2(511.46866, 133.00224)
 
@@ -61,10 +73,42 @@ color = Color(0.9, 0.6, 0.2, 1)
 position = Vector2(512, 512)
 
 [node name="Bounds_Debug" type="ReferenceRect" parent="." unique_id=525415263]
-offset_right = 1024.0
-offset_bottom = 1024.0
+offset_left = 132.0
+offset_top = 62.0
+offset_right = 1156.0
+offset_bottom = 1086.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+
+[node name="prop extra hitboxes" type="StaticBody2D" parent="." unique_id=312545795]
+position = Vector2(-2052.0159, -2043.9792)
+rotation = -0.0009854476
+scale = Vector2(4, 4)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="prop extra hitboxes" unique_id=1091483410]
+position = Vector2(749.57056, 687.4838)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_8fijx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="prop extra hitboxes" unique_id=1830820770]
+position = Vector2(657.6843, 640.39465)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_ah8y6")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="prop extra hitboxes" unique_id=405504740]
+position = Vector2(665.873, 640.6513)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_06woc")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="prop extra hitboxes" unique_id=1687838919]
+position = Vector2(573.5177, 686.06134)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_06woc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prop extra hitboxes" unique_id=234620415]
+position = Vector2(750.0396, 594.9846)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_vyi8i")
 
 [node name="Props" type="Node2D" parent="." unique_id=1254871140]
 position = Vector2(-1.0078125, 1.010376)

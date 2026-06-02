@@ -191,27 +191,47 @@ position = Vector2(-514.07214, -31.849243)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_h1crl")
 
-[node name="TableNe" parent="." unique_id=2484962 instance=ExtResource("4_ee0ye")]
-position = Vector2(947, 855.99994)
-rotation = -0.0021527924
+[node name="Props" type="Node2D" parent="." unique_id=717847670]
+position = Vector2(73.527405, 132.30057)
+rotation = 3.1356337
+scale = Vector2(2, 2)
 
-[node name="PewstopNe3" parent="." unique_id=1233537591 instance=ExtResource("4_xeio8")]
-position = Vector2(112, 330)
+[node name="TableNe" parent="Props" unique_id=2484962 instance=ExtResource("4_ee0ye")]
+position = Vector2(-434.5723, -364.44574)
+rotation = -3.1377864
+scale = Vector2(0.49999997, 0.49999997)
 
-[node name="PewstopNe2" parent="." unique_id=1733979462 instance=ExtResource("4_xeio8")]
-position = Vector2(220, 330)
+[node name="PewstopNe3" parent="Props" unique_id=1233537591 instance=ExtResource("4_xeio8")]
+position = Vector2(-18.64692, -98.962585)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
 
-[node name="PewstopNe" parent="." unique_id=1319602501 instance=ExtResource("4_xeio8")]
-position = Vector2(327, 442)
+[node name="PewstopNe2" parent="Props" unique_id=1733979462 instance=ExtResource("4_xeio8")]
+position = Vector2(-72.64596, -99.28438)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
 
-[node name="DoubletableSw" parent="." unique_id=2100987218 instance=ExtResource("5_ee0ye")]
-position = Vector2(845, 960)
+[node name="PewstopNe" parent="Props" unique_id=1319602501 instance=ExtResource("4_xeio8")]
+position = Vector2(-125.81131, -155.60219)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
 
-[node name="PewsNe" parent="." unique_id=699466124 instance=ExtResource("6_h1crl")]
-position = Vector2(520, 732)
+[node name="DoubletableSw" parent="Props" unique_id=2100987218 instance=ExtResource("5_ee0ye")]
+position = Vector2(-383.26334, -416.14093)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
 
-[node name="PewsNe3" parent="." unique_id=346611313 instance=ExtResource("6_h1crl")]
-position = Vector2(608, 838)
+[node name="PewsNe" parent="Props" unique_id=699466124 instance=ExtResource("6_h1crl")]
+position = Vector2(-221.44556, -301.17462)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
 
-[node name="PewsNe2" parent="." unique_id=1758652860 instance=ExtResource("6_h1crl")]
-position = Vector2(476, 838)
+[node name="PewsNe3" parent="Props" unique_id=346611313 instance=ExtResource("6_h1crl")]
+position = Vector2(-265.12894, -354.4359)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
+
+[node name="PewsNe2" parent="Props" unique_id=1758652860 instance=ExtResource("6_h1crl")]
+position = Vector2(-199.13013, -354.0426)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
