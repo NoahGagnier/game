@@ -21,6 +21,7 @@ enum Track {
 @export var cutscene_stream: AudioStream
 
 @export var music_bus_name: StringName = &"Music"
+@export var sfx_bus_name: StringName = &"SFX"
 
 @export var crossfade_duration: float = 1.5
 @export var volume_db: float = 0.0

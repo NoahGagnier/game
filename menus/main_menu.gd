@@ -5,6 +5,7 @@ extends Control
 # To test the full menu -> cutscene -> game flow, run this scene with F6.
 
 const CUTSCENE_SCENE := "res://menus/cutscene.tscn"
+const SETTINGS_SCENE := preload("res://menus/settings_menu.tscn")
 const NEW_GAME_TEXTURE := preload("res://menus/art/newgame.png")
 const NEW_GAME_HIGHLIGHT_TEXTURE := preload("res://menus/art/newgame-highlight.png")
 const CONTINUE_TEXTURE := preload("res://menus/art/continue.png")
@@ -45,6 +46,7 @@ func _ready() -> void:
 	_bind_button_visual(_new_game_button, NEW_GAME_TEXTURE, NEW_GAME_HIGHLIGHT_TEXTURE)
 	_bind_button_visual(_continue_button, CONTINUE_TEXTURE, CONTINUE_HIGHLIGHT_TEXTURE)
 	_bind_button_visual(_settings_button, SETTINGS_TEXTURE, SETTINGS_HIGHLIGHT_TEXTURE)
+	_settings_button.pressed.connect(_on_settings_pressed)
 	_logo_base_y = _logo.position.y
 	_accent_base_y = _logo_accent.position.y
 
@@ -89,3 +91,7 @@ func _bind_button_visual(button: TextureButton, normal_texture: Texture2D, highl
 
 func _on_new_game_pressed() -> void:
 	get_tree().change_scene_to_file(CUTSCENE_SCENE)
+
+func _on_settings_pressed() -> void:
+	var menu := SETTINGS_SCENE.instantiate()
+	add_child(menu)
