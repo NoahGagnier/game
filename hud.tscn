@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cd6fexbgmkg5d" path="res://enemies/boss-cardinal/assets/9patch.png" id="6_61f8s"]
 [ext_resource type="Script" uid="uid://c6nligupf77x4" path="res://menus/minimap.gd" id="6_minimap"]
 [ext_resource type="Script" uid="uid://busaxquxh7vf3" path="res://menus/boss_bar.gd" id="7_bossbar"]
+[ext_resource type="Texture2D" uid="uid://csc6pan3icwio" path="res://enemies/boss-cardinal/assets/new-bosshealt..png" id="8_boss_under"]
+[ext_resource type="Texture2D" uid="uid://c64lrkvgtbej6" path="res://enemies/boss-cardinal/assets/new-bosshealth-progression.png" id="9_boss_prog"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1157650514]
 script = ExtResource("1_hud")
@@ -59,7 +61,6 @@ mouse_filter = 2
 script = ExtResource("6_minimap")
 
 [node name="BossBar" type="Control" parent="." unique_id=1033159764]
-visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -72,44 +73,32 @@ offset_right = 420.0
 offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(1.665, 1.665)
 mouse_filter = 2
 script = ExtResource("7_bossbar")
 
-[node name="BG" type="ColorRect" parent="BossBar" unique_id=167343650]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Bar" type="TextureProgressBar" parent="BossBar" unique_id=445327845]
+layout_mode = 0
+offset_left = -81.95194
+offset_top = 26.426437
+offset_right = 46.048058
+offset_bottom = 32.426437
+scale = Vector2(5, 5)
 mouse_filter = 2
-color = Color(0.04, 0, 0, 0.88)
+value = 100.0
+texture_under = ExtResource("8_boss_under")
+texture_progress = ExtResource("9_boss_prog")
 
-[node name="VBox" type="VBoxContainer" parent="BossBar" unique_id=1600227]
+[node name="NameLabel" type="Label" parent="BossBar" unique_id=1751084877]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 18.0
-offset_top = 12.0
-offset_right = -18.0
-offset_bottom = -10.0
+offset_left = -151.95195
+offset_top = 35.426437
+offset_right = -187.95197
+offset_bottom = 59.426437
 grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/separation = 8
-
-[node name="NameLabel" type="Label" parent="BossBar/VBox" unique_id=1751084877]
-layout_mode = 2
 theme_override_colors/font_color = Color(0.95, 0.82, 0.65, 1)
 theme_override_fonts/font = ExtResource("4_640wx")
 theme_override_font_sizes/font_size = 14
 horizontal_alignment = 1
-
-[node name="Bar" type="ProgressBar" parent="BossBar/VBox" unique_id=445327845]
-custom_minimum_size = Vector2(0, 26)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-value = 100.0
-show_percentage = false

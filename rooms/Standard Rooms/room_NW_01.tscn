@@ -109,6 +109,7 @@ border_color = Color(1, 0, 1, 1)
 border_width = 2.0
 
 [node name="extra prop hitboxes" type="StaticBody2D" parent="." unique_id=1894722569]
+collision_layer = 4
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=194537966]
 position = Vector2(512, 515)

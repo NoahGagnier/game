@@ -7,6 +7,7 @@ const ROOM_SIZE: int = 1024
 const CHEST_SCENE: PackedScene = preload("res://chest.tscn")
 const DEFAULT_MOB_SCENE: PackedScene = preload("res://mob1.tscn")
 const DOOR_SCENE: PackedScene = preload("res://door.tscn")
+const DOOR_SEAL_SCENE: PackedScene = preload("res://rooms/extras/door_seal/door_seal.tscn")
 
 signal cleared(room: Room)
 signal player_entered(room: Room)
@@ -40,10 +41,21 @@ var _spawned_mobs: Array[Node2D] = []
 var _doors_locked: bool = false
 var _active_doors: Array[Door] = []
 var _player_was_inside: bool = false
+var _enemy_setup_pending: bool = false
+var _dungeon_connected_doors: Array[String] = []
+var _dungeon_connections_applied: bool = false
 
 func _ready() -> void:
 	_hide_door_placeholders()
+	if _dungeon_connections_applied:
+		_spawn_door_seals()
 	call_deferred("_setup_world_entities")
+
+## Called by DungeonGenerator before the room enters the tree. Seals any
+## available_doors that are not connected to a neighboring cell.
+func set_dungeon_connections(connected: Array[String]) -> void:
+	_dungeon_connected_doors = connected.duplicate()
+	_dungeon_connections_applied = true
 
 func _setup_world_entities() -> void:
 	if not is_inside_tree():
@@ -54,8 +66,7 @@ func _setup_world_entities() -> void:
 		_spawn_enemies()
 	_promote_props()
 	_promote_enemies()
-	if not _has_live_mobs():
-		is_cleared = true
+	_update_cleared_from_mobs()
 
 func _promote_props() -> void:
 	var props_root := get_node_or_null("Props")
@@ -71,13 +82,41 @@ func _promote_props() -> void:
 
 func _promote_enemies() -> void:
 	var enemies_root := get_node_or_null("Enemies")
-	if enemies_root == null:
-		return
-	for child in enemies_root.get_children():
-		if child is Node2D:
-			# _room is already cached in the enemy's _ready() before this runs,
-			# so promoting to World does not break the room-based aggro check.
-			WorldLayer.promote(child as Node2D)
+	if enemies_root != null:
+		var pending: Array[Node2D] = []
+		for child in enemies_root.get_children():
+			if child is Node2D:
+				pending.append(child as Node2D)
+		var world := WorldLayer.find_world(self)
+		for mob in pending:
+			_track_mob(mob)
+			if world != null:
+				WorldLayer.promote(mob)
+		if world == null and not pending.is_empty() and not _enemy_setup_pending:
+			_enemy_setup_pending = true
+			call_deferred("_finish_enemy_setup")
+			return
+	_collect_enemies_by_meta()
+	_enemy_setup_pending = false
+
+func _finish_enemy_setup() -> void:
+	_enemy_setup_pending = false
+	_promote_enemies()
+	_update_cleared_from_mobs()
+
+func _track_mob(mob: Node2D) -> void:
+	mob.set_meta(&"owning_room", self)
+	if mob not in _spawned_mobs:
+		_spawned_mobs.append(mob)
+
+func _collect_enemies_by_meta() -> void:
+	for node in get_tree().get_nodes_in_group("enemies"):
+		if node is Node2D and node.get_meta(&"owning_room", null) == self:
+			_track_mob(node as Node2D)
+
+func _update_cleared_from_mobs() -> void:
+	if not _has_live_mobs():
+		is_cleared = true
 
 func _physics_process(_delta: float) -> void:
 	_update_entry_lock()
@@ -90,6 +129,9 @@ func _physics_process(_delta: float) -> void:
 func _update_entry_lock() -> void:
 	var inside := _player_currently_inside()
 	if inside and not _player_was_inside:
+		# Setup can mark the room cleared before World exists; fix on first entry.
+		if is_cleared and _has_live_mobs():
+			is_cleared = false
 		player_entered.emit(self)
 	if is_cleared or _doors_locked or not locks_doors_when_entered:
 		_player_was_inside = inside
@@ -124,10 +166,25 @@ func is_perimeter_world_point(world_pos: Vector2) -> bool:
 	)
 
 func _has_live_mobs() -> bool:
+	_prune_dead_mobs()
 	for m in _spawned_mobs:
-		if is_instance_valid(m):
+		if _is_live_mob(m):
+			return true
+	_collect_enemies_by_meta()
+	_prune_dead_mobs()
+	for m in _spawned_mobs:
+		if _is_live_mob(m):
 			return true
 	return false
+
+func _is_live_mob(mob: Node) -> bool:
+	# Corpses stay in the tree for death animations but leave the "enemies" group.
+	return is_instance_valid(mob) and mob.is_in_group("enemies")
+
+func _prune_dead_mobs() -> void:
+	for i in range(_spawned_mobs.size() - 1, -1, -1):
+		if not _is_live_mob(_spawned_mobs[i]):
+			_spawned_mobs.remove_at(i)
 
 func _lock_doors() -> void:
 	if _doors_locked:
@@ -209,7 +266,7 @@ func _spawn_enemies() -> void:
 		if mob == null:
 			continue
 		WorldLayer.add_entity(self, mob, global_position + pos)
-		_spawned_mobs.append(mob)
+		_track_mob(mob)
 
 # If the room has a "MobSpawns" child container, one mob spawns at each of its
 # Node2D children. Otherwise, enemies_min..enemies_max positions are scattered
@@ -254,6 +311,39 @@ func _pick_mob_scene() -> PackedScene:
 	return null
 
 # Orange ColorRects under Doors/* are editor layout guides only.
+func _spawn_door_seals() -> void:
+	var wall_tex := _get_room_background_texture()
+	for direction in available_doors:
+		if direction in _dungeon_connected_doors:
+			continue
+		var seal := DOOR_SEAL_SCENE.instantiate() as DoorSeal
+		if seal == null:
+			continue
+		add_child(seal)
+		seal.setup(direction, wall_tex)
+		_enable_perimeter_bridge(direction)
+
+func _get_room_background_texture() -> Texture2D:
+	var bg := get_node_or_null("Background") as Sprite2D
+	if bg == null or bg.texture == null:
+		return null
+	return bg.texture
+
+func _get_room_background_scale() -> float:
+	var bg := get_node_or_null("Background") as Sprite2D
+	if bg == null:
+		return 2.0
+	return maxf(absf(bg.scale.x), absf(bg.scale.y))
+
+func _enable_perimeter_bridge(direction: String) -> void:
+	var walls := get_node_or_null("RoomWalls") as StaticBody2D
+	if walls == null:
+		return
+	var bridge_name := "%s_Bridge" % direction
+	var bridge := walls.get_node_or_null(bridge_name) as CollisionShape2D
+	if bridge != null:
+		bridge.disabled = false
+
 func _hide_door_placeholders() -> void:
 	var doors_root := get_node_or_null("Doors")
 	if doors_root == null:

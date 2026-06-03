@@ -52,6 +52,8 @@ func _ready() -> void:
 	_shadow.position.y = shadow_ground_y
 	_refresh_player()
 	_room = _find_owning_room()
+	if _room != null:
+		set_meta(&"owning_room", _room)
 
 func _physics_process(delta: float) -> void:
 	if _dead:

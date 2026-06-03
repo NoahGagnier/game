@@ -79,6 +79,7 @@ border_width = 2.0
 metadata/_edit_use_anchors_ = true
 
 [node name="extra prop collision" type="StaticBody2D" parent="." unique_id=1893777187]
+collision_layer = 4
 position = Vector2(-2156.1968, 7107.073)
 rotation = -3.1347277
 scale = Vector2(4.3097835, 4.3097825)

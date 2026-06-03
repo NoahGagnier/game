@@ -128,6 +128,7 @@ rotation = -3.1356337
 scale = Vector2(0.49999997, 0.49999997)
 
 [node name="extra prop htiboxes" type="StaticBody2D" parent="." unique_id=356463020]
+collision_layer = 4
 position = Vector2(-1018.00006, 601.0001)
 rotation = 9.419805
 scale = Vector2(0.99999994, 0.99999994)

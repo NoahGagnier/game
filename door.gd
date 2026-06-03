@@ -33,7 +33,16 @@ func set_direction(direction: String) -> void:
 	var locked := horizontal_locked if horizontal else vertical_locked
 	var phase_out := horizontal_phase_out if horizontal else vertical_phase_out
 
-	_setup_frames(phase_in, locked, phase_out, size)
+	_sprite.sprite_frames = build_sprite_frames(
+		phase_in,
+		locked,
+		phase_out,
+		size,
+		phase_in_speed,
+		locked_speed,
+		phase_out_speed,
+		true,
+	)
 
 	var fresh := RectangleShape2D.new()
 	fresh.size = size
@@ -57,24 +66,39 @@ func _on_animation_finished() -> void:
 		"phase_out":
 			queue_free()
 
-func _setup_frames(
+static func build_sprite_frames(
 	phase_in_tex: Texture2D,
 	locked_tex: Texture2D,
 	phase_out_tex: Texture2D,
 	frame_size: Vector2,
-) -> void:
+	phase_in_speed: float = 10.0,
+	locked_speed: float = 5.0,
+	phase_out_speed: float = 10.0,
+	include_phase_out: bool = true,
+) -> SpriteFrames:
 	var frames := SpriteFrames.new()
 	if phase_in_tex != null:
 		_add_sheet_frames(frames, "phase_in", phase_in_tex, frame_size, phase_in_speed, false)
 	if locked_tex != null:
 		_add_sheet_frames(frames, "locked", locked_tex, frame_size, locked_speed, true)
-	if phase_out_tex != null:
-		_add_sheet_frames(frames, "phase_out", phase_out_tex, frame_size, phase_out_speed, false)
-	elif phase_in_tex != null:
-		_add_reversed_sheet_frames(frames, "phase_out", phase_in_tex, frame_size, phase_out_speed, false)
-	_sprite.sprite_frames = frames
+	if include_phase_out:
+		if phase_out_tex != null:
+			_add_sheet_frames(frames, "phase_out", phase_out_tex, frame_size, phase_out_speed, false)
+		elif phase_in_tex != null:
+			_add_reversed_sheet_frames(frames, "phase_out", phase_in_tex, frame_size, phase_out_speed, false)
+	return frames
 
-func _add_sheet_frames(
+static func build_static_frame_frames(texture: Texture2D) -> SpriteFrames:
+	if texture == null:
+		return null
+	var frames := SpriteFrames.new()
+	frames.add_animation("locked")
+	frames.set_animation_loop("locked", true)
+	frames.set_animation_speed("locked", 1.0)
+	frames.add_frame("locked", texture)
+	return frames
+
+static func _add_sheet_frames(
 	frames: SpriteFrames,
 	anim_name: String,
 	texture: Texture2D,
@@ -91,7 +115,7 @@ func _add_sheet_frames(
 		atlas.region = Rect2(i * size.x, 0.0, size.x, size.y)
 		frames.add_frame(anim_name, atlas)
 
-func _add_reversed_sheet_frames(
+static func _add_reversed_sheet_frames(
 	frames: SpriteFrames,
 	anim_name: String,
 	texture: Texture2D,

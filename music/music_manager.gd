@@ -14,10 +14,10 @@ enum Track {
 	CUTSCENE,
 }
 
-@export var main_menu_stream: AudioStream
+@export var main_menu_stream: AudioStream = preload("res://music/menu-theme.ogg")
 @export var gameplay_stream: AudioStream = preload("res://music/main-theme-final.ogg")
 @export var treasure_stream: AudioStream = preload("res://music/treasure-final.ogg")
-@export var boss_stream: AudioStream
+@export var boss_stream: AudioStream = preload("res://music/Boss-theme.ogg")
 @export var cutscene_stream: AudioStream
 
 @export var music_bus_name: StringName = &"Music"

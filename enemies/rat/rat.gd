@@ -73,6 +73,8 @@ func _ready() -> void:
 	add_to_group("enemies")
 	_refresh_player()
 	_room = _find_owning_room()
+	if _room != null:
+		set_meta(&"owning_room", _room)
 	_enter_wander()
 
 func _physics_process(delta: float) -> void:

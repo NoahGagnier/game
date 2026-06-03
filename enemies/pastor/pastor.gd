@@ -60,6 +60,8 @@ func _ready() -> void:
 	add_to_group("no_contact_damage")
 	_refresh_player()
 	_room = _find_owning_room()
+	if _room != null:
+		set_meta(&"owning_room", _room)
 	_setup_animations()
 	_fire_timer = randf_range(fire_interval_min, fire_interval_max)
 

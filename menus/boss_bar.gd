@@ -1,29 +1,63 @@
+@tool
 extends Control
 
-const FILL_COLOR       := Color(0.72, 0.06, 0.06)
-const BG_COLOR         := Color(0.12, 0.02, 0.02)
-const PANEL_COLOR      := Color(0.04, 0.00, 0.00, 0.88)
-const FADE_DURATION    := 0.45
-const DRAIN_DURATION   := 0.20
+const FADE_DURATION := 0.45
+const DRAIN_DURATION := 0.20
 
-@onready var _name_label: Label        = $VBox/NameLabel
-@onready var _bar: ProgressBar         = $VBox/Bar
+@export_group("Bar textures")
+@export var bar_texture_under: Texture2D = preload(
+	"res://enemies/boss-cardinal/assets/new-bosshealt..png"
+)
+@export var bar_texture_progress: Texture2D = preload(
+	"res://enemies/boss-cardinal/assets/new-bosshealth-progression.png"
+)
+@export var progress_offset: Vector2 = Vector2.ZERO:
+	set(value):
+		progress_offset = value
+		_apply_bar_textures()
 
-var _fade_tween:  Tween
+@export_group("Bar size")
+## Optional override. Leave at 0 to use whatever Scale is set on the Bar node in this scene.
+@export_range(0.0, 8.0, 0.05) var bar_scale_override: float = 0.0:
+	set(value):
+		bar_scale_override = value
+		_apply_bar_layout()
+
+@onready var _name_label: Label = $NameLabel
+@onready var _bar: TextureProgressBar = $Bar
+
+var _fade_tween: Tween
 var _drain_tween: Tween
 
 func _ready() -> void:
-	visible   = false
-	modulate.a = 0.0
-	var fill_style := StyleBoxFlat.new()
-	fill_style.bg_color = FILL_COLOR
-	fill_style.set_corner_radius_all(3)
-	_bar.add_theme_stylebox_override("fill", fill_style)
+	if Engine.is_editor_hint():
+		visible = true
+		modulate.a = 1.0
+	else:
+		visible = false
+		modulate.a = 0.0
+	_apply_bar_textures()
+	_apply_bar_layout()
 
-	var bg_style := StyleBoxFlat.new()
-	bg_style.bg_color = BG_COLOR
-	bg_style.set_corner_radius_all(3)
-	_bar.add_theme_stylebox_override("background", bg_style)
+func _apply_bar_textures() -> void:
+	if _bar == null:
+		return
+	_bar.texture_under = bar_texture_under
+	_bar.texture_progress = bar_texture_progress
+	_apply_progress_offset()
+
+func _apply_bar_layout() -> void:
+	if _bar == null:
+		return
+	if bar_scale_override > 0.0:
+		_bar.scale = Vector2(bar_scale_override, bar_scale_override)
+	_apply_progress_offset()
+
+func _apply_progress_offset() -> void:
+	if _bar == null:
+		return
+	var s := maxf(_bar.scale.x, 0.001)
+	_bar.texture_progress_offset = progress_offset * s
 
 func bind(boss: Node, display_name: String) -> void:
 	_name_label.text = display_name

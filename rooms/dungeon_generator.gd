@@ -286,6 +286,7 @@ func _instantiate_rooms(grid: Dictionary, special: Dictionary) -> void:
 		var instance := (chosen.scene as PackedScene).instantiate() as Room
 		instance.position = Vector2(cell.x * ROOM_SIZE, cell.y * ROOM_SIZE)
 		instance.room_type = assigned_type
+		instance.set_dungeon_connections(required)
 		add_child(instance)
 
 # Tier 1: exact door-signature match.

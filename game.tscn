@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b6y8u63ynub3m" path="res://rooms/dungeon.tscn" id="6_dungeon"]
 [ext_resource type="PackedScene" uid="uid://dxw1nmwp0wx4e" path="res://chest.tscn" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://dx8rmgbo1e7cw" path="res://rooms/room_camera.gd" id="7_roomcam"]
-[ext_resource type="Script" path="res://rooms/world_layer.gd" id="7_world"]
+[ext_resource type="Script" uid="uid://dbwqyfe0wq06y" path="res://rooms/world_layer.gd" id="7_world"]
 [ext_resource type="PackedScene" uid="uid://dt8ayu5nu11xe" path="res://loot/items/blood_of_januarius.tscn" id="8_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://ce0aykhl1bg1i" path="res://loot/items/paschal_candle.tscn" id="9_vef74"]
 [ext_resource type="PackedScene" uid="uid://krm2qy6dpwvm" path="res://loot/items/holy_cruet.tscn" id="10_hve3p"]
@@ -16,8 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://dwv5fpwkxl87g" path="res://locked_chest.tscn" id="15_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://cr0lrkkywcrxd" path="res://loot/items/key.tscn" id="16_80cx4"]
 [ext_resource type="PackedScene" uid="uid://bomixa1a20h1i" path="res://loot/items/baptists_tooth.tscn" id="16_qhcbd"]
-[ext_resource type="PackedScene" path="res://loot/items/crusaders_mail.tscn" id="17_f1jbl"]
-[ext_resource type="PackedScene" path="res://loot/items/fleam.tscn" id="18_vaj68"]
+[ext_resource type="PackedScene" uid="uid://behccw47hcccs" path="res://loot/items/crusaders_mail.tscn" id="17_f1jbl"]
+[ext_resource type="PackedScene" uid="uid://crgq7146fym5p" path="res://loot/items/fleam.tscn" id="18_vaj68"]
 [ext_resource type="PackedScene" uid="uid://unkrk5www287" path="res://loot/items/foot_of_magdalane.tscn" id="19_i2p71"]
 [ext_resource type="PackedScene" uid="uid://dfjgd8ob4ae8c" path="res://loot/items/heart_pickup.tscn" id="20_xa8c5"]
 [ext_resource type="PackedScene" uid="uid://c0dnwcnbmgwxf" path="res://loot/items/holy_ampule.tscn" id="21_5b14r"]
@@ -38,7 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="World" type="Node2D" parent="."]
+[node name="World" type="Node2D" parent="." unique_id=115276249]
 y_sort_enabled = true
 script = ExtResource("7_world")
 

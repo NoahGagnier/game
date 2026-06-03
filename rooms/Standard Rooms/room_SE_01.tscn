@@ -110,6 +110,7 @@ border_color = Color(1, 0, 1, 1)
 border_width = 2.0
 
 [node name="extra prop hitboxes" type="StaticBody2D" parent="." unique_id=1573984603]
+collision_layer = 4
 position = Vector2(-0.50390625, 0.50512695)
 rotation = -0.0009853204
 

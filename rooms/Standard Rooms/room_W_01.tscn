@@ -114,6 +114,7 @@ rotation = -3.1356337
 scale = Vector2(0.5, 0.5)
 
 [node name="extra prop collisions" type="StaticBody2D" parent="." unique_id=800087625]
+collision_layer = 4
 position = Vector2(-12308.062, -12267.917)
 rotation = -0.0009854479
 scale = Vector2(16, 16)
