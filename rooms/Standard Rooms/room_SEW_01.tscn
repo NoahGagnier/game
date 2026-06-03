@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dc7e05iscs6dp" path="res://rooms/extras/NEW - SEW/table-2.tscn" id="4_bubnc"]
 [ext_resource type="PackedScene" uid="uid://bg4ihho5kmipd" path="res://rooms/extras/NEW - SEW/table-1.tscn" id="5_3v7ou"]
 [ext_resource type="PackedScene" uid="uid://w5jawxmk265" path="res://rooms/extras/NEW - SEW/bookshelf.tscn" id="6_3v7ou"]
+[ext_resource type="PackedScene" uid="uid://cmpastorscene" path="res://enemies/pastor/pastor.tscn" id="7_x7co4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rq287"]
 size = Vector2(569.65607, 62.99989)
@@ -228,3 +229,6 @@ shape = SubResource("RectangleShape2D_cqn0t")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=1657105914]
 position = Vector2(788.2625, 993.6362)
 shape = SubResource("RectangleShape2D_olcp2")
+
+[node name="Pastor" parent="." unique_id=66212696 instance=ExtResource("7_x7co4")]
+position = Vector2(512, 570)

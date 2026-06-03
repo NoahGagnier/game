@@ -5,6 +5,8 @@
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_6yp28"]
 [ext_resource type="PackedScene" uid="uid://t2ylckpof6b5" path="res://rooms/extras/EW - NS/column_withshadow.tscn" id="4_mj0vf"]
 [ext_resource type="PackedScene" uid="uid://bcnn8w08r0mb5" path="res://rooms/extras/EW - NS/table_wshadow.tscn" id="5_52d4n"]
+[ext_resource type="PackedScene" uid="uid://b4751gg52qmji" path="res://enemies/rat/rat.tscn" id="6_dejd6"]
+[ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="7_gq8im"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ixhq"]
 size = Vector2(66, 475)
@@ -134,3 +136,20 @@ shape = SubResource("RectangleShape2D_dejd6")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=538966006]
 position = Vector2(512.60974, 893.0762)
 shape = SubResource("RectangleShape2D_gq8im")
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1594111111]
+
+[node name="Rat" parent="Enemies" unique_id=565095671 instance=ExtResource("6_dejd6")]
+position = Vector2(268, 400)
+
+[node name="Rat2" parent="Enemies" unique_id=1508392352 instance=ExtResource("6_dejd6")]
+position = Vector2(748, 671)
+
+[node name="Rat3" parent="Enemies" unique_id=2007833769 instance=ExtResource("6_dejd6")]
+position = Vector2(737, 376)
+
+[node name="Rat4" parent="Enemies" unique_id=710302716 instance=ExtResource("6_dejd6")]
+position = Vector2(260, 653)
+
+[node name="Wisp" parent="Enemies" unique_id=121678066 instance=ExtResource("7_gq8im")]
+position = Vector2(514, 507)

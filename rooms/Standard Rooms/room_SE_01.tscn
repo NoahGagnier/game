@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cbgu50eb3hobx" path="res://rooms/extras/NW - SE/mini_fountain.tscn" id="10_v524n"]
 [ext_resource type="PackedScene" uid="uid://c8nqdwpqkuie4" path="res://rooms/extras/NW - SE/graves.tscn" id="11_cteik"]
 [ext_resource type="PackedScene" uid="uid://ckonrmv1mjoco" path="res://rooms/extras/NW - SE/benches_h.tscn" id="12_cteik"]
+[ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="13_3qlnx"]
+[ext_resource type="PackedScene" uid="uid://b4751gg52qmji" path="res://enemies/rat/rat.tscn" id="14_etne1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cteik"]
 size = Vector2(10.001038, 59.999985)
@@ -242,3 +244,15 @@ position = Vector2(246, 254)
 
 [node name="BenchesH" parent="Props" unique_id=72364748 instance=ExtResource("12_cteik")]
 position = Vector2(776, 445)
+
+[node name="Wisp" parent="Props" unique_id=121678066 instance=ExtResource("13_3qlnx")]
+position = Vector2(183, 197)
+
+[node name="Wisp2" parent="Props" unique_id=84691948 instance=ExtResource("13_3qlnx")]
+position = Vector2(245, 279)
+
+[node name="Wisp3" parent="Props" unique_id=1522662457 instance=ExtResource("13_3qlnx")]
+position = Vector2(311, 193)
+
+[node name="Rat" parent="Props" unique_id=565095671 instance=ExtResource("14_etne1")]
+position = Vector2(692, 688)

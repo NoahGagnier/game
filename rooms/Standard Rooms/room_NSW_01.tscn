@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://idmkwltoxus" path="res://rooms/extras/NSE - NSW/table2_nsw.tscn" id="9_pifql"]
 [ext_resource type="PackedScene" uid="uid://dvlw0dprcu5hd" path="res://rooms/extras/NSE - NSW/midsmallbot-pew.tscn" id="10_hts4r"]
 [ext_resource type="PackedScene" uid="uid://j4wo2gl8g67d" path="res://rooms/extras/NSE - NSW/smalltop-pew.tscn" id="11_dw5rg"]
+[ext_resource type="PackedScene" uid="uid://b4751gg52qmji" path="res://enemies/rat/rat.tscn" id="12_4r24e"]
+[ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="13_pifql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxedm"]
 size = Vector2(122.66101, 30.902672)
@@ -278,3 +280,20 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(207.35799, 148.19923)
 rotation = 0.0009854476
 scale = Vector2(0.5, 0.5)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=279982247]
+
+[node name="Rat" parent="Enemies" unique_id=565095671 instance=ExtResource("12_4r24e")]
+position = Vector2(304.3, 503.40002)
+
+[node name="Rat2" parent="Enemies" unique_id=244212156 instance=ExtResource("12_4r24e")]
+position = Vector2(535.78467, 861.7794)
+
+[node name="Rat3" parent="Enemies" unique_id=1484117157 instance=ExtResource("12_4r24e")]
+position = Vector2(524.78467, 174.50262)
+
+[node name="Rat4" parent="Enemies" unique_id=1508540385 instance=ExtResource("12_4r24e")]
+position = Vector2(306.19995, 884)
+
+[node name="Wisp" parent="Enemies" unique_id=121678066 instance=ExtResource("13_pifql")]
+position = Vector2(514, 507)

@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cbgu50eb3hobx" path="res://rooms/extras/NW - SE/mini_fountain.tscn" id="10_w0vla"]
 [ext_resource type="PackedScene" uid="uid://c8nqdwpqkuie4" path="res://rooms/extras/NW - SE/graves.tscn" id="11_4h0xa"]
 [ext_resource type="PackedScene" uid="uid://ckonrmv1mjoco" path="res://rooms/extras/NW - SE/benches_h.tscn" id="12_4xopq"]
+[ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="13_w0vla"]
+[ext_resource type="PackedScene" uid="uid://b4751gg52qmji" path="res://enemies/rat/rat.tscn" id="14_4h0xa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5wvrv"]
 radius = 81.0
@@ -222,3 +224,15 @@ script = null
 [node name="BenchesH" parent="Props" unique_id=2118578149 instance=ExtResource("12_4xopq")]
 position = Vector2(252, 553)
 script = null
+
+[node name="Wisp" parent="Props" unique_id=121678066 instance=ExtResource("13_w0vla")]
+position = Vector2(704, 794)
+
+[node name="Wisp2" parent="Props" unique_id=1780163327 instance=ExtResource("13_w0vla")]
+position = Vector2(799, 790)
+
+[node name="Wisp3" parent="Props" unique_id=365381069 instance=ExtResource("13_w0vla")]
+position = Vector2(771, 867)
+
+[node name="Rat" parent="Props" unique_id=565095671 instance=ExtResource("14_4h0xa")]
+position = Vector2(340, 341)

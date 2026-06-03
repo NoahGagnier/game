@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://j6fawo5441ay" path="res://rooms/room.gd" id="1_room"]
 [ext_resource type="Texture2D" uid="uid://ccbewbboyn04n" path="res://rooms/room art/spawn-room.png" id="2_d3jlq"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_ts"]
+[ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="4_t3dgn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3jlq"]
 size = Vector2(470.98254, 62.99989)
@@ -136,3 +137,22 @@ shape = SubResource("RectangleShape2D_jprwx")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=48283980]
 position = Vector2(788.2625, 993.6362)
 shape = SubResource("RectangleShape2D_sn5t0")
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1642495189]
+position = Vector2(328, 626)
+scale = Vector2(1.5, 1.5)
+
+[node name="Wisp" parent="Enemies" unique_id=121678066 instance=ExtResource("4_t3dgn")]
+position = Vector2(10.666672, -192.66667)
+scale = Vector2(1, 1)
+
+[node name="Wisp2" parent="Enemies" unique_id=923527884 instance=ExtResource("4_t3dgn")]
+position = Vector2(215.33333, -183.33334)
+scale = Vector2(1, 1)
+
+[node name="Wisp3" parent="Enemies" unique_id=758126294 instance=ExtResource("4_t3dgn")]
+scale = Vector2(1, 1)
+
+[node name="Wisp4" parent="Enemies" unique_id=1223048089 instance=ExtResource("4_t3dgn")]
+position = Vector2(215.33333, 7.3333435)
+scale = Vector2(1, 1)

@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://j6fawo5441ay" path="res://rooms/room.gd" id="1_klxyv"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_eyni5"]
 [ext_resource type="Texture2D" uid="uid://c7mk1phxn3xn8" path="res://rooms/room art/room-NS.png" id="2_fmr4l"]
+[ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="3_2j4wm"]
 [ext_resource type="PackedScene" uid="uid://cfqt4sycmdeh2" path="res://rooms/extras/EW - NS/column-NS.tscn" id="4_r8kex"]
+[ext_resource type="PackedScene" uid="uid://cmpastorscene" path="res://enemies/pastor/pastor.tscn" id="5_q5ao3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_moclc"]
 size = Vector2(37.002, 104.000015)
@@ -29,6 +31,18 @@ size = Vector2(471.47418, 60.7277)
 [node name="Room2" type="Node2D" unique_id=101820627]
 script = ExtResource("1_klxyv")
 available_doors = Array[String](["N", "S"])
+
+[node name="Enemies" type="Node2D" parent="." unique_id=507389775]
+position = Vector2(513, 504)
+rotation = -0.0009854477
+
+[node name="Pastor" parent="Enemies" unique_id=297514389 instance=ExtResource("5_q5ao3")]
+
+[node name="Wisp" parent="Enemies" unique_id=121678066 instance=ExtResource("3_2j4wm")]
+position = Vector2(-106.78711, -216.10532)
+
+[node name="Wisp2" parent="Enemies" unique_id=1425346259 instance=ExtResource("3_2j4wm")]
+position = Vector2(141.76141, 242.1398)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1511841428]
 z_index = -10

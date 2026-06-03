@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dbq8qaseriy" path="res://rooms/room art/room-SW.png" id="2_rffdl"]
 [ext_resource type="PackedScene" uid="uid://5r6kve141t31" path="res://rooms/extras/NE - SW/doubletable_sw.tscn" id="4_p0l1m"]
 [ext_resource type="PackedScene" uid="uid://c8neswtablene" path="res://rooms/extras/NE - SW/table_ne.tscn" id="5_8bkkg"]
+[ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="6_8bkkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxyg2"]
 size = Vector2(110.00864, 22.554104)
@@ -120,15 +121,11 @@ scale = Vector2(2, 2)
 position = Vector2(-434.57233, -364.4457)
 rotation = -3.1356337
 scale = Vector2(0.49999997, 0.49999997)
-y_sort_use_sprite_back_edge = null
-y_sort_extra = null
 
 [node name="DoubletableSw" parent="Props" unique_id=1161605187 instance=ExtResource("4_p0l1m")]
 position = Vector2(-383.76337, -416.14386)
 rotation = -3.1356337
 scale = Vector2(0.49999997, 0.49999997)
-y_sort_use_sprite_back_edge = null
-y_sort_extra = null
 
 [node name="extra prop htiboxes" type="StaticBody2D" parent="." unique_id=356463020]
 position = Vector2(-1018.00006, 601.0001)
@@ -216,3 +213,15 @@ shape = SubResource("RectangleShape2D_gbsv3")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=574365493]
 position = Vector2(511.49976, 993.62585)
 shape = SubResource("RectangleShape2D_fal40")
+
+[node name="Wisp" parent="." unique_id=121678066 instance=ExtResource("6_8bkkg")]
+position = Vector2(359, 158)
+
+[node name="Wisp2" parent="." unique_id=793627015 instance=ExtResource("6_8bkkg")]
+position = Vector2(545, 164)
+
+[node name="Wisp3" parent="." unique_id=2059273186 instance=ExtResource("6_8bkkg")]
+position = Vector2(917, 399)
+
+[node name="Wisp4" parent="." unique_id=1471580452 instance=ExtResource("6_8bkkg")]
+position = Vector2(910, 575)

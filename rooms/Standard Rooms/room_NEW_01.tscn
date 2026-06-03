@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dc7e05iscs6dp" path="res://rooms/extras/NEW - SEW/table-2.tscn" id="4_hlxvc"]
 [ext_resource type="PackedScene" uid="uid://bg4ihho5kmipd" path="res://rooms/extras/NEW - SEW/table-1.tscn" id="5_kknab"]
 [ext_resource type="PackedScene" uid="uid://w5jawxmk265" path="res://rooms/extras/NEW - SEW/bookshelf.tscn" id="6_wl52i"]
+[ext_resource type="PackedScene" uid="uid://cmpastorscene" path="res://enemies/pastor/pastor.tscn" id="7_wl52i"]
+[ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="8_vpoaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvt4a"]
 size = Vector2(477.81757, 62.99989)
@@ -227,3 +229,14 @@ shape = SubResource("RectangleShape2D_vpoaj")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=51798997]
 position = Vector2(788.2625, 993.6362)
 shape = SubResource("RectangleShape2D_owcko")
+
+[node name="Enemies" type="Node2D" parent="." unique_id=333151622]
+position = Vector2(514, 695)
+scale = Vector2(1.5, 1.5)
+
+[node name="Pastor" parent="Enemies" unique_id=591698716 instance=ExtResource("7_wl52i")]
+position = Vector2(-0.666687, -69.33334)
+scale = Vector2(1, 1)
+
+[node name="Wisp" parent="Enemies" unique_id=121678066 instance=ExtResource("8_vpoaj")]
+scale = Vector2(1, 1)

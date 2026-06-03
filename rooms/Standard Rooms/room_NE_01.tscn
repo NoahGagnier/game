@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c8neswpewstop" path="res://rooms/extras/NE - SW/pewstop_ne.tscn" id="4_xeio8"]
 [ext_resource type="PackedScene" uid="uid://5r6kve141t31" path="res://rooms/extras/NE - SW/doubletable_sw.tscn" id="5_ee0ye"]
 [ext_resource type="PackedScene" uid="uid://c8neswpewsne" path="res://rooms/extras/NE - SW/pews_ne.tscn" id="6_h1crl"]
+[ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="8_h1crl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3caa"]
 size = Vector2(110.99756, 19.905296)
@@ -235,3 +236,22 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(-199.13013, -354.0426)
 rotation = -3.1356337
 scale = Vector2(0.5, 0.5)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1275507331]
+position = Vector2(657, 830)
+scale = Vector2(1.5, 1.5)
+
+[node name="Wisp" parent="Enemies" unique_id=121678066 instance=ExtResource("8_h1crl")]
+position = Vector2(-327.3333, -238.66669)
+scale = Vector2(1, 1)
+
+[node name="Wisp2" parent="Enemies" unique_id=1554762998 instance=ExtResource("8_h1crl")]
+position = Vector2(-326.66666, -314.00003)
+scale = Vector2(1, 1)
+
+[node name="Wisp3" parent="Enemies" unique_id=2071809627 instance=ExtResource("8_h1crl")]
+position = Vector2(-123.33331, 0.666626)
+scale = Vector2(1, 1)
+
+[node name="Wisp4" parent="Enemies" unique_id=629664819 instance=ExtResource("8_h1crl")]
+scale = Vector2(1, 1)
