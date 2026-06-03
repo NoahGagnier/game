@@ -28,8 +28,13 @@
 [ext_resource type="PackedScene" uid="uid://j2rxnak1u3vc" path="res://rooms/Treasure Rooms/room_treasure_S_01.tscn" id="26_xt35w"]
 [ext_resource type="PackedScene" uid="uid://bx7a1y3cof1av" path="res://rooms/Treasure Rooms/room_treasure_W_01.tscn" id="27_g8pgw"]
 [ext_resource type="Script" uid="uid://chkfi6igbilbw" path="res://rooms/debug_camera.gd" id="99_dbgcam"]
+[ext_resource type="Script" uid="uid://dbwqyfe0wq06y" path="res://rooms/world_layer.gd" id="98_world"]
 
 [node name="DungeonTest" type="Node2D" unique_id=1223948929]
+
+[node name="World" type="Node2D" parent="." unique_id=111999001]
+y_sort_enabled = true
+script = ExtResource("98_world")
 
 [node name="DungeonGenerator" type="Node2D" parent="." unique_id=1913826491]
 script = ExtResource("2_gen")

@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://c2lkli57flar5" path="res://rooms/extras/N - S/S_table1.tscn" id="11_e582r"]
 [ext_resource type="PackedScene" uid="uid://x37w5xbgcgdt" path="res://rooms/extras/N - S/S_table2.tscn" id="12_cnmg8"]
 [ext_resource type="PackedScene" uid="uid://6i12nhb574hc" path="res://rooms/extras/N - S/little-table-S.tscn" id="13_e582r"]
+[ext_resource type="PackedScene" uid="uid://b4751gg52qmji" path="res://enemies/rat/rat.tscn" id="14_tmyq3"]
+[ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="15_gyybo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e582r"]
 size = Vector2(3.7500687, 4.0033417)
@@ -65,6 +67,10 @@ color = Color(0.9, 0.6, 0.2, 1)
 
 [node name="PlayerSpawn" type="Marker2D" parent="Spawns" unique_id=1341763818]
 position = Vector2(512, 512)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1698948727]
+position = Vector2(799, 678)
+scale = Vector2(1.5, 1.5)
 
 [node name="Bounds_Debug" type="ReferenceRect" parent="." unique_id=525415263]
 offset_right = 1024.0
@@ -138,10 +144,10 @@ rotation = -3.1356337
 scale = Vector2(0.5, 0.5)
 
 [node name="extra prop collisiob" type="StaticBody2D" parent="." unique_id=1203666014]
-collision_layer = 4
 position = Vector2(-2052.0156, -2043.9792)
 rotation = -0.0009854476
 scale = Vector2(4, 4)
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="extra prop collisiob" unique_id=13953999]
 position = Vector2(640.22314, 665.6227)
@@ -171,3 +177,12 @@ shape = SubResource("RectangleShape2D_1wlr7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls2" unique_id=1251784019]
 polygon = PackedVector2Array(898.1747, 660.4426, 894.17175, 666.4406, 888.1604, 689.4376, 876.64984, 710.932, 872.14636, 717.9298, 855.13654, 737.9214, 832.62866, 753.9103, 818.1252, 760.9032, 800.6225, 766.39453, 778.12054, 770.3835, 747.621, 769.36847, 731.623, 765.3606, 710.1272, 756.85, 686.1353, 740.33813, 671.64246, 725.831, 658.15204, 706.32434, 648.66266, 684.8197, 644.17004, 669.81744, 643.6784, 652.8172, 631.1624, 685.31104, 628.99567, 1023.81006, 906.49585, 1023.4468)
+
+[node name="Rat" parent="." unique_id=565095671 instance=ExtResource("14_tmyq3")]
+position = Vector2(515, 846)
+
+[node name="Wisp" parent="." unique_id=121678066 instance=ExtResource("15_gyybo")]
+position = Vector2(347, 770)
+
+[node name="Wisp2" parent="." unique_id=81840642 instance=ExtResource("15_gyybo")]
+position = Vector2(678, 780)

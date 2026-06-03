@@ -231,8 +231,13 @@ shape = SubResource("RectangleShape2D_cqn0t")
 position = Vector2(788.2625, 993.6362)
 shape = SubResource("RectangleShape2D_olcp2")
 
-[node name="Pastor" parent="." unique_id=66212696 instance=ExtResource("7_x7co4")]
-position = Vector2(512, 570)
+[node name="Enemies" type="Node2D" parent="." unique_id=1486959735]
+position = Vector2(1310, 1192)
+scale = Vector2(1.5, 1.5)
+
+[node name="Pastor" parent="Enemies" unique_id=66212696 instance=ExtResource("7_x7co4")]
+position = Vector2(-532, -414.6667)
+scale = Vector2(1, 1)
 
 [node name="Chest" parent="." unique_id=2058236937 instance=ExtResource("8_cogh3")]
 position = Vector2(511, 514)

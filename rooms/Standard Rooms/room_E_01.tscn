@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c8etable50005" path="res://rooms/extras/E/e_table_5.tscn" id="8_8fijx"]
 [ext_resource type="PackedScene" uid="uid://c8columne0001" path="res://rooms/extras/E/column_e.tscn" id="9_8fijx"]
 [ext_resource type="PackedScene" uid="uid://tv4y4iak1to5" path="res://rooms/extras/E/circular_table_thing.tscn" id="10_vyi8i"]
+[ext_resource type="PackedScene" uid="uid://ca1y0gfwefmvp" path="res://enemies/blood-wisp/blood_wisp.tscn" id="11_vyi8i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fijx"]
 size = Vector2(10.486351, 26.000011)
@@ -173,3 +174,14 @@ polygon = PackedVector2Array(656.0604, 892.32336, 681.06213, 888.8357, 696.5648,
 
 [node name="CircularTableThing" parent="." unique_id=1983592172 instance=ExtResource("10_vyi8i")]
 position = Vector2(615, 519)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1463499966]
+position = Vector2(799, 678)
+scale = Vector2(1.5, 1.5)
+
+[node name="BloodWisp" parent="Enemies" unique_id=776297903 instance=ExtResource("11_vyi8i")]
+position = Vector2(3.333313, -220)
+scale = Vector2(1, 1)
+
+[node name="BloodWisp2" parent="Enemies" unique_id=363629802 instance=ExtResource("11_vyi8i")]
+scale = Vector2(1, 1)

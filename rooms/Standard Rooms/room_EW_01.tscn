@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://t2ylckpof6b5" path="res://rooms/extras/EW - NS/column_withshadow.tscn" id="4_mj0vf"]
 [ext_resource type="PackedScene" uid="uid://bcnn8w08r0mb5" path="res://rooms/extras/EW - NS/table_wshadow.tscn" id="5_52d4n"]
 [ext_resource type="PackedScene" uid="uid://b4751gg52qmji" path="res://enemies/rat/rat.tscn" id="6_dejd6"]
-[ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="7_gq8im"]
+[ext_resource type="PackedScene" uid="uid://ca1y0gfwefmvp" path="res://enemies/blood-wisp/blood_wisp.tscn" id="7_dejd6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ixhq"]
 size = Vector2(66, 475)
@@ -151,5 +151,5 @@ position = Vector2(737, 376)
 [node name="Rat4" parent="Enemies" unique_id=710302716 instance=ExtResource("6_dejd6")]
 position = Vector2(260, 653)
 
-[node name="Wisp" parent="Enemies" unique_id=121678066 instance=ExtResource("7_gq8im")]
-position = Vector2(514, 507)
+[node name="BloodWisp" parent="Enemies" unique_id=776297903 instance=ExtResource("7_dejd6")]
+position = Vector2(511, 512)

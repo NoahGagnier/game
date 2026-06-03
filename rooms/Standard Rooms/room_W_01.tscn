@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b6pgx4tmptsjf" path="res://rooms/extras/W/circular_table_thing-flip.tscn" id="9_lc1r3"]
 [ext_resource type="PackedScene" uid="uid://bx80odl5jrq5" path="res://rooms/extras/W/W_table2.tscn" id="10_36kjl"]
 [ext_resource type="PackedScene" uid="uid://dw7su7uhpyxdl" path="res://rooms/extras/W/W_table.tscn" id="11_o8t6q"]
+[ext_resource type="PackedScene" uid="uid://ca1y0gfwefmvp" path="res://enemies/blood-wisp/blood_wisp.tscn" id="12_o8t6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jsu5b"]
 size = Vector2(64.00192, 213.78015)
@@ -114,10 +115,10 @@ rotation = -3.1356337
 scale = Vector2(0.5, 0.5)
 
 [node name="extra prop collisions" type="StaticBody2D" parent="." unique_id=800087625]
-collision_layer = 4
 position = Vector2(-12308.062, -12267.917)
 rotation = -0.0009854479
 scale = Vector2(16, 16)
+collision_layer = 4
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="extra prop collisions" unique_id=403283218]
 position = Vector2(796.0285, 799.35944)
@@ -173,3 +174,9 @@ position = Vector2(74, 325)
 
 [node name="ETable4" parent="." unique_id=1020897144 instance=ExtResource("11_o8t6q")]
 position = Vector2(74, 693)
+
+[node name="BloodWisp" parent="." unique_id=776297903 instance=ExtResource("12_o8t6q")]
+position = Vector2(226, 348)
+
+[node name="BloodWisp2" parent="." unique_id=1490513856 instance=ExtResource("12_o8t6q")]
+position = Vector2(237, 603)

@@ -110,9 +110,9 @@ border_color = Color(1, 0, 1, 1)
 border_width = 2.0
 
 [node name="extra prop hitboxes" type="StaticBody2D" parent="." unique_id=1573984603]
-collision_layer = 4
 position = Vector2(-0.50390625, 0.50512695)
 rotation = -0.0009853204
+collision_layer = 4
 
 [node name="CollisionShape2D13" type="CollisionShape2D" parent="extra prop hitboxes" unique_id=1775572752]
 position = Vector2(572.6735, 843.0595)
@@ -246,14 +246,22 @@ position = Vector2(246, 254)
 [node name="BenchesH" parent="Props" unique_id=72364748 instance=ExtResource("12_cteik")]
 position = Vector2(776, 445)
 
-[node name="Wisp" parent="Props" unique_id=121678066 instance=ExtResource("13_3qlnx")]
-position = Vector2(183, 197)
+[node name="Enemies" type="Node2D" parent="Props" unique_id=2068337183]
+position = Vector2(1890.5, 1705)
+scale = Vector2(2.25, 2.25)
 
-[node name="Wisp2" parent="Props" unique_id=84691948 instance=ExtResource("13_3qlnx")]
-position = Vector2(245, 279)
+[node name="Wisp" parent="Props/Enemies" unique_id=121678066 instance=ExtResource("13_3qlnx")]
+position = Vector2(-758.8889, -670.2222)
+scale = Vector2(0.6666667, 0.6666667)
 
-[node name="Wisp3" parent="Props" unique_id=1522662457 instance=ExtResource("13_3qlnx")]
-position = Vector2(311, 193)
+[node name="Wisp2" parent="Props/Enemies" unique_id=84691948 instance=ExtResource("13_3qlnx")]
+position = Vector2(-731.3333, -633.7778)
+scale = Vector2(0.6666667, 0.6666667)
 
-[node name="Rat" parent="Props" unique_id=565095671 instance=ExtResource("14_etne1")]
-position = Vector2(692, 688)
+[node name="Wisp3" parent="Props/Enemies" unique_id=1522662457 instance=ExtResource("13_3qlnx")]
+position = Vector2(-702, -672)
+scale = Vector2(0.6666667, 0.6666667)
+
+[node name="Rat" parent="Props/Enemies" unique_id=565095671 instance=ExtResource("14_etne1")]
+position = Vector2(-532.6666, -452)
+scale = Vector2(0.6666667, 0.6666667)

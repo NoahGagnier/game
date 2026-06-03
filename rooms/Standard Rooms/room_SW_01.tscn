@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://5r6kve141t31" path="res://rooms/extras/NE - SW/doubletable_sw.tscn" id="4_p0l1m"]
 [ext_resource type="PackedScene" uid="uid://c8neswtablene" path="res://rooms/extras/NE - SW/table_ne.tscn" id="5_8bkkg"]
 [ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="6_8bkkg"]
+[ext_resource type="PackedScene" uid="uid://ca1y0gfwefmvp" path="res://enemies/blood-wisp/blood_wisp.tscn" id="6_gbsv3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxyg2"]
 size = Vector2(110.00864, 22.554104)
@@ -128,10 +129,10 @@ rotation = -3.1356337
 scale = Vector2(0.49999997, 0.49999997)
 
 [node name="extra prop htiboxes" type="StaticBody2D" parent="." unique_id=356463020]
-collision_layer = 4
 position = Vector2(-1018.00006, 601.0001)
 rotation = 9.419805
 scale = Vector2(0.99999994, 0.99999994)
+collision_layer = 4
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=1851397019]
 position = Vector2(-1197.5219, 521.33765)
@@ -215,14 +216,22 @@ shape = SubResource("RectangleShape2D_gbsv3")
 position = Vector2(511.49976, 993.62585)
 shape = SubResource("RectangleShape2D_fal40")
 
-[node name="Wisp" parent="." unique_id=121678066 instance=ExtResource("6_8bkkg")]
-position = Vector2(359, 158)
+[node name="Enemies" type="Node2D" parent="." unique_id=1051551491]
+position = Vector2(2108.5, 1592)
+scale = Vector2(2.25, 2.25)
 
-[node name="Wisp2" parent="." unique_id=793627015 instance=ExtResource("6_8bkkg")]
-position = Vector2(545, 164)
+[node name="BloodWisp" parent="Enemies" unique_id=776297903 instance=ExtResource("6_gbsv3")]
+position = Vector2(-825.5556, -652.88885)
+scale = Vector2(1, 1)
 
-[node name="Wisp3" parent="." unique_id=2059273186 instance=ExtResource("6_8bkkg")]
-position = Vector2(917, 399)
+[node name="BloodWisp2" parent="Enemies" unique_id=479011953 instance=ExtResource("6_gbsv3")]
+position = Vector2(-528.6667, -372.88885)
+scale = Vector2(1, 1)
 
-[node name="Wisp4" parent="." unique_id=1471580452 instance=ExtResource("6_8bkkg")]
-position = Vector2(910, 575)
+[node name="Wisp" parent="Enemies" unique_id=121678066 instance=ExtResource("6_8bkkg")]
+position = Vector2(-777.5556, -637.3333)
+scale = Vector2(0.6666667, 0.6666667)
+
+[node name="Wisp4" parent="Enemies" unique_id=1471580452 instance=ExtResource("6_8bkkg")]
+position = Vector2(-532.6667, -452)
+scale = Vector2(0.6666667, 0.6666667)

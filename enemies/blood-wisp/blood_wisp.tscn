@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ca1y0gfwefmvp"]
+
+[ext_resource type="Script" uid="uid://dioigk0gmvfgx" path="res://enemies/blood-wisp/blood_wisp.gd" id="1_bwisp"]
+[ext_resource type="PackedScene" uid="uid://dfjgd8ob4ae8c" path="res://loot/items/heart_pickup.tscn" id="3_heart"]
+[ext_resource type="Texture2D" uid="uid://ck72n76xd8x5t" path="res://enemies/blood-wisp/assets/blood-wisp-death.png" id="4_death"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bwisp"]
+
+[node name="BloodWisp" type="CharacterBody2D" unique_id=776297903]
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_bwisp")
+death_texture = ExtResource("4_death")
+death_frame_count = 8
+drop_scene = ExtResource("3_heart")
+
+[node name="Shadow" type="AnimatedSprite2D" parent="." unique_id=1326117693]
+modulate = Color(0.18, 0, 0, 0.45)
+z_index = -1
+position = Vector2(0, 12)
+scale = Vector2(0.95, 0.32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=122334028]
+position = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1706791737]
+shape = SubResource("CircleShape2D_bwisp")

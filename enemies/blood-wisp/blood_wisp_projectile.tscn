@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c56sfvoxij17m"]
+
+[ext_resource type="Script" path="res://enemies/blood-wisp/blood_wisp_projectile.gd" id="1_proj"]
+[ext_resource type="Texture2D" uid="uid://b2upw510ekdlo" path="res://enemies/blood-wisp/assets/bloodball.png" id="2_ball"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_proj"]
+radius = 6.0
+
+[node name="BloodWispProjectile" type="Area2D"]
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("1_proj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 0
+texture = ExtResource("2_ball")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_proj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ccbewbboyn04n" path="res://rooms/room art/spawn-room.png" id="2_d3jlq"]
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_ts"]
 [ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="4_t3dgn"]
+[ext_resource type="PackedScene" uid="uid://ca1y0gfwefmvp" path="res://enemies/blood-wisp/blood_wisp.tscn" id="5_3ccyu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3jlq"]
 size = Vector2(470.98254, 62.99989)
@@ -156,3 +157,6 @@ scale = Vector2(1, 1)
 [node name="Wisp4" parent="Enemies" unique_id=1223048089 instance=ExtResource("4_t3dgn")]
 position = Vector2(215.33333, 7.3333435)
 scale = Vector2(1, 1)
+
+[node name="BloodWisp" parent="Enemies" unique_id=776297903 instance=ExtResource("5_3ccyu")]
+position = Vector2(120.000015, -80.66666)

@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://18q533wvmoe3" path="res://rooms/extras/N - S/N_table-6.tscn" id="10_wn644"]
 [ext_resource type="PackedScene" uid="uid://dlmgp6dyr67vm" path="res://rooms/extras/N - S/N_table4-flip.tscn" id="11_4uofk"]
 [ext_resource type="PackedScene" uid="uid://ccorjftx7a1ge" path="res://rooms/extras/N - S/column-N.tscn" id="12_71ie8"]
+[ext_resource type="PackedScene" uid="uid://b4751gg52qmji" path="res://enemies/rat/rat.tscn" id="13_2436g"]
+[ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="14_h44y1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jm4l0"]
 size = Vector2(11.604403, 3.704399)
@@ -79,11 +81,11 @@ border_width = 2.0
 metadata/_edit_use_anchors_ = true
 
 [node name="extra prop collision" type="StaticBody2D" parent="." unique_id=1893777187]
-collision_layer = 4
 position = Vector2(-2156.1968, 7107.073)
 rotation = -3.1347277
 scale = Vector2(4.3097835, 4.3097825)
 skew = -6.8068504e-05
+collision_layer = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="extra prop collision" unique_id=1774538146]
 position = Vector2(-608.80554, 1551.6464)
@@ -180,3 +182,17 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(36.368835, 66.36818)
 rotation = -3.1356337
 scale = Vector2(0.5, 0.5)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=834946728]
+position = Vector2(799, 678)
+scale = Vector2(1.5, 1.5)
+
+[node name="Rat" parent="Enemies" unique_id=565095671 instance=ExtResource("13_2436g")]
+position = Vector2(-191.33333, -333.33334)
+scale = Vector2(1, 1)
+
+[node name="Wisp" parent="Enemies" unique_id=121678066 instance=ExtResource("14_h44y1")]
+position = Vector2(-90.66669, -274)
+
+[node name="Wisp2" parent="Enemies" unique_id=1336955662 instance=ExtResource("14_h44y1")]
+position = Vector2(-291.33334, -274)

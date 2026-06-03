@@ -105,6 +105,11 @@ func _promote_enemies() -> void:
 			if world != null:
 				WorldLayer.promote(mob)
 		if world == null and not pending.is_empty() and not _enemy_setup_pending:
+			# Only retry if a WorldLayer node actually exists in the scene tree.
+			# Without this guard, call_deferred creates an infinite same-frame loop
+			# in scenes that have no WorldLayer (e.g. dungeon_test).
+			if get_tree().get_first_node_in_group("world") == null:
+				return
 			_enemy_setup_pending = true
 			call_deferred("_finish_enemy_setup")
 			return

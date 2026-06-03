@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ckonrmv1mjoco" path="res://rooms/extras/NW - SE/benches_h.tscn" id="12_4xopq"]
 [ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="13_w0vla"]
 [ext_resource type="PackedScene" uid="uid://b4751gg52qmji" path="res://enemies/rat/rat.tscn" id="14_4h0xa"]
+[ext_resource type="PackedScene" uid="uid://ca1y0gfwefmvp" path="res://enemies/blood-wisp/blood_wisp.tscn" id="15_4h0xa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5wvrv"]
 radius = 81.0
@@ -188,6 +189,26 @@ shape = SubResource("RectangleShape2D_o7078")
 [node name="LockedChest" parent="." unique_id=361220295 instance=ExtResource("4_3ps8v")]
 position = Vector2(607, 858)
 
+[node name="Enemies" type="Node2D" parent="." unique_id=1506063672]
+position = Vector2(1934.5, 1683)
+scale = Vector2(2.25, 2.25)
+
+[node name="Wisp" parent="Enemies" unique_id=121678066 instance=ExtResource("13_w0vla")]
+position = Vector2(-546.8889, -395.1111)
+scale = Vector2(0.6666667, 0.6666667)
+
+[node name="Wisp2" parent="Enemies" unique_id=1780163327 instance=ExtResource("13_w0vla")]
+position = Vector2(-504.66666, -396.8889)
+scale = Vector2(0.6666667, 0.6666667)
+
+[node name="Rat" parent="Enemies" unique_id=565095671 instance=ExtResource("14_4h0xa")]
+position = Vector2(-708.6666, -596.44446)
+scale = Vector2(0.6666667, 0.6666667)
+
+[node name="BloodWisp" parent="Enemies" unique_id=776297903 instance=ExtResource("15_4h0xa")]
+position = Vector2(-532.6666, -452)
+scale = Vector2(0.6666667, 0.6666667)
+
 [node name="Props" type="Node2D" parent="." unique_id=1544384742]
 
 [node name="OliveTree1" parent="Props" unique_id=591809942 instance=ExtResource("5_ontis")]
@@ -225,15 +246,3 @@ script = null
 [node name="BenchesH" parent="Props" unique_id=2118578149 instance=ExtResource("12_4xopq")]
 position = Vector2(252, 553)
 script = null
-
-[node name="Wisp" parent="Props" unique_id=121678066 instance=ExtResource("13_w0vla")]
-position = Vector2(704, 794)
-
-[node name="Wisp2" parent="Props" unique_id=1780163327 instance=ExtResource("13_w0vla")]
-position = Vector2(799, 790)
-
-[node name="Wisp3" parent="Props" unique_id=365381069 instance=ExtResource("13_w0vla")]
-position = Vector2(771, 867)
-
-[node name="Rat" parent="Props" unique_id=565095671 instance=ExtResource("14_4h0xa")]
-position = Vector2(340, 341)
