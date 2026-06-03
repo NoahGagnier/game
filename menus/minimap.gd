@@ -10,8 +10,8 @@ const ROOM_SIZE := 1024
 @export var player_path: NodePath = ^"../../World/Player"
 
 @export_group("Appearance")
-@export var cell_size: int = 14
-@export var cell_padding: int = 2
+@export var cell_size: int = 21
+@export var cell_padding: int = 3
 @export var panel_color: Color = Color(0, 0, 0, 0.45)
 @export var start_color: Color = Color(0.4, 0.85, 0.45)
 @export var treasure_color: Color = Color(1.0, 0.85, 0.25)

@@ -76,7 +76,9 @@ scale = Vector2(3.3710053, 3.3710053)
 
 [node name="Cardinal" parent="Enemies" unique_id=1740980473 instance=ExtResource("4_xepqf")]
 position = Vector2(-807.1703, -736.02)
+rotation = -3.1411
 scale = Vector2(0.5185185, 0.5185185)
+up_direction = Vector2(0, 1)
 
 [node name="Props" type="Node2D" parent="." unique_id=374097041]
 position = Vector2(1024.0001, 1023.0001)
