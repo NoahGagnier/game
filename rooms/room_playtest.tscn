@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bf00dmstcpfls"]
 
 [ext_resource type="Script" uid="uid://blbg6sktsxdly" path="res://rooms/room_playtest.gd" id="1_playtest"]
-[ext_resource type="PackedScene" uid="uid://b2wn56ucce4uq" path="res://rooms/Standard Rooms/room_NSW_01.tscn" id="2_1js7h"]
+[ext_resource type="PackedScene" uid="uid://utknflxnvd2k" path="res://rooms/Standard Rooms/room_NEW_01.tscn" id="2_1js7h"]
 [ext_resource type="Script" uid="uid://dbwqyfe0wq06y" path="res://rooms/world_layer.gd" id="2_world"]
 [ext_resource type="PackedScene" uid="uid://c1sx7bic4uhdj" path="res://player.tscn" id="3_player"]
 [ext_resource type="Script" uid="uid://dx8rmgbo1e7cw" path="res://rooms/room_camera.gd" id="4_cam"]

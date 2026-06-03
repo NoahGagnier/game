@@ -65,8 +65,20 @@ func _setup_world_entities() -> void:
 	if spawn_enemies_on_ready and _should_spawn_enemies():
 		_spawn_enemies()
 	_promote_props()
+	_promote_chests()
 	_promote_enemies()
 	_update_cleared_from_mobs()
+
+func _promote_chests() -> void:
+	_promote_chest_nodes_under(self)
+	var props_root := get_node_or_null("Props")
+	if props_root != null:
+		_promote_chest_nodes_under(props_root)
+
+func _promote_chest_nodes_under(root: Node) -> void:
+	for child in root.get_children():
+		if child is Chest:
+			WorldLayer.promote(child as Node2D)
 
 func _promote_props() -> void:
 	var props_root := get_node_or_null("Props")

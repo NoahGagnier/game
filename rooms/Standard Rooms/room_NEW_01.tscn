@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dc7e05iscs6dp" path="res://rooms/extras/NEW - SEW/table-2.tscn" id="4_hlxvc"]
 [ext_resource type="PackedScene" uid="uid://bg4ihho5kmipd" path="res://rooms/extras/NEW - SEW/table-1.tscn" id="5_kknab"]
 [ext_resource type="PackedScene" uid="uid://w5jawxmk265" path="res://rooms/extras/NEW - SEW/bookshelf.tscn" id="6_wl52i"]
+[ext_resource type="PackedScene" uid="uid://dxw1nmwp0wx4e" path="res://chest.tscn" id="7_vpoaj"]
 [ext_resource type="PackedScene" uid="uid://cmpastorscene" path="res://enemies/pastor/pastor.tscn" id="7_wl52i"]
 [ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="8_vpoaj"]
 
@@ -229,6 +230,9 @@ shape = SubResource("RectangleShape2D_vpoaj")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=51798997]
 position = Vector2(788.2625, 993.6362)
 shape = SubResource("RectangleShape2D_owcko")
+
+[node name="Chest" parent="." unique_id=2058236937 instance=ExtResource("7_vpoaj")]
+position = Vector2(513, 514)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=333151622]
 position = Vector2(514, 695)
