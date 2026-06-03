@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c8neswtablene" path="res://rooms/extras/NE - SW/table_ne.tscn" id="5_8bkkg"]
 [ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="6_8bkkg"]
 [ext_resource type="PackedScene" uid="uid://ca1y0gfwefmvp" path="res://enemies/blood-wisp/blood_wisp.tscn" id="6_gbsv3"]
+[ext_resource type="PackedScene" uid="uid://dxw1nmwp0wx4e" path="res://chest.tscn" id="8_fal40"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxyg2"]
 size = Vector2(110.00864, 22.554104)
@@ -235,3 +236,6 @@ scale = Vector2(0.6666667, 0.6666667)
 [node name="Wisp4" parent="Enemies" unique_id=1471580452 instance=ExtResource("6_8bkkg")]
 position = Vector2(-532.6667, -452)
 scale = Vector2(0.6666667, 0.6666667)
+
+[node name="Chest" parent="." unique_id=2058236937 instance=ExtResource("8_fal40")]
+position = Vector2(592, 430)

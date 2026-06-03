@@ -124,7 +124,7 @@ func take_damage(
 		return
 	health -= amount
 	if hit_direction != Vector2.ZERO:
-		_knockback += hit_direction.normalized() * knockback
+		_knockback += hit_direction.normalized() * knockback * 0.5
 	_sprite.modulate = Color(1.6, 0.35, 0.35, 1.0)
 	_hurt_timer = hurt_flash_duration
 	if health <= 0.0:

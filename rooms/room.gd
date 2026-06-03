@@ -128,7 +128,7 @@ func _track_mob(mob: Node2D) -> void:
 
 func _collect_enemies_by_meta() -> void:
 	for node in get_tree().get_nodes_in_group("enemies"):
-		if node is Node2D and node.get_meta(&"owning_room", null) == self:
+		if node is Node2D and node.has_meta(&"owning_room") and node.get_meta(&"owning_room") == self:
 			_track_mob(node as Node2D)
 
 func _update_cleared_from_mobs() -> void:

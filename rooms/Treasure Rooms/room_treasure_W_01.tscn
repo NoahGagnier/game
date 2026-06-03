@@ -75,6 +75,31 @@ offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
 
+[node name="Walls2" type="StaticBody2D" parent="." unique_id=374212055]
+position = Vector2(160.4961, 656.50555)
+rotation = 3.140396
+scale = Vector2(1.0003467, 1.0003467)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls2" unique_id=329241006]
+position = Vector2(129.61163, -133.98354)
+shape = SubResource("RectangleShape2D_1s8g6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls2" unique_id=1699781727]
+position = Vector2(-351.08496, -244.74602)
+shape = SubResource("RectangleShape2D_qc0wa")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Walls2" unique_id=1799668607]
+position = Vector2(-666.361, 143.17009)
+shape = SubResource("RectangleShape2D_bmjtc")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls2" unique_id=605778435]
+position = Vector2(128.33826, 419.52383)
+shape = SubResource("RectangleShape2D_3vlt8")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=2023185928]
+position = Vector2(-351.97723, 532.8999)
+shape = SubResource("RectangleShape2D_uvix7")
+
 [node name="Props" type="Node2D" parent="." unique_id=1693491210]
 position = Vector2(1025, 1023)
 rotation = 3.1411
@@ -90,31 +115,6 @@ rotation = -3.1411
 [node name="TableWshadow3" parent="Props" unique_id=1571547038 instance=ExtResource("5_qc0wa")]
 position = Vector2(862.8191, 367.42517)
 rotation = -3.1411
-
-[node name="Walls2" type="StaticBody2D" parent="Props/TableWshadow3" unique_id=374212055]
-position = Vector2(-1.5039063, 0.5055542)
-rotation = 3.140396
-scale = Vector2(1.0003467, 1.0003467)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/TableWshadow3/Walls2" unique_id=329241006]
-position = Vector2(129.61163, -133.98354)
-shape = SubResource("RectangleShape2D_1s8g6")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Props/TableWshadow3/Walls2" unique_id=1699781727]
-position = Vector2(-351.08496, -244.74602)
-shape = SubResource("RectangleShape2D_qc0wa")
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Props/TableWshadow3/Walls2" unique_id=1799668607]
-position = Vector2(-666.361, 143.17009)
-shape = SubResource("RectangleShape2D_bmjtc")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Props/TableWshadow3/Walls2" unique_id=605778435]
-position = Vector2(128.33826, 419.52383)
-shape = SubResource("RectangleShape2D_3vlt8")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Props/TableWshadow3/Walls2" unique_id=2023185928]
-position = Vector2(-351.97723, 532.8999)
-shape = SubResource("RectangleShape2D_uvix7")
 
 [node name="TableWshadow4" parent="Props" unique_id=696821931 instance=ExtResource("5_qc0wa")]
 position = Vector2(850.66534, 679.41925)

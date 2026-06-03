@@ -96,7 +96,7 @@ func take_damage(
 		return
 	health -= amount
 	if hit_direction != Vector2.ZERO:
-		_knockback += hit_direction.normalized() * knockback
+		_knockback += hit_direction.normalized() * knockback * 0.5
 	if health <= 0.0:
 		_die()
 		return

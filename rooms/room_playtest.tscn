@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bf00dmstcpfls"]
 
 [ext_resource type="Script" uid="uid://blbg6sktsxdly" path="res://rooms/room_playtest.gd" id="1_playtest"]
-[ext_resource type="PackedScene" uid="uid://bx7a1y3cof1av" path="res://rooms/Treasure Rooms/room_treasure_W_01.tscn" id="2_1js7h"]
+[ext_resource type="PackedScene" uid="uid://cfwwj7dqhkuep" path="res://rooms/Treasure Rooms/room_Treasure_NSEW_01.tscn" id="2_1js7h"]
 [ext_resource type="Script" uid="uid://dbwqyfe0wq06y" path="res://rooms/world_layer.gd" id="2_world"]
 [ext_resource type="PackedScene" uid="uid://c1sx7bic4uhdj" path="res://player.tscn" id="3_player"]
 [ext_resource type="Script" uid="uid://dx8rmgbo1e7cw" path="res://rooms/room_camera.gd" id="4_cam"]

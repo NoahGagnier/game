@@ -96,14 +96,22 @@ offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
 
-[node name="TableWshadow" parent="." unique_id=1959207261 instance=ExtResource("4_prw4q")]
-position = Vector2(348, 786)
+[node name="Props" type="Node2D" parent="." unique_id=914533926]
+position = Vector2(1025, 1023)
+rotation = 3.1411
 
-[node name="TableWshadow2" parent="." unique_id=853007538 instance=ExtResource("4_prw4q")]
-position = Vector2(336, 484)
+[node name="TableWshadow" parent="Props" unique_id=1959207261 instance=ExtResource("4_prw4q")]
+position = Vector2(676.8832, 237.33362)
+rotation = -3.1411
 
-[node name="TableWshadow3" parent="." unique_id=1316670517 instance=ExtResource("5_i5j4y")]
-position = Vector2(690, 496)
+[node name="TableWshadow2" parent="Props" unique_id=853007538 instance=ExtResource("4_prw4q")]
+position = Vector2(688.7344, 539.3395)
+rotation = -3.1411
 
-[node name="TableWshadow4" parent="." unique_id=95118858 instance=ExtResource("5_i5j4y")]
-position = Vector2(690, 808)
+[node name="TableWshadow3" parent="Props" unique_id=1316670517 instance=ExtResource("5_i5j4y")]
+position = Vector2(334.7403, 527.16504)
+rotation = -3.1411
+
+[node name="TableWshadow4" parent="Props" unique_id=95118858 instance=ExtResource("5_i5j4y")]
+position = Vector2(334.89404, 215.1651)
+rotation = -3.1411

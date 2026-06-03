@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://5r6kve141t31" path="res://rooms/extras/NE - SW/doubletable_sw.tscn" id="5_ee0ye"]
 [ext_resource type="PackedScene" uid="uid://c8neswpewsne" path="res://rooms/extras/NE - SW/pews_ne.tscn" id="6_h1crl"]
 [ext_resource type="PackedScene" uid="uid://nje0ldbvens" path="res://enemies/wisp/wisp.tscn" id="8_h1crl"]
+[ext_resource type="PackedScene" uid="uid://dxw1nmwp0wx4e" path="res://chest.tscn" id="9_2y6de"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3caa"]
 size = Vector2(110.99756, 19.905296)
@@ -109,9 +110,9 @@ border_color = Color(1, 0, 1, 1)
 border_width = 2.0
 
 [node name="extra prop htiboxes" type="StaticBody2D" parent="." unique_id=876966606]
-collision_layer = 4
 position = Vector2(2051.1006, 2044.896)
 rotation = -0.0021527924
+collision_layer = 4
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="extra prop htiboxes" unique_id=681887968]
 position = Vector2(-1870.3522, -1974.8855)
@@ -256,3 +257,6 @@ scale = Vector2(1, 1)
 
 [node name="Wisp4" parent="Enemies" unique_id=629664819 instance=ExtResource("8_h1crl")]
 scale = Vector2(1, 1)
+
+[node name="Chest" parent="." unique_id=2058236937 instance=ExtResource("9_2y6de")]
+position = Vector2(432, 572)

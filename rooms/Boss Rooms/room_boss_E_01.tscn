@@ -10,6 +10,21 @@
 [ext_resource type="PackedScene" uid="uid://dyahib62fq11y" path="res://rooms/extras/boss/cross.tscn" id="8_jm8qy"]
 [ext_resource type="PackedScene" path="res://enemies/boss-cardinal/cardinal.tscn" id="9_posor"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxbkw"]
+size = Vector2(98.50316, 136.001)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_posor"]
+size = Vector2(15.515522, 57.746284)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1mmtx"]
+size = Vector2(256.50012, 62.31231)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tm86y"]
+size = Vector2(256.10046, 62.047764)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jm8qy"]
+size = Vector2(15.374956, 65.220085)
+
 [node name="Room" type="Node2D" unique_id=301017955]
 script = ExtResource("1_d0i1m")
 available_doors = Array[String](["E"])
@@ -54,6 +69,32 @@ offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
 
+[node name="Walls2" type="StaticBody2D" parent="." unique_id=1436866585]
+position = Vector2(4100, 4092)
+rotation = 3.1411
+scale = Vector2(4, 4)
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Walls2" unique_id=368623793]
+position = Vector2(975.30774, 894.5109)
+shape = SubResource("RectangleShape2D_oxbkw")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Walls2" unique_id=1595848245]
+position = Vector2(776.32776, 857.1326)
+shape = SubResource("RectangleShape2D_posor")
+debug_color = Color(0.16860333, 0.5909963, 0.71088666, 0.41960785)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Walls2" unique_id=1898352066]
+position = Vector2(896.6059, 798.2859)
+shape = SubResource("RectangleShape2D_1mmtx")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls2" unique_id=516202944]
+position = Vector2(896.5625, 992.46576)
+shape = SubResource("RectangleShape2D_tm86y")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=1395825839]
+position = Vector2(776.288, 937.8826)
+shape = SubResource("RectangleShape2D_jm8qy")
+
 [node name="Enemies" type="Node2D" parent="." unique_id=93022674]
 position = Vector2(4064.75, 3310)
 scale = Vector2(3.375, 3.375)
@@ -67,17 +108,27 @@ position = Vector2(1024.0001, 1023.0001)
 rotation = 3.1411
 scale = Vector2(0.9988164, 0.9988164)
 
-[node name="TableWshadow" parent="." unique_id=1959207261 instance=ExtResource("4_6ncf4")]
-position = Vector2(508, 648)
+[node name="TableWshadow" parent="Props" unique_id=1959207261 instance=ExtResource("4_6ncf4")]
+position = Vector2(516.4265, 375.6989)
+rotation = -3.1411
+scale = Vector2(1.0011849, 1.0011849)
 
-[node name="TableWshadow2" parent="." unique_id=1800126299 instance=ExtResource("5_posor")]
-position = Vector2(496, 346)
+[node name="TableWshadow2" parent="Props" unique_id=1800126299 instance=ExtResource("5_posor")]
+position = Vector2(528.29175, 678.0626)
+rotation = -3.1411
+scale = Vector2(1.0011849, 1.0011849)
 
-[node name="TableWshadow3" parent="." unique_id=646474821 instance=ExtResource("6_1mmtx")]
-position = Vector2(850, 670)
+[node name="TableWshadow3" parent="Props" unique_id=646474821 instance=ExtResource("6_1mmtx")]
+position = Vector2(174.03217, 353.50415)
+rotation = -3.1411
+scale = Vector2(1.0011849, 1.0011849)
 
-[node name="TableWshadow4" parent="." unique_id=953954279 instance=ExtResource("7_tm86y")]
-position = Vector2(850, 358)
+[node name="TableWshadow4" parent="Props" unique_id=953954279 instance=ExtResource("7_tm86y")]
+position = Vector2(173.87823, 665.8738)
+rotation = -3.1411
+scale = Vector2(1.0011849, 1.0011849)
 
-[node name="TableWshadow5" parent="." unique_id=196495250 instance=ExtResource("8_jm8qy")]
-position = Vector2(665, 319)
+[node name="TableWshadow5" parent="Props" unique_id=196495250 instance=ExtResource("8_jm8qy")]
+position = Vector2(359.0782, 705.0112)
+rotation = -3.1411
+scale = Vector2(1.0011849, 1.0011849)

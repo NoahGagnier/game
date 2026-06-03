@@ -10,6 +10,21 @@
 [ext_resource type="PackedScene" uid="uid://bon8bvvgblm06" path="res://rooms/extras/boss/boss-table3.tscn" id="7_rsis5"]
 [ext_resource type="PackedScene" uid="uid://brb6tkqbmwxqa" path="res://rooms/extras/boss/boss-table.tscn" id="8_48xdq"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xepqf"]
+size = Vector2(98.50316, 136.001)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dsgr6"]
+size = Vector2(16.007698, 57.746284)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rsis5"]
+size = Vector2(256.50012, 62.31231)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48xdq"]
+size = Vector2(256.10046, 62.047764)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uxma"]
+size = Vector2(15.937353, 65.220085)
+
 [node name="Room" type="Node2D" unique_id=301017955]
 script = ExtResource("1_yvai0")
 available_doors = Array[String](["W"])
@@ -92,3 +107,29 @@ scale = Vector2(1.0011849, 1.0011849)
 position = Vector2(502.25995, 680.0522)
 rotation = -3.1411
 scale = Vector2(1.0011849, 1.0011849)
+
+[node name="Walls2" type="StaticBody2D" parent="." unique_id=1445952160]
+position = Vector2(4100, 4092)
+rotation = 3.1411
+scale = Vector2(4, 4)
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Walls2" unique_id=933183948]
+position = Vector2(817.8097, 893.9031)
+shape = SubResource("RectangleShape2D_xepqf")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Walls2" unique_id=474398071]
+position = Vector2(1016.5739, 857.0009)
+shape = SubResource("RectangleShape2D_dsgr6")
+debug_color = Color(0.16860333, 0.5909963, 0.71088666, 0.41960785)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Walls2" unique_id=716545494]
+position = Vector2(896.6059, 798.2859)
+shape = SubResource("RectangleShape2D_rsis5")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls2" unique_id=38515703]
+position = Vector2(896.5625, 992.46576)
+shape = SubResource("RectangleShape2D_48xdq")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls2" unique_id=759031146]
+position = Vector2(1016.5694, 937.50085)
+shape = SubResource("RectangleShape2D_3uxma")

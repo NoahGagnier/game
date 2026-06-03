@@ -18,7 +18,7 @@ enum Track {
 @export var gameplay_stream: AudioStream = preload("res://music/main-theme-final.ogg")
 @export var treasure_stream: AudioStream = preload("res://music/treasure-final.ogg")
 @export var boss_stream: AudioStream = preload("res://music/Boss-theme.ogg")
-@export var cutscene_stream: AudioStream
+@export var cutscene_stream: AudioStream = preload("res://music/test1.ogg")
 
 @export var music_bus_name: StringName = &"Music"
 @export var sfx_bus_name: StringName = &"SFX"

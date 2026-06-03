@@ -84,6 +84,21 @@ position = Vector2(73.527405, 132.30057)
 rotation = 3.1356337
 scale = Vector2(2, 2)
 
+[node name="CircularTableThing" parent="Props" unique_id=1983592172 instance=ExtResource("9_lc1r3")]
+position = Vector2(-147.08151, -194.2296)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
+
+[node name="ETable6" parent="Props" unique_id=1738797166 instance=ExtResource("10_36kjl")]
+position = Vector2(0.33784485, -96.34941)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
+
+[node name="ETable7" parent="Props" unique_id=1020897144 instance=ExtResource("11_o8t6q")]
+position = Vector2(1.4342842, -280.34613)
+rotation = -3.1356337
+scale = Vector2(0.5, 0.5)
+
 [node name="ETable5" parent="Props" unique_id=6400432 instance=ExtResource("4_xgdij")]
 position = Vector2(-134.08472, -193.65215)
 rotation = -3.1356337
@@ -165,15 +180,6 @@ shape = SubResource("RectangleShape2D_xf667")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls2" unique_id=1947203590]
 polygon = PackedVector2Array(952.2773, 959.71936, 941.0289, 956.4638, 930.5308, 952.4586, 920.0338, 946.4535, 914.28625, 941.4506, 908.5395, 934.9478, 902.04425, 925.1946, 898.79736, 918.943, 896.80066, 912.192, 894.8067, 899.94104, 894.8126, 887.94104, 896.5672, 878.6919, 900.3224, 868.1937, 906.8279, 856.94696, 913.08124, 850.2, 920.0844, 843.7035, 927.33655, 839.45703, 934.3384, 835.7105, 943.0895, 833.4648, 949.3402, 831.9679, 768.84106, 830.12897, 768.7758, 962.6289)
-
-[node name="CircularTableThing" parent="." unique_id=1983592172 instance=ExtResource("9_lc1r3")]
-position = Vector2(370, 519)
-
-[node name="ETable3" parent="." unique_id=1738797166 instance=ExtResource("10_36kjl")]
-position = Vector2(74, 325)
-
-[node name="ETable4" parent="." unique_id=1020897144 instance=ExtResource("11_o8t6q")]
-position = Vector2(74, 693)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=615154828]
 position = Vector2(3399.75, 2991)

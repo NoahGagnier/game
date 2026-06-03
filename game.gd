@@ -10,11 +10,27 @@ const FLOOR_CUTSCENE: PackedScene = preload("res://menus/floor_cutscene.tscn")
 
 var floor_number: int = 1
 
+@export var intro_fade_duration: float = 3.0
+
 func _ready() -> void:
 	add_to_group("game_controller")
 	_music_play(_TRACK_GAMEPLAY)
 	_connect_room_signals()
 	_place_player_at_start()
+	_fade_in_from_black(intro_fade_duration)
+
+func _fade_in_from_black(duration: float) -> void:
+	var layer := CanvasLayer.new()
+	layer.layer = 10
+	var rect := ColorRect.new()
+	rect.color = Color(0, 0, 0, 1)
+	rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	layer.add_child(rect)
+	add_child(layer)
+	var tween := create_tween()
+	tween.tween_property(rect, "modulate:a", 0.0, duration)
+	await tween.finished
+	layer.queue_free()
 
 func _music() -> Node:
 	return get_node_or_null("/root/MusicManager")
