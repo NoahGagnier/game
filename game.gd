@@ -6,6 +6,8 @@ const _TRACK_TREASURE := 3
 const _TRACK_BOSS := 4
 const _TRACK_CUTSCENE := 5
 
+const FLOOR_CUTSCENE: PackedScene = preload("res://menus/floor_cutscene.tscn")
+
 var floor_number: int = 1
 
 func _ready() -> void:
@@ -57,6 +59,9 @@ func _on_player_entered_room(room: Room) -> void:
 	match room.room_type:
 		Room.RoomType.BOSS:
 			_music_play(_TRACK_BOSS)
+			var hud := get_node_or_null("HUD")
+			if hud != null and hud.has_method("show_boss_bar"):
+				hud.show_boss_bar()
 		Room.RoomType.TREASURE:
 			_music_play(_TRACK_TREASURE)
 		Room.RoomType.START, Room.RoomType.NORMAL:
@@ -67,15 +72,27 @@ func _on_player_health_depleted() -> void:
 	get_tree().change_scene_to_file("res://menus/game_over.tscn")
 
 ## Called by BossPortal via call_group when the player enters it.
+## Plays the floor transition cutscene then rebuilds the dungeon.
 func advance_floor() -> void:
 	floor_number += 1
-	_music_play(_TRACK_GAMEPLAY)
+	var cutscene := FLOOR_CUTSCENE.instantiate()
+	add_child(cutscene)
+	cutscene.completed.connect(_on_floor_cutscene_done, CONNECT_ONE_SHOT)
+
+func _on_floor_cutscene_done() -> void:
+	# Reset the boss bar so it's ready for the next floor's boss.
+	var hud_node := get_node_or_null("HUD")
+	if hud_node != null:
+		(hud_node as Node).set("_boss_connected", false)
 
 	# Remove everything promoted to World except the player.
+	# Remove from groups first so new rooms don't pick up stale references.
 	var world := $World as Node2D
 	if world != null:
 		for child in world.get_children():
 			if not child.is_in_group("player"):
+				if child.is_in_group("enemies"):
+					child.remove_from_group("enemies")
 				child.queue_free()
 
 	# Regenerate the dungeon layout.
@@ -91,5 +108,11 @@ func advance_floor() -> void:
 	if minimap != null and minimap.has_method("reset"):
 		minimap.reset()
 
-	# Move player to the new start room after rooms are ready.
+	# Move player to the new start room, then remove the cutscene overlay.
 	call_deferred("_place_player_at_start")
+	_music_play(_TRACK_GAMEPLAY)
+
+	# Clean up the cutscene node (screen is still black at this point from _finish).
+	for child in get_children():
+		if child.get_script() != null and child.get_script().resource_path.ends_with("floor_cutscene.gd"):
+			child.queue_free()

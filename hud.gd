@@ -25,7 +25,8 @@ func _ready() -> void:
 	player.health_changed.connect(_on_player_health_changed)
 	_on_player_health_changed(player.health, player.max_health)
 
-func _process(_delta: float) -> void:
+## Called by game.gd when the player enters the boss room.
+func show_boss_bar() -> void:
 	if _boss_connected:
 		return
 	var boss := get_tree().get_first_node_in_group("boss")

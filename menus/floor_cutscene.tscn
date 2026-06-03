@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://dvwp7aj7c3eju"]
+
+[ext_resource type="Script" uid="uid://d1v0keqpb0gk1" path="res://menus/floor_cutscene.gd" id="1_fc"]
+[ext_resource type="FontFile" uid="uid://d3cwspmxi2stk" path="res://menus/cutscene-art/PressStart2P-Regular.ttf" id="2_font"]
+[ext_resource type="Script" uid="uid://bt7gfr4qp6cgg" path="res://menus/cutscene_slide.gd" id="2_slide"]
+[ext_resource type="Texture2D" uid="uid://ckeaas1ai3i7f" path="res://menus/cutscene-art/black.png" id="3_black"]
+
+[sub_resource type="Resource" id="Resource_6t8vi"]
+script = ExtResource("2_slide")
+texture = ExtResource("3_black")
+text = "Your fathers voice echoes through your head."
+metadata/_custom_type_script = "uid://bt7gfr4qp6cgg"
+
+[sub_resource type="Resource" id="Resource_4ljgx"]
+script = ExtResource("2_slide")
+texture = ExtResource("3_black")
+text = "\"AGAIN, CLAUDIA, AGAIN!\""
+metadata/_custom_type_script = "uid://bt7gfr4qp6cgg"
+
+[node name="FloorCutscene" type="CanvasLayer" unique_id=843202360]
+layer = 128
+script = ExtResource("1_fc")
+slides = Array[ExtResource("2_slide")]([SubResource("Resource_6t8vi"), SubResource("Resource_4ljgx")])
+
+[node name="Background" type="ColorRect" parent="." unique_id=1192209539]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="StaticDisplay" type="TextureRect" parent="." unique_id=83694349]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="AnimatedDisplay" type="Sprite2D" parent="." unique_id=603345685]
+visible = false
+position = Vector2(960, 540)
+
+[node name="TextBox" type="Control" parent="." unique_id=1025087546]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -180.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Label" type="RichTextLabel" parent="TextBox" unique_id=1177721782]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 402.0
+offset_top = -190.0
+offset_right = -399.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/line_separation = 20
+theme_override_fonts/normal_font = ExtResource("2_font")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+horizontal_alignment = 1
+visible_characters = 0
+
+[node name="Fade" type="ColorRect" parent="." unique_id=576916773]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

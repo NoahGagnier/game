@@ -194,9 +194,10 @@ func _has_live_mobs() -> bool:
 			return true
 	return false
 
-func _is_live_mob(mob: Node) -> bool:
+func _is_live_mob(mob) -> bool:
 	# Corpses stay in the tree for death animations but leave the "enemies" group.
-	return is_instance_valid(mob) and mob.is_in_group("enemies")
+	# Untyped parameter so freed instances don't crash the type check before is_instance_valid.
+	return is_instance_valid(mob) and (mob as Node) != null and mob.is_in_group("enemies")
 
 func _prune_dead_mobs() -> void:
 	for i in range(_spawned_mobs.size() - 1, -1, -1):
