@@ -4,6 +4,7 @@
 [ext_resource type="TileSet" uid="uid://b1id7qn8rs5et" path="res://ground.tres" id="2_7o7td"]
 [ext_resource type="Texture2D" uid="uid://cvaf2y5g5tyon" path="res://rooms/room art/boss-W.png" id="2_yb5js"]
 [ext_resource type="PackedScene" uid="uid://dyahib62fq11y" path="res://rooms/extras/boss/cross.tscn" id="4_qlkeg"]
+[ext_resource type="PackedScene" path="res://enemies/boss-cardinal/cardinal.tscn" id="4_xepqf"]
 [ext_resource type="PackedScene" uid="uid://u15s2kvy4u07" path="res://rooms/extras/boss/boss-table1.tscn" id="5_xepqf"]
 [ext_resource type="PackedScene" uid="uid://b3ory0tfqiisy" path="res://rooms/extras/boss/boss-table2.tscn" id="6_dsgr6"]
 [ext_resource type="PackedScene" uid="uid://bon8bvvgblm06" path="res://rooms/extras/boss/boss-table3.tscn" id="7_rsis5"]
@@ -52,6 +53,15 @@ offset_right = 1024.0
 offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+
+[node name="Enemies" type="Node2D" parent="." unique_id=509434340]
+position = Vector2(-2373.1973, -1962.7863)
+rotation = 3.1411
+scale = Vector2(3.3710053, 3.3710053)
+
+[node name="Cardinal" parent="Enemies" unique_id=1740980473 instance=ExtResource("4_xepqf")]
+position = Vector2(-807.1703, -736.02)
+scale = Vector2(0.5185185, 0.5185185)
 
 [node name="Props" type="Node2D" parent="." unique_id=374097041]
 position = Vector2(1024.0001, 1023.0001)

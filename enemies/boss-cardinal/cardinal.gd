@@ -51,6 +51,9 @@ signal health_changed(current: float, max_health: float)
 @export var bonus_drop_scene: PackedScene
 @export_range(0.0, 1.0) var bonus_drop_chance: float = 0.0
 
+@export_group("Portal")
+@export var portal_scene: PackedScene = preload("res://enemies/boss-cardinal/portal.tscn")
+
 enum State { APPROACH, MAINTAIN, RETREAT, DEAD }
 enum AttackPhase { BEAM, GROUND }
 
@@ -167,8 +170,26 @@ func _die() -> void:
 
 func _on_death_anim_finished() -> void:
 	_sprite.pause()
+	_spawn_portal()
 	await get_tree().create_timer(death_linger_duration).timeout
 	queue_free()
+
+func _spawn_portal() -> void:
+	if portal_scene == null:
+		return
+	var world := WorldLayer.find_world(self)
+	var parent: Node = world if world != null else get_parent()
+	if parent == null:
+		return
+	var portal := portal_scene.instantiate() as BossPortal
+	if portal == null:
+		return
+	parent.add_child(portal)
+	var room_center := global_position
+	if _room != null:
+		room_center = _room.global_position + Vector2(Room.ROOM_SIZE * 0.5, Room.ROOM_SIZE * 0.5)
+	portal.global_position = room_center
+	portal.open()
 
 func _try_fire() -> void:
 	if _fire_timer > 0.0:

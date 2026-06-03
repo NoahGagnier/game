@@ -73,6 +73,13 @@ func _world_to_cell(pos: Vector2) -> Vector2i:
 		int(floor(pos.y / float(ROOM_SIZE))),
 	)
 
+func reset() -> void:
+	_visited.clear()
+	_rooms.clear()
+	_current_cell = Vector2i.ZERO
+	_scan_rooms()
+	queue_redraw()
+
 func _draw() -> void:
 	draw_rect(Rect2(Vector2.ZERO, size), panel_color, true)
 	if _visited.is_empty():
@@ -81,7 +88,7 @@ func _draw() -> void:
 	var center := size * 0.5 - Vector2(cell_size, cell_size) * 0.5
 	for cell in _visited.keys():
 		var room: Room = _rooms.get(cell)
-		if room == null:
+		if room == null or not is_instance_valid(room):
 			continue
 		var rel: Vector2i = cell - _current_cell
 		var pos := center + Vector2(rel.x, rel.y) * step

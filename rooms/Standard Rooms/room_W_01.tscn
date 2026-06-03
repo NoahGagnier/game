@@ -175,8 +175,14 @@ position = Vector2(74, 325)
 [node name="ETable4" parent="." unique_id=1020897144 instance=ExtResource("11_o8t6q")]
 position = Vector2(74, 693)
 
-[node name="BloodWisp" parent="." unique_id=776297903 instance=ExtResource("12_o8t6q")]
-position = Vector2(226, 348)
+[node name="Enemies" type="Node2D" parent="." unique_id=615154828]
+position = Vector2(3399.75, 2991)
+scale = Vector2(3.375, 3.375)
 
-[node name="BloodWisp2" parent="." unique_id=1490513856 instance=ExtResource("12_o8t6q")]
-position = Vector2(237, 603)
+[node name="BloodWisp" parent="Enemies" unique_id=776297903 instance=ExtResource("12_o8t6q")]
+position = Vector2(-940.37036, -783.1111)
+scale = Vector2(0.44444445, 0.44444445)
+
+[node name="BloodWisp2" parent="Enemies" unique_id=1490513856 instance=ExtResource("12_o8t6q")]
+position = Vector2(-937.1111, -707.55554)
+scale = Vector2(0.44444445, 0.44444445)

@@ -6,7 +6,10 @@ const _TRACK_TREASURE := 3
 const _TRACK_BOSS := 4
 const _TRACK_CUTSCENE := 5
 
+var floor_number: int = 1
+
 func _ready() -> void:
+	add_to_group("game_controller")
 	_music_play(_TRACK_GAMEPLAY)
 	_connect_room_signals()
 	_place_player_at_start()
@@ -62,3 +65,31 @@ func _on_player_entered_room(room: Room) -> void:
 func _on_player_health_depleted() -> void:
 	_music_stop()
 	get_tree().change_scene_to_file("res://menus/game_over.tscn")
+
+## Called by BossPortal via call_group when the player enters it.
+func advance_floor() -> void:
+	floor_number += 1
+	_music_play(_TRACK_GAMEPLAY)
+
+	# Remove everything promoted to World except the player.
+	var world := $World as Node2D
+	if world != null:
+		for child in world.get_children():
+			if not child.is_in_group("player"):
+				child.queue_free()
+
+	# Regenerate the dungeon layout.
+	var generator := $Dungeon as DungeonGenerator
+	if generator != null:
+		generator.generate()
+
+	# Reconnect room cleared/entered signals from the fresh rooms.
+	_connect_room_signals()
+
+	# Reset minimap so it doesn't reference freed room nodes.
+	var minimap := get_node_or_null("HUD/Minimap")
+	if minimap != null and minimap.has_method("reset"):
+		minimap.reset()
+
+	# Move player to the new start room after rooms are ready.
+	call_deferred("_place_player_at_start")

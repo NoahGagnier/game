@@ -178,11 +178,18 @@ shape = SubResource("RectangleShape2D_1wlr7")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls2" unique_id=1251784019]
 polygon = PackedVector2Array(898.1747, 660.4426, 894.17175, 666.4406, 888.1604, 689.4376, 876.64984, 710.932, 872.14636, 717.9298, 855.13654, 737.9214, 832.62866, 753.9103, 818.1252, 760.9032, 800.6225, 766.39453, 778.12054, 770.3835, 747.621, 769.36847, 731.623, 765.3606, 710.1272, 756.85, 686.1353, 740.33813, 671.64246, 725.831, 658.15204, 706.32434, 648.66266, 684.8197, 644.17004, 669.81744, 643.6784, 652.8172, 631.1624, 685.31104, 628.99567, 1023.81006, 906.49585, 1023.4468)
 
-[node name="Rat" parent="." unique_id=565095671 instance=ExtResource("14_tmyq3")]
-position = Vector2(515, 846)
+[node name="Enemies2" type="Node2D" parent="." unique_id=1994230016]
+position = Vector2(3840.75, 3168)
+scale = Vector2(3.375, 3.375)
 
-[node name="Wisp" parent="." unique_id=121678066 instance=ExtResource("15_gyybo")]
-position = Vector2(347, 770)
+[node name="Rat" parent="Enemies2" unique_id=565095671 instance=ExtResource("14_tmyq3")]
+position = Vector2(-985.4074, -688)
+scale = Vector2(0.44444445, 0.44444445)
 
-[node name="Wisp2" parent="." unique_id=81840642 instance=ExtResource("15_gyybo")]
-position = Vector2(678, 780)
+[node name="Wisp" parent="Enemies2" unique_id=121678066 instance=ExtResource("15_gyybo")]
+position = Vector2(-1035.1852, -710.51855)
+scale = Vector2(0.44444445, 0.44444445)
+
+[node name="Wisp2" parent="Enemies2" unique_id=81840642 instance=ExtResource("15_gyybo")]
+position = Vector2(-937.1111, -707.55554)
+scale = Vector2(0.44444445, 0.44444445)

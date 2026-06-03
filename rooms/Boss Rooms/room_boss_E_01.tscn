@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bon8bvvgblm06" path="res://rooms/extras/boss/boss-table3.tscn" id="6_1mmtx"]
 [ext_resource type="PackedScene" uid="uid://brb6tkqbmwxqa" path="res://rooms/extras/boss/boss-table.tscn" id="7_tm86y"]
 [ext_resource type="PackedScene" uid="uid://dyahib62fq11y" path="res://rooms/extras/boss/cross.tscn" id="8_jm8qy"]
+[ext_resource type="PackedScene" path="res://enemies/boss-cardinal/cardinal.tscn" id="9_posor"]
 
 [node name="Room" type="Node2D" unique_id=301017955]
 script = ExtResource("1_d0i1m")
@@ -52,6 +53,14 @@ offset_right = 1024.0
 offset_bottom = 1024.0
 border_color = Color(1, 0, 1, 1)
 border_width = 2.0
+
+[node name="Enemies" type="Node2D" parent="." unique_id=93022674]
+position = Vector2(4064.75, 3310)
+scale = Vector2(3.375, 3.375)
+
+[node name="Cardinal" parent="Enemies" unique_id=1957086971 instance=ExtResource("9_posor")]
+position = Vector2(-1005.8518, -828.44446)
+scale = Vector2(0.5185185, 0.5185185)
 
 [node name="Props" type="Node2D" parent="." unique_id=520776234]
 position = Vector2(1024.0001, 1023.0001)
